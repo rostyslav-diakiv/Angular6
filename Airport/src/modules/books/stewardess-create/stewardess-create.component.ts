@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
-import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-book-create',
-  templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.css']
+  selector: 'app-stewardess-create',
+  templateUrl: './stewardess-create.component.html',
+  styleUrls: ['./stewardess-create.component.css']
 })
-export class BookCreateComponent implements OnInit {
+export class StewardessCreateComponent implements OnInit {
 
   bookForm: FormGroup;
-  isbn:string='';
-  title:string='';
-  description:string='';
-  author:string='';
-  publisher:string='';
-  published_year:string='';
+  isbn = '';
+  title = '';
+  description = '';
+  author = '';
+  publisher = '';
+  published_year = '';
 
   constructor(private router: Router, private api: ApiService, private formBuilder: FormBuilder) { }
 
@@ -31,11 +31,11 @@ export class BookCreateComponent implements OnInit {
     });
   }
 
-  onFormSubmit(form:NgForm) {
+  onFormSubmit(form: NgForm) {
     this.api.postBook(form)
       .subscribe(res => {
-          let id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          const id = res['_id'];
+          this.router.navigate(['/stewardess-details', id]);
         }, (err) => {
           console.log(err);
         });

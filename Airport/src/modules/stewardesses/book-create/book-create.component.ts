@@ -35,7 +35,7 @@ export class BookCreateComponent implements OnInit {
     this.api.postBook(form)
       .subscribe(res => {
           let id = res['_id'];
-          this.router.navigate(['/book-details', id]);
+          this.router.navigate(['/stewardess-details', id]);
         }, (err) => {
           console.log(err);
         });

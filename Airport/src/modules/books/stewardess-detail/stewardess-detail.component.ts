@@ -3,11 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  selector: 'app-stewardess-detail',
+  templateUrl: './stewardess-detail.component.html',
+  styleUrls: ['./stewardess-detail.component.css']
 })
-export class BookDetailComponent implements OnInit {
+export class StewardessDetailComponent implements OnInit {
 
   book = {};
 
@@ -28,7 +28,7 @@ export class BookDetailComponent implements OnInit {
   deleteBook(id) {
     this.api.deleteBook(id)
       .subscribe(res => {
-          this.router.navigate(['/books']);
+          this.router.navigate(['/stewardesses']);
         }, (err) => {
           console.log(err);
         }

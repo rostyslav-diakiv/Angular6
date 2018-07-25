@@ -3,11 +3,11 @@ import { ApiService } from '../api.service';
 import { DataSource } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: 'app-stewardess',
+  templateUrl: './stewardess.component.html',
+  styleUrls: ['./stewardess.component.css']
 })
-export class BookComponent implements OnInit {
+export class StewardessComponent implements OnInit {
 
   books: any;
   displayedColumns = ['isbn', 'title', 'author'];
