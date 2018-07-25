@@ -1,0 +1,23 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/stewardesses']"><mat-icon>list</mat-icon></a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2>{{stewardess.name}}</h2></mat-card-title>
+    <mat-card-subtitle>{{stewardess.familyName}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>Name:</dt>
+      <dd>{{stewardess.name}}</dd>
+      <dt>Family Name:</dt>
+      <dd>{{stewardess.familyName}}</dd>
+      <dt>Birth Date:</dt>
+      <dd>{{stewardess.dateOfBirth | date}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/stewardesses/edit', stewardess.id]"><mat-icon>edit</mat-icon></a>
+    <a mat-raised-button color="warn" (click)="deleteStewardess(stewardess.id)"><mat-icon>delete</mat-icon></a>
+  </mat-card-actions>
+</mat-card>
