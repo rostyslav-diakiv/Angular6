@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {ApiService} from '../../shared/services';
 import {Observable, of} from 'rxjs';
 import {PilotDto, StewardessDto} from '../../shared/models';
-import { StewardessRequest} from '../../books/models';
+import { StewardessRequest} from '../models';
+import {NgForm} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +44,17 @@ export class StewardessesService {
         return this._apiService.post(`/${this.ctrlUrl}`, request);
     }
 
+    createStewardessForm(form: NgForm): Observable<StewardessDto> {
+        return this._apiService.post(`/${this.ctrlUrl}`, form);
+    }
+
+
     updateStewardess(id: number, request: StewardessRequest): Observable<StewardessDto> {
         return this._apiService.put(`/${this.ctrlUrl}/${id}`, request);
+    }
+
+    updateStewardessForm(id: number, form: NgForm): Observable<StewardessDto> {
+        return this._apiService.put(`/${this.ctrlUrl}/${id}`, form);
     }
 
     initializeStewardess(): StewardessDto {

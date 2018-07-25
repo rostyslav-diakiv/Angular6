@@ -27,15 +27,14 @@ const APP_COMPONENTS: any[] = [
 ];
 
 const APP_MODULES: any[] = [
-    BrowserAnimationsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
 
     SharedModule.forRoot(),
 
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,

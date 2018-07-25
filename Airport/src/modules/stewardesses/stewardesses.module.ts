@@ -5,47 +5,56 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import { StewardessComponent } from './stewardess/stewardess.component';
-import { StewardessDetailComponent } from './book-detail/stewardess-detail.component';
-import { StewardessCreateComponent } from './book-create/stewardess-create.component';
-import { StewardessEditComponent } from './book-edit/stewardess-edit.component';
+import { StewardessDetailComponent } from './stewardess-detail/stewardess-detail.component';
+import { StewardessCreateComponent } from './stewardess-create/stewardess-create.component';
+import { StewardessEditComponent } from './stewardess-edit/stewardess-edit.component';
 
 import {
-MatInputModule,
-MatPaginatorModule,
-MatProgressSpinnerModule,
-MatSortModule,
-MatTableModule,
-MatIconModule,
-MatButtonModule,
-MatCardModule,
-MatFormFieldModule } from '@angular/material';
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+} from '@angular/material';
 
-const booksRoutes: Routes = [
+const stewardessesRoutes: Routes = [
     {
+        // stwardesses
         path: '',
         component: StewardessComponent,
         data: { title: 'Book List' }
     },
     {
-        path: 'stewardess-details/:id',
+        // stwardesses/details/2
+        path: 'details/:id',
         component: StewardessDetailComponent,
         data: { title: 'Book Details' }
     },
     {
-        path: 'stewardess-create',
+        // stwardesses/create
+        path: 'create',
         component: StewardessCreateComponent,
         data: { title: 'Create Book' }
     },
     {
-        path: 'stewardess-edit/:id',
+        // stwardesses/edit/2
+        path: 'edit/:id',
         component: StewardessEditComponent,
         data: { title: 'Edit Book' }
     },
     // { path: '',
-    //     redirectTo: '/books',
+    //     redirectTo: '/stewardesses',
     //     pathMatch: 'full'
     // }
 ];
+
+
 
 @NgModule({
     declarations: [
@@ -56,7 +65,7 @@ const booksRoutes: Routes = [
     ],
     imports: [
         CommonModule,
-        RouterModule.forChild(booksRoutes),
+        RouterModule.forChild(stewardessesRoutes),
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
@@ -68,8 +77,10 @@ const booksRoutes: Routes = [
         MatIconModule,
         MatButtonModule,
         MatCardModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     providers: []
 })
-export class BooksModule { }
+export class StewardessesModule { }

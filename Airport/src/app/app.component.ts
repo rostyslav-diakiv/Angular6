@@ -11,6 +11,7 @@ export class AppComponent {
         { link: 'about', label: 'About' },
         { link: 'features', label: 'Features' },
         { link: 'examples', label: 'Examples' },
-        { link: 'products', label: 'Products' },
+        { link: 'pilots', label: 'Pilots' },
+        { link: 'stewardesses', label: 'Stewardesses' },
     ];
 }

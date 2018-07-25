@@ -146,7 +146,6 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
     }
 
     deletePilot(): void {
-        debugger;
         if (this.pilot.Id === 0) {
             // Don't delete, it was never saved.
             this.onSaveComplete();
@@ -162,7 +161,6 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
     }
 
     savePilot(): void {
-        debugger;
         if (this.pilotForm.dirty && this.pilotForm.valid) {
             // Copy the form values over the product object values
             const p = Object.assign({}, this.pilot, this.pilotForm.value);

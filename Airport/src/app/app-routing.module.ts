@@ -3,15 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import {ErrorComponent} from './components/error/error.component';
 
 const routes: Routes = [
-    { path: 'products',
+    { path: 'pilots',
         // data: { preload: true },
         loadChildren: 'src/modules/pilots/pilots.module#PilotsModule'},
     // Lazy loads the modules that accessible only for authorized users
-    { path: 'books',
+    { path: 'stewardesses',
         // data: { preload: true },
-        loadChildren: 'src/modules/books/books.module#BooksModule'},
+        loadChildren: 'src/modules/stewardesses/stewardesses.module#StewardessesModule'},
+    { path: 'flights',
+        // data: { preload: true },
+        loadChildren: 'src/modules/flights/flights.module#FlightsModule'},
     { path: '404', component: ErrorComponent },
-    { path: '', redirectTo: 'products', pathMatch: 'full'},
+    { path: '', redirectTo: 'pilots', pathMatch: 'full'},
     // otherwise redirect to 404 page
     { path: '**', component: ErrorComponent },
 ];

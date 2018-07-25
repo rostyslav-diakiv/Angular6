@@ -19,7 +19,6 @@ export class PilotDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        debugger;
         const pil = this.route.snapshot.data['pilot'];
         this.pilot = pil;
     }

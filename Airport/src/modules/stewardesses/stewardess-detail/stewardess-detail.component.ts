@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import {StewardessesService} from '../services/stewardesses.service';
 
 @Component({
   selector: 'app-stewardess-detail',
@@ -9,26 +9,26 @@ import { ApiService } from '../api.service';
 })
 export class StewardessDetailComponent implements OnInit {
 
-  book = {};
+  stewardess = {};
 
-  constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private api: StewardessesService, private router: Router) { }
 
   ngOnInit() {
-    this.getBookDetails(this.route.snapshot.params['id']);
+    this.getStewardessDetails(this.route.snapshot.params['id']);
   }
 
-  getBookDetails(id) {
-    this.api.getBook(id)
+  getStewardessDetails(id) {
+    this.api.getStewardess(id)
       .subscribe(data => {
         console.log(data);
-        this.book = data;
+        this.stewardess = data;
       });
   }
 
-  deleteBook(id) {
-    this.api.deleteBook(id)
+  deleteStewardess(id) {
+    this.api.deleteStewardess(id)
       .subscribe(res => {
-          this.router.navigate(['/stewardesses']);
+          this.router.navigate(['/stewardesses']); // go to list
         }, (err) => {
           console.log(err);
         }

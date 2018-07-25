@@ -16,7 +16,6 @@ export class PilotResolver implements Resolve<PilotDto> {
 
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot): Observable<PilotDto> {
-        debugger;
         const id = route.paramMap.get('id');
 
         return this._pilotsService.getPilot(+id)

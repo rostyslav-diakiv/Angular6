@@ -56,7 +56,7 @@ export class PilotsService {
         // productDto.priceInCents = null;
         // productDto.durationInDay = null;
         // productDto.type = null;
-        // productDto.description = null;
+        // productDto.dateOfBirth = null;
         //
         // return productDto;
 
