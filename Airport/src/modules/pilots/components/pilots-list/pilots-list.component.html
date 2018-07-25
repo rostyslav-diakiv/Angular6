@@ -11,39 +11,39 @@
 
         <table mat-table [dataSource]="data" class="example-table"
                matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
-            <!-- Id Column -->
+            <!-- id Column -->
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef>Id</th>
-                <td mat-cell *matCellDef="let row">{{row.Id}}</td>
+                <td mat-cell *matCellDef="let row">{{row.id}}</td>
             </ng-container>
 
-            <!-- Name Column -->
+            <!-- name Column -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Name</th>
                 <td mat-cell *matCellDef="let row">
-                    <a [routerLink]="[row.Id]"
+                    <a [routerLink]="[row.id]"
                        [queryParams]="{filterBy: listFilter}">
-                        {{row.Name}}
+                        {{row.name}}
                     </a>
                 </td>
             </ng-container>
 
-            <!-- Family Name Column -->
+            <!-- Family name Column -->
             <ng-container matColumnDef="familyName">
                 <th mat-header-cell *matHeaderCellDef>Family Name</th>
-                <td mat-cell *matCellDef="let row">{{row.FamilyName}}</td>
+                <td mat-cell *matCellDef="let row">{{row.familyName}}</td>
             </ng-container>
 
-            <!-- Age Column -->
+            <!-- age Column -->
             <ng-container matColumnDef="age">
                 <th mat-header-cell *matHeaderCellDef>Age</th>
-                <td mat-cell *matCellDef="let row">{{row.Age.Years}}</td>
+                <td mat-cell *matCellDef="let row">{{row.age.years}}</td>
             </ng-container>
 
-            <!-- Experience Column -->
+            <!-- experience Column -->
             <ng-container matColumnDef="experience">
                 <th mat-header-cell *matHeaderCellDef>Experience</th>
-                <td mat-cell *matCellDef="let row">{{row.Experience}}</td>
+                <td mat-cell *matCellDef="let row">{{row.experience}}</td>
             </ng-container>
 
             <!-- Date Of Birth Column -->
@@ -51,7 +51,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
                     Date Of Birth
                 </th>
-                <td mat-cell *matCellDef="let row">{{row.DateOfBirth | date}}</td>
+                <td mat-cell *matCellDef="let row">{{row.dateOfBirth | date}}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -92,12 +92,12 @@
 <!--*ngIf='pilots && pilots.length'>-->
 <!--<thead class="">-->
 <!--<tr>-->
-<!--<th style="width: 30%">Id</th>-->
-<!--<th style="width: 30%">Name</th>-->
-<!--<th style="width: 20%">Family Name</th>-->
-<!--<th style="width: 15%">Experience</th>-->
+<!--<th style="width: 30%">id</th>-->
+<!--<th style="width: 30%">name</th>-->
+<!--<th style="width: 20%">Family name</th>-->
+<!--<th style="width: 15%">experience</th>-->
 <!--<th style="width: 15%">Date of Birth</th>-->
-<!--<th style="width: 15%">Age</th>-->
+<!--<th style="width: 15%">age</th>-->
 <!--<th style="width: 10%">Edit</th>-->
 <!--<th style="width: 10%">Delete</th>-->
 <!--</tr>-->
@@ -105,36 +105,36 @@
 <!--<tbody>-->
 <!--<tr *ngFor='let pilot of pilots'>-->
 <!--<td>-->
-<!--<a [routerLink]="[pilot.Id]"-->
+<!--<a [routerLink]="[pilot.id]"-->
 <!--[queryParams]="{filterBy: listFilter}">-->
-<!--{{pilot?.Id}}-->
+<!--{{pilot?.id}}-->
 <!--</a>-->
 <!--</td>-->
 <!--<td>-->
-<!--<a [routerLink]="[pilot.Id]"-->
+<!--<a [routerLink]="[pilot.id]"-->
 <!--[queryParams]="{filterBy: listFilter}">-->
-<!--{{pilot?.Name}}-->
+<!--{{pilot?.name}}-->
 <!--</a>-->
 <!--</td>-->
 <!--<td>-->
-<!--<a [routerLink]="[pilot.Id]"-->
+<!--<a [routerLink]="[pilot.id]"-->
 <!--[queryParams]="{filterBy: listFilter}">-->
-<!--{{pilot?.FamilyName}}-->
+<!--{{pilot?.familyName}}-->
 <!--</a>-->
 <!--</td>-->
-<!--<td>{{ pilot?.Experience}}</td>-->
-<!--<td>{{ pilot?.DateOfBirth}}</td>-->
-<!--<td>{{ pilot?.Experience }}</td>-->
+<!--<td>{{ pilot?.experience}}</td>-->
+<!--<td>{{ pilot?.dateOfBirth}}</td>-->
+<!--<td>{{ pilot?.experience }}</td>-->
 <!--<td>-->
 <!--<a class="btn btn-primary"-->
-<!--[routerLink]="[pilot.Id, 'edit']"-->
+<!--[routerLink]="[pilot.id, 'edit']"-->
 <!--[queryParams]="{filterBy: listFilter}">-->
 <!--Edit-->
 <!--</a>-->
 <!--</td>-->
 <!--<td>-->
 <!--<a class="btn btn-primary"-->
-<!--(click)="deletePilot(pilot.Id)">-->
+<!--(click)="deletePilot(pilot.id)">-->
 <!--Delete-->
 <!--</a>-->
 <!--</td>-->

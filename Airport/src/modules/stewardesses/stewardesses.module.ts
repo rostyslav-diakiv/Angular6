@@ -9,19 +9,7 @@ import { StewardessDetailComponent } from './stewardess-detail/stewardess-detail
 import { StewardessCreateComponent } from './stewardess-create/stewardess-create.component';
 import { StewardessEditComponent } from './stewardess-edit/stewardess-edit.component';
 
-import {
-    MatInputModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSortModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-} from '@angular/material';
+import {MaterialModule} from '../material/material.module';
 
 const stewardessesRoutes: Routes = [
     {
@@ -49,7 +37,7 @@ const stewardessesRoutes: Routes = [
         data: { title: 'Edit Book' }
     },
     // { path: '',
-    //     redirectTo: '/stewardesses',
+    //     redirectTo: '/flights',
     //     pathMatch: 'full'
     // }
 ];
@@ -66,20 +54,10 @@ const stewardessesRoutes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(stewardessesRoutes),
+        MaterialModule,
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MatInputModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatNativeDateModule
     ],
     providers: []
 })

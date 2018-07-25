@@ -22,6 +22,9 @@ export class TableTestComponent implements OnInit {
     isExpansionDetailRow = (_, row: Object) => {
         return row.hasOwnProperty('detailRow');
     };
+
+    ngOnInit(): void {
+    }
 }
 
 export interface Element {

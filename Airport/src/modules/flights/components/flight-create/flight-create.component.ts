@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import {FlightsService} from '../services/flights.service';
+import {FlightsService} from '../../services/flights.service';
 
 @Component({
   selector: 'app-flight-create',
@@ -23,10 +23,10 @@ export class FlightCreateComponent implements OnInit {
   }
 
   onFormSubmit(form: NgForm) {
-    this.api.createStewardessForm(form)
+    this.api.createFlightForm(form)
       .subscribe(res => {
           const id = res['id'];
-          this.router.navigate(['/stewardesses/details', id]);  // /stewardesses/details/id go to details of just created flights
+          this.router.navigate(['/flights/details', id]);  // /flights/details/id go to details of just created flights
         }, (err) => {
           console.log(err);
         });

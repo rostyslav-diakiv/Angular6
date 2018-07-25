@@ -83,7 +83,7 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
             this.onPilotRetrieved(data['pilot']);
         });
 
-        // Read the product Id from the route parameter
+        // Read the product id from the route parameter
         // this.sub = this.route.params.subscribe(
         //     params => {
         //         const id = params['id'];
@@ -130,28 +130,28 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
         }
         this.pilot = pilot;
 
-        if (this.pilot.Id === 0) {
+        if (this.pilot.id === 0) {
             this.pageTitle = 'Add Pilot';
         } else {
-            this.pageTitle = `Edit Pilot: ${this.pilot.Name}`;
+            this.pageTitle = `Edit Pilot: ${this.pilot.name}`;
         }
 
         // Update the data on the form
         this.pilotForm.patchValue({
-            Name: this.pilot.Name,
-            FamilyName: this.pilot.FamilyName,
-            Experience: this.pilot.Experience,
-            DateOfBirth: this.pilot.DateOfBirth
+            Name: this.pilot.name,
+            FamilyName: this.pilot.familyName,
+            Experience: this.pilot.experience,
+            DateOfBirth: this.pilot.dateOfBirth
         });
     }
 
     deletePilot(): void {
-        if (this.pilot.Id === 0) {
+        if (this.pilot.id === 0) {
             // Don't delete, it was never saved.
             this.onSaveComplete();
         } else {
-            if (confirm(`Really delete the pilot: ${this.pilot.Name}?`)) {
-                this._pilotsService.deletePilot(this.pilot.Id)
+            if (confirm(`Really delete the pilot: ${this.pilot.name}?`)) {
+                this._pilotsService.deletePilot(this.pilot.id)
                     .subscribe(
                         () => this.onSaveComplete(),
                         (error: any) => this.errorMessage = <any>error

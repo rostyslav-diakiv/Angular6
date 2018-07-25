@@ -92,7 +92,7 @@ export class PilotsListComponent implements OnInit, OnDestroy {
     deletePilot(id: number) {
         this._pilotsService.deletePilot(id)
             .subscribe(data => {
-                    const position = this.pilots.findIndex(pr => pr.Id === +id);
+                    const position = this.pilots.findIndex(pr => pr.id === +id);
                     // const position = this.products.map(function(e) { return e.id; }).indexOf(id);
                     if (position > -1) {
                         this.pilots.splice(position, 1);

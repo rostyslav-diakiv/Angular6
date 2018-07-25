@@ -1,18 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import {FlightsService} from '../services/flights.service';
-import {formatDate} from '@angular/common';
+import {FlightsService} from '../../services/flights.service';
 
 @Component({
-    selector: 'app-stewardess-edit',
-    templateUrl: './stewardess-edit.component.html',
-    styleUrls: ['./stewardess-edit.component.css']
+    selector: 'app-flight-edit',
+    templateUrl: './flight-edit.component.html',
+    styleUrls: ['./flight-edit.component.css']
 })
-export class StewardessEditComponent implements OnInit {
+export class FlightEditComponent implements OnInit {
 
-    stewForm: FormGroup;
-    id = 0;
+    flightForm: FormGroup;
+    number = '0';
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -22,38 +21,41 @@ export class StewardessEditComponent implements OnInit {
 
     ngOnInit() {
         this.getBook(this.route.snapshot.params['id']);
-        this.stewForm = this.formBuilder.group({
-            'name': [null, Validators.required],
-            'familyName': [null, Validators.required],
-            'dateOfBirth': [Validators.required]
+        this.flightForm = this.formBuilder.group({
+            'number': [{value: '', disabled: true}, Validators.required],
+            'departureTime': [Validators.required],
+            'pointOfDeparture': [null, Validators.required],
+            'destinationArrivalTime': [Validators.required],
+            'destination': [null, Validators.required]
         });
     }
 
     getBook(id) {
-        this.api.getStewardess(id).subscribe(data => {
-            // let a = formatDate(data.dateOfBirth, 'dd/MM/yyyy', 'en-us');
-           // this.dateOfBirth = data.dateOfBirth;
-            this.id = data.id;
-            this.stewForm.setValue({
-                name: data.name,
-                familyName: data.familyName,
-                dateOfBirth: data.dateOfBirth
+        this.api.getFlight(id).subscribe(data => {
+            this.number = data.number;
+            this.flightForm.setValue({
+                number: data.number,
+                departureTime: data.departureTime,
+                pointOfDeparture: data.pointOfDeparture,
+                destinationArrivalTime: data.destinationArrivalTime,
+                destination: data.destination
             });
         });
     }
 
-    onFormSubmit(form: NgForm) {
-        this.api.updateStewardessForm(this.id, form)
+    onFormSubmit() {
+        debugger;
+        const flight = Object.assign({}, this.flightForm.value);
+        this.api.updateFlightForm(this.number, flight)
             .subscribe(() => {
-                    // const id = res['id'];
-                    this.router.navigate(['/stewardesses/details', this.id]); //  -- go to details of just updated entity
+                    this.router.navigate(['/flights/details', this.number]); //  -- go to details of just updated entity
                 }, (err) => {
                     console.log(err);
                 }
             );
     }
 
-    bookDetails() {
-        this.router.navigate(['/stewardesses/details', this.id]); // -- go to details of entity
+    flightDetails() {
+        this.router.navigate(['/flights/details', this.number]); // -- go to details of entity
     }
 }

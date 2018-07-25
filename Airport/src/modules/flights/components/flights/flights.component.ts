@@ -1,26 +1,32 @@
 import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
-import {StewardessesService} from '../services/stewardesses.service';
-import {StewardessDto} from '../../shared/models';
+import {FlightsService} from '../../services/flights.service';
+import {FlightDto} from '../../../shared/models/flight-dto';
 
 @Component({
-    selector: 'app-stewardess',
-    templateUrl: './stewardess.component.html',
-    styleUrls: ['./stewardess.component.css']
+    selector: 'app-flights',
+    templateUrl: './flights.component.html',
+    styleUrls: ['./flights.component.css']
 })
-export class StewardessComponent implements OnInit {
-    stewardesses: StewardessDto[] = [];
-    displayedColumns = ['name', 'familyName', 'dateOfBirth', 'age'];
+export class FlightsComponent implements OnInit {
+    flights: FlightDto[] = [];
+    displayedColumns = [
+        'number',
+        'departureTime',
+        'pointOfDeparture',
+        'destinationArrivalTime',
+        'destination'
+    ];
     dataSource = new BookDataSource(this.api);
 
-    constructor(private api: StewardessesService) {
+    constructor(private api: FlightsService) {
     }
 
     ngOnInit() {
-        this.api.getStewardesses()
+        this.api.getFlights()
             .subscribe(res => {
                 console.log(res);
-                this.stewardesses = res;
+                this.flights = res;
             }, err => {
                 console.log(err);
             });
@@ -28,12 +34,12 @@ export class StewardessComponent implements OnInit {
 }
 
 export class BookDataSource extends DataSource<any> {
-    constructor(private api: StewardessesService) {
+    constructor(private api: FlightsService) {
         super();
     }
 
     connect() {
-        return this.api.getStewardesses();
+        return this.api.getFlights();
     }
 
     disconnect() {

@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {FlightsService} from '../services/flights.service';
+import {FlightsService} from '../../services/flights.service';
+import {FlightDto} from '../../../shared/models/flight-dto';
 
 @Component({
   selector: 'app-stewardess-detail',
-  templateUrl: './stewardess-detail.component.html',
-  styleUrls: ['./stewardess-detail.component.css']
+  templateUrl: './flight-detail.component.html',
+  styleUrls: ['./flight-detail.component.css']
 })
-export class StewardessDetailComponent implements OnInit {
+export class FlightDetailComponent implements OnInit {
 
-  stewardess = {};
+  flight: FlightDto;
 
   constructor(private route: ActivatedRoute, private api: FlightsService, private router: Router) { }
 
@@ -18,17 +19,17 @@ export class StewardessDetailComponent implements OnInit {
   }
 
   getStewardessDetails(id) {
-    this.api.getStewardess(id)
+    this.api.getFlight(id)
       .subscribe(data => {
         console.log(data);
-        this.stewardess = data;
+        this.flight = data;
       });
   }
 
   deleteStewardess(id) {
-    this.api.deleteStewardess(id)
+    this.api.deleteFlight(id)
       .subscribe(res => {
-          this.router.navigate(['/stewardesses']); // go to list
+          this.router.navigate(['/flights']); // go to list
         }, (err) => {
           console.log(err);
         }

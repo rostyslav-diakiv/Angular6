@@ -1,5 +1,5 @@
 export interface Age {
-    Years: number;
-    Months: number;
-    Days: number;
+    years: number;
+    months: number;
+    days: number;
 }

@@ -1,134 +1,68 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
-import {CdkTableModule} from '@angular/cdk/table';
-import {OverlayModule} from '@angular/cdk/overlay';
-import {
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatSortModule,
-    MatTableModule,
-    MatPaginatorModule
-} from '@angular/material';
 
 import {TableTestComponent} from './components/table-test/table-test.component';
 import {RouterModule, Routes} from '@angular/router';
+import {MaterialModule} from '../material/material.module';
+import {FlightsComponent} from './components/flights/flights.component';
+import {FlightDetailComponent} from './components/flight-detail/flight-detail.component';
+import {FlightCreateComponent} from './components/flight-create/flight-create.component';
+import {FlightEditComponent} from './components/flight-edit/flight-edit.component';
+import {SharedModule} from '../shared/shared.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlightsService} from './services/flights.service';
 
-
-/**
- * NgModule that includes all Material modules that are required to serve
- * the Plunker.
- */
-@NgModule({
-    exports: [
-        // CDk
-        CdkTableModule,
-        OverlayModule,
-
-        // Material
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatGridListModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSlideToggleModule,
-        MatSliderModule,
-        MatSnackBarModule,
-        MatTabsModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatTooltipModule,
-
-        MatNativeDateModule,
-        MatSortModule,
-        MatPaginatorModule
-    ]
-})export class PlunkerMaterialModule {}
 
 const flightsRoutes: Routes = [
     {
-        // flights
         path: '',
+        component: FlightsComponent,
+        data: { title: 'Book List' }
+    },
+    {
+        path: 'details/:id',
+        component: FlightDetailComponent,
+        data: { title: 'Book Details' }
+    },
+    {
+        path: 'create',
+        component: FlightCreateComponent,
+        data: { title: 'Create Book' }
+    },
+    {
+        path: 'edit/:id',
+        component: FlightEditComponent,
+        data: { title: 'Edit Book' }
+    },
+    {
+        // testTable
+        path: 'testTable',
         component: TableTestComponent,
         data: { title: 'Book Details' }
     },
-    // {
-    //     // stwardesses/details/2
-    //     path: 'details/:id',
-    //     component: StewardessDetailComponent,
-    //     data: { title: 'Book Details' }
-    // },
-    // {
-    //     // stwardesses/create
-    //     path: 'create',
-    //     component: StewardessCreateComponent,
-    //     data: { title: 'Create Book' }
-    // },
-    // {
-    //     // stwardesses/edit/2
-    //     path: 'edit/:id',
-    //     component: StewardessEditComponent,
-    //     data: { title: 'Edit Book' }
-    // },
-    // { path: '',
-    //     redirectTo: '/stewardesses',
-    //     pathMatch: 'full'
-    // }
 ];
 
 
 @NgModule({
-
     imports: [
         CommonModule,
-        HttpClientModule,
-        PlunkerMaterialModule,
+        SharedModule,
         RouterModule.forChild(flightsRoutes),
+        MaterialModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
     ],
-
-    declarations: [TableTestComponent],
-    providers: []
+    declarations: [
+        TableTestComponent,
+        FlightsComponent,
+        FlightDetailComponent,
+        FlightCreateComponent,
+        FlightEditComponent
+    ],
+    providers: [
+        FlightsService
+    ]
 })
 export class FlightsModule { }

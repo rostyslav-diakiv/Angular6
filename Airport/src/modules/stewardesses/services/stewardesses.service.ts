@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from '../../shared/services';
 import {Observable, of} from 'rxjs';
-import {PilotDto, StewardessDto} from '../../shared/models';
+import { StewardessDto} from '../../shared/models';
 import { StewardessRequest} from '../models';
 import {NgForm} from '@angular/forms';
 
@@ -12,7 +12,7 @@ export class StewardessesService {
     private readonly ctrlUrl = 'Stewardesses';
     constructor(private _apiService: ApiService) { }
 
-    getStewardesses(): Observable<PilotDto[]> {
+    getStewardesses(): Observable<StewardessDto[]> {
         return this._apiService.get(`/${this.ctrlUrl}`);
     }
 
@@ -29,15 +29,15 @@ export class StewardessesService {
 
     saveStewardess(dto: StewardessDto): Observable<StewardessDto> {
         const request: StewardessRequest = {
-          Name: dto.Name,
-          FamilyName: dto.FamilyName,
-          DateOfBirth: dto.DateOfBirth
+          name: dto.name,
+          familyName: dto.familyName,
+          dateOfBirth: dto.dateOfBirth
         };
 
-        if (dto.Id === 0) {
+        if (dto.id === 0) {
             return this.createStewardess(request);
         }
-        return this.updateStewardess(dto.Id, request);
+        return this.updateStewardess(dto.id, request);
     }
 
     createStewardess(request: StewardessRequest): Observable<StewardessDto> {
@@ -59,14 +59,14 @@ export class StewardessesService {
 
     initializeStewardess(): StewardessDto {
         const stewardessDto: StewardessDto = {
-            Id: 0,
-            Name: null,
-            FamilyName: null,
-            DateOfBirth: new Date(),
-            Age: {
-                Years: 1,
-                Months: 1,
-                Days: 1
+            id: 0,
+            name: null,
+            familyName: null,
+            dateOfBirth: new Date(),
+            age: {
+                years: 1,
+                months: 1,
+                days: 1
             }
         };
 

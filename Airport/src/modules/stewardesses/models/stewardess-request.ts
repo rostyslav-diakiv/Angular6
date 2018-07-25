@@ -1,5 +1,5 @@
 export interface StewardessRequest {
-    Name: string;
-    FamilyName: string;
-    DateOfBirth: Date;
+    name: string;
+    familyName: string;
+    dateOfBirth: Date;
 }

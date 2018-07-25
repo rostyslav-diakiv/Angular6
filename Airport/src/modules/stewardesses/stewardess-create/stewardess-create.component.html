@@ -17,10 +17,13 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input matInput type="date" placeholder="Date Of Birth" formControlName="dateOfBirth"
-               [errorStateMatcher]="matcher">
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose date of birth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>
-            <span *ngIf="!stewForm.get('dateOfBirth').valid && stewForm.get('dateOfBirth').touched">Please enter Date Of Birth</span>
+      <span *ngIf="!stewForm.get('dateOfBirth').valid && stewForm.get('dateOfBirth').touched">
+          Please enter date of birth
+      </span>
         </mat-error>
     </mat-form-field>
   <div class="button-row">

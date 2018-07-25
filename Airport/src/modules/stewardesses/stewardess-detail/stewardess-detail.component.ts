@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {StewardessesService} from '../services/stewardesses.service';
+import {StewardessDto} from '../../shared/models';
 
 @Component({
   selector: 'app-stewardess-detail',
@@ -9,7 +10,7 @@ import {StewardessesService} from '../services/stewardesses.service';
 })
 export class StewardessDetailComponent implements OnInit {
 
-  stewardess = {};
+  stewardess: StewardessDto;
 
   constructor(private route: ActivatedRoute, private api: StewardessesService, private router: Router) { }
 

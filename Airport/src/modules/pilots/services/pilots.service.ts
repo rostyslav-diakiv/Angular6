@@ -28,16 +28,16 @@ export class PilotsService {
 
     savePilot(pilot: PilotDto): Observable<PilotDto> {
         const pilotRequest: PilotRequest = {
-          Name: pilot.Name,
-          FamilyName: pilot.FamilyName,
-          DateOfBirth: pilot.DateOfBirth,
-          Experience: pilot.Experience
+          name: pilot.name,
+          familyName: pilot.familyName,
+          dateOfBirth: pilot.dateOfBirth,
+          experience: pilot.experience
         };
 
-        if (pilot.Id === 0) {
+        if (pilot.id === 0) {
             return this.createPilot(pilotRequest);
         }
-        return this.updatePilot(pilot.Id, pilotRequest);
+        return this.updatePilot(pilot.id, pilotRequest);
     }
 
     createPilot(pilot: PilotRequest): Observable<PilotDto> {
@@ -61,15 +61,15 @@ export class PilotsService {
         // return productDto;
 
         const pilotDto: PilotDto = {
-            Id: 0,
-            Name: null,
-            FamilyName: null,
-            Experience: '00:00:00',
-            DateOfBirth: new Date(),
-            Age: {
-                Years: 1,
-                Months: 1,
-                Days: 1
+            id: 0,
+            name: null,
+            familyName: null,
+            experience: '00:00:00',
+            dateOfBirth: new Date(),
+            age: {
+                years: 1,
+                months: 1,
+                days: 1
             }
         };
 

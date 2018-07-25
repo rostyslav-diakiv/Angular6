@@ -1,39 +1,61 @@
 <div class="button-row">
-    <a mat-raised-button color="primary" (click)="bookDetails()">
+    <a mat-raised-button color="primary" (click)="flightDetails()">
         <mat-icon>home</mat-icon>
     </a>
 </div>
-<form [formGroup]="stewForm" (ngSubmit)="onFormSubmit(stewForm.value)">
+<form [formGroup]="flightForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name" formControlName="name"
+        <input matInput placeholder="NUMBER" formControlName="number"
                [errorStateMatcher]="matcher">
+        <!--<mat-error>-->
+            <!--<span *ngIf="!flightForm.get('pointOfDeparture').valid && flightForm.get('pointOfDeparture').touched">-->
+                <!--Please enter Point Of Departure-->
+            <!--</span>-->
+        <!--</mat-error>-->
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="depPicker" formControlName="departureTime" placeholder="Choose Departure Time">
+        <mat-datepicker-toggle matSuffix [for]="depPicker"></mat-datepicker-toggle>
+        <mat-datepicker #depPicker startView="year"></mat-datepicker>
         <mat-error>
-      <span *ngIf="!stewForm.get('name').valid && stewForm.get('name').touched">
-          Please enter Name
-      </span>
+            <span *ngIf="!flightForm.get('departureTime').valid && flightForm.get('departureTime').touched">
+                Please enter departure time
+            </span>
         </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Family Name" formControlName="familyName"
+        <input matInput placeholder="Point Of Departure" formControlName="pointOfDeparture"
                [errorStateMatcher]="matcher">
         <mat-error>
-      <span *ngIf="!stewForm.get('familyName').valid && stewForm.get('familyName').touched">
-          Please enter Family Name
-      </span>
+            <span *ngIf="!flightForm.get('pointOfDeparture').valid && flightForm.get('pointOfDeparture').touched">
+                Please enter Point Of Departure
+            </span>
         </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="Choose date of birth">
+        <input matInput
+               [matDatepicker]="picker"
+               formControlName="destinationArrivalTime"
+               placeholder="Choose Destination Arrival Time">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>
-      <span *ngIf="!stewForm.get('dateOfBirth').valid && stewForm.get('dateOfBirth').touched">
-          Please enter date of birth
+            <span *ngIf="!flightForm.get('destinationArrivalTime').valid && flightForm.get('destinationArrivalTime').touched">
+                Please enter Destination Arrival Time
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Destination" formControlName="destination"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+            <span *ngIf="!flightForm.get('destination').valid && flightForm.get('destination').touched">
+          Please enter Destination
       </span>
         </mat-error>
     </mat-form-field>
     <div class="button-row">
-        <button type="submit" [disabled]="!stewForm.valid" mat-raised-button color="primary">
+        <button type="submit" [disabled]="!flightForm.valid" mat-raised-button color="primary">
             <mat-icon>save</mat-icon>
         </button>
     </div>

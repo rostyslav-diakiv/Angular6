@@ -13,9 +13,6 @@ export class StewardessEditComponent implements OnInit {
 
     stewForm: FormGroup;
     id = 0;
-    // name = '';
-    // familyName = '';
-   // dateOfBirth: Date;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -34,13 +31,13 @@ export class StewardessEditComponent implements OnInit {
 
     getBook(id) {
         this.api.getStewardess(id).subscribe(data => {
-            // let a = formatDate(data.DateOfBirth, 'dd/MM/yyyy', 'en-us');
-           // this.dateOfBirth = data.DateOfBirth;
-            this.id = data.Id;
+            // let a = formatDate(data.dateOfBirth, 'dd/MM/yyyy', 'en-us');
+           // this.dateOfBirth = data.dateOfBirth;
+            this.id = data.id;
             this.stewForm.setValue({
-                name: data.Name,
-                familyName: data.FamilyName,
-                dateOfBirth: data.DateOfBirth
+                name: data.name,
+                familyName: data.familyName,
+                dateOfBirth: data.dateOfBirth
             });
         });
     }
@@ -48,7 +45,7 @@ export class StewardessEditComponent implements OnInit {
     onFormSubmit(form: NgForm) {
         this.api.updateStewardessForm(this.id, form)
             .subscribe(() => {
-                    // const id = res['Id'];
+                    // const id = res['id'];
                     this.router.navigate(['/stewardesses/details', this.id]); //  -- go to details of just updated entity
                 }, (err) => {
                     console.log(err);

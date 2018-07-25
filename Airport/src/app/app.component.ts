@@ -8,10 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
     year = new Date().getFullYear();
     navigation = [
-        { link: 'about', label: 'About' },
-        { link: 'features', label: 'Features' },
-        { link: 'examples', label: 'Examples' },
         { link: 'pilots', label: 'Pilots' },
         { link: 'stewardesses', label: 'Stewardesses' },
+        { link: 'flights', label: 'Flights' },
     ];
 }
