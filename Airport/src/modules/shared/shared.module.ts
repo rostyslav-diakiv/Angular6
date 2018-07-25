@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {ApiService} from './services';
+import {FlightsService} from './services/flights.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ export class SharedModule {
         return {
             ngModule: SharedModule,
             providers: [
-                ApiService
+                ApiService,
+                FlightsService
             ]
         };
     }

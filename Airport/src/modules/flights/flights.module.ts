@@ -11,7 +11,6 @@ import {FlightCreateComponent} from './components/flight-create/flight-create.co
 import {FlightEditComponent} from './components/flight-edit/flight-edit.component';
 import {SharedModule} from '../shared/shared.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FlightsService} from './services/flights.service';
 
 
 const flightsRoutes: Routes = [
@@ -61,8 +60,6 @@ const flightsRoutes: Routes = [
         FlightCreateComponent,
         FlightEditComponent
     ],
-    providers: [
-        FlightsService
-    ]
+    providers: []
 })
 export class FlightsModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {FlightsService} from '../../services/flights.service';
+import {FlightsService} from '../../../shared/services/flights.service';
 import {FlightDto} from '../../../shared/models/flight-dto';
 
 @Component({

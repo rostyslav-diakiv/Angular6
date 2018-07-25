@@ -1,0 +1,40 @@
+<div class="button-row">
+    <a mat-raised-button color="primary" [routerLink]="['/tickets']">
+        <mat-icon>list</mat-icon>
+    </a>
+</div>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title><h2>Ticket # {{ticket?.flight?.number}}</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <dl>
+            <dt>Price:</dt>
+            <dd>{{ticket?.price | currency:"USD":"symbol-narrow"}}</dd>
+            <dt>Flight Number:</dt>
+            <dd>{{ticket?.flight?.number}}</dd>
+            <dt>Flight Departure Time:</dt>
+            <dd>{{ticket?.flight?.departureTime | date}}</dd>
+            <dt>Flight Point Of Departure:</dt>
+            <dd>{{ticket?.flight?.pointOfDeparture}}</dd>
+            <dt>Flight Destination Arrival Time:</dt>
+            <dd>{{ticket?.flight?.destinationArrivalTime | date}}</dd>
+            <dt>Flight Destination:</dt>
+            <dd>{{ticket?.flight?.destination}}</dd>
+        </dl>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button color="primary"
+           *ngIf="ticket"
+           [routerLink]="['/tickets/edit', ticket?.id]">
+            <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-raised-button color="primary"
+           *ngIf="!ticket">
+            <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-raised-button color="warn" (click)="deleteStewardess(ticket?.id)">
+            <mat-icon>delete</mat-icon>
+        </a>
+    </mat-card-actions>
+</mat-card>

@@ -51,8 +51,8 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
                 range: 'Max Length of Description is 500 characters'
             },
             Experience: {
-                required: 'Price is required.',
-                range: 'Price of the product must be between 1 (min) and 1000000 (max).'
+                required: 'price is required.',
+                range: 'price of the product must be between 1 (min) and 1000000 (max).'
             },
             DateOfBirth: {
                 required: 'Type of Subscription is required',

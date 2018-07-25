@@ -35,6 +35,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {CdkTableModule} from '@angular/cdk/table';
 import {OverlayModule} from '@angular/cdk/overlay';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -45,6 +46,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
         // CDk
         CdkTableModule,
         OverlayModule,
+
+        FlexLayoutModule,
 
         // Material
         MatInputModule,
