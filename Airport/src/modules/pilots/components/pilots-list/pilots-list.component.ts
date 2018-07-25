@@ -9,7 +9,6 @@ import {PilotsService} from '../../services';
 import {PilotDto} from '../../../shared/models';
 import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {ExampleHttpDao, GithubIssue} from '../table-http-example/table-http-example.component';
 import {MatPaginator, MatSort} from '@angular/material';
 
 @Component({
@@ -19,7 +18,6 @@ import {MatPaginator, MatSort} from '@angular/material';
 })
 export class PilotsListComponent implements OnInit, OnDestroy {
     displayedColumns: string[] = ['id', 'name', 'familyName', 'experience', 'age', 'dateOfBirth'];
-    exampleDatabase: ExampleHttpDao | null;
     data: PilotDto[] = [];
 
     resultsLength = 0;
@@ -41,8 +39,6 @@ export class PilotsListComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        // this.exampleDatabase = new ExampleHttpDao(this.http);
-
         // If the user changes the sort order, reset back to the first page.
         console.log(this.sort);
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
@@ -51,7 +47,7 @@ export class PilotsListComponent implements OnInit, OnDestroy {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                    debugger;
+                //    debugger;
                     this.isLoadingResults = true;
                     const pils = this._pilotsService.getPilots();
                     return pils;
@@ -59,7 +55,7 @@ export class PilotsListComponent implements OnInit, OnDestroy {
                     //     this.sort.active, this.sort.direction, this.paginator.pageIndex);
                 }),
                 map(data => {
-                    debugger;
+               //     debugger;
                     // Flip flag to show that loading has finished.
                     this.isLoadingResults = false;
                     this.isRateLimitReached = false;
@@ -68,14 +64,14 @@ export class PilotsListComponent implements OnInit, OnDestroy {
                     return data;
                 }),
                 catchError(() => {
-                    debugger;
+                 //   debugger;
                     this.isLoadingResults = false;
                     // Catch if the GitHub API has reached its rate limit. Return empty data.
                     this.isRateLimitReached = true;
                     return observableOf([]);
                 })
             ).subscribe(data => {
-            debugger;
+            //debugger;
             this.data = data;
         });
 

@@ -1,7 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {MatInputModule, MatButtonModule, MatSelectModule, MatIconModule} from '@angular/material';
+import {
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatIconModule,
+    MatGridListModule,
+    MatToolbarModule, MatToolbarRow, MatToolbar
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -20,16 +27,21 @@ const APP_COMPONENTS: any[] = [
 ];
 
 const APP_MODULES: any[] = [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
+
     SharedModule.forRoot(),
+
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    MatToolbarModule
 ];
 
 @NgModule({
@@ -38,6 +50,10 @@ const APP_MODULES: any[] = [
     ],
     imports: [
         APP_MODULES
+    ],
+    exports: [
+        MatToolbarRow,
+        MatToolbar
     ],
     providers: [],
     bootstrap: [AppComponent]

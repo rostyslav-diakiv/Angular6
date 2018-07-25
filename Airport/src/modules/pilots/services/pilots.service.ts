@@ -40,8 +40,8 @@ export class PilotsService {
         return this.updatePilot(pilot.Id, pilotRequest);
     }
 
-    createPilot(product: PilotRequest): Observable<PilotDto> {
-        return this._apiService.post(`/${this.ctrlUrl}`, product);
+    createPilot(pilot: PilotRequest): Observable<PilotDto> {
+        return this._apiService.post(`/${this.ctrlUrl}`, pilot);
     }
 
     updatePilot(id: number, pilot: PilotRequest): Observable<PilotDto> {

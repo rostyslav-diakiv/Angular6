@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
-  selectedValue = '';
-  items = [
-    { value: '0', view: 'Qwer' },
-    { value: '1', view: 'one' },
-    { value: '2', view: 'Two' }
-  ];
+    year = new Date().getFullYear();
+    navigation = [
+        { link: 'about', label: 'About' },
+        { link: 'features', label: 'Features' },
+        { link: 'examples', label: 'Examples' },
+        { link: 'products', label: 'Products' },
+    ];
 }

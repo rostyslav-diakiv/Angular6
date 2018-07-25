@@ -11,6 +11,9 @@ import {
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatTableModule} from '@angular/material';
+import { PilotDetailComponent } from './components/pilot-detail/pilot-detail.component';
+import {PilotResolver} from './services/pilot-resolver.service';
+import { PilotEditComponent } from './components/pilot-edit/pilot-edit.component';
 
 const userRouting: ModuleWithProviders = RouterModule.forChild([
     { path: '',
@@ -19,14 +22,15 @@ const userRouting: ModuleWithProviders = RouterModule.forChild([
     { path: 'exapmle',
         component: TableHttpExampleComponent
     },
-    // { path: ':id',
-    //     component: ProductDetailComponent,
-    //     resolve: { product: ProductResolver } // TODO
-    // },
-    // { path: ':id/edit',
-    //     component: ProductEditComponent,
-    //     resolve: { product: ProductResolver }, // TODO
-    // }
+    { path: ':id',
+      component: PilotDetailComponent,
+        resolve: { pilot: PilotResolver } // TODO
+    },
+    { path: ':id/edit',
+        component: PilotEditComponent,
+        resolve: { pilot: PilotResolver }, // TODO
+    },
+    //  resolve: { <entityName>: <entityNameResolver> }
 ]);
 
 @NgModule({
@@ -42,12 +46,12 @@ const userRouting: ModuleWithProviders = RouterModule.forChild([
         MatSortModule
     ],
     declarations: [
-        // ProductsListComponent,
-        // ProductDetailComponent,
         // ProductEditComponent,
         // ProductFilterPipe,
         PilotsListComponent,
-        TableHttpExampleComponent
+        TableHttpExampleComponent,
+        PilotDetailComponent,
+        PilotEditComponent
     ],
     exports: [
         MatTableModule,
@@ -59,7 +63,7 @@ const userRouting: ModuleWithProviders = RouterModule.forChild([
         PilotsService,
         // ProductDetailGuard,
         // ProductEditGuard,
-        // ProductResolver
+        PilotResolver
     ]
 })
 export class PilotsModule { }
