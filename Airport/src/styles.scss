@@ -11,6 +11,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
 
 @include mat-core();
+
+body {
+    margin: 0;
+}
+
 //
 //$primary: mat-palette($mat-lime, 500);
 //$accent:  mat-palette($mat-lime, 500, A200, A400);

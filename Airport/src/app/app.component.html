@@ -1,69 +1,67 @@
 <mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+        <mat-nav-list>
 
-    <div class="toolbar">
-
+            <a mat-list-item
+               *ngFor="let item of navigation"
+               [routerLink]="[item.link]"
+               routerLinkActive="active">
+                <mat-icon class="icon">{{item.icon}}</mat-icon>
+                <span class="label">{{item.label}}</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
         <mat-toolbar color="primary">
-
-              <span class="d-none d-md-inline">
-          <button mat-button class="nav-button" *ngFor="let item of navigation"
-                  [routerLink]="[item.link]" routerLinkActive="active">
-            {{item.label}}
-          </button>
-        </span>
-
-        </mat-toolbar>
-
-    </div>
-
-    <div class="wrapper">
-
-        <div class="content">
-            <router-outlet #o="outlet"></router-outlet>
-        </div>
-
-        <div class="footer">
-            <div class="row">
-                    &#169; <span class="year">{{year}}</span> - Rostyslav Diakiv
+            <div fxHide.gt-xs>
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
             </div>
-        </div>
-
-    </div>
-
+            <div>
+                <a routerLink="/">
+                    Airport
+                </a>
+            </div>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+                <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+                    <li *ngFor="let item of navigation"
+                       [routerLink]="[item.link]"
+                       routerLinkActive="active">
+                        <mat-icon class="icon">{{item.icon}}</mat-icon>
+                        <span class="label">{{item.label}}</span>
+                    </li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
 </mat-sidenav-container>
 
 
-<!--<div class="wrapper">-->
+<!--<mat-sidenav-container>-->
+<!--<div class="toolbar">-->
     <!--<mat-toolbar color="primary">-->
-        <!--<mat-toolbar-row>-->
-            <!--<app-header></app-header>-->
-            <!--&lt;!&ndash;<span>Custom Toolbar</span>&ndash;&gt;-->
-        <!--</mat-toolbar-row>-->
-
-        <!--<mat-toolbar-row>-->
-            <!--<router-outlet></router-outlet>-->
-            <!--&lt;!&ndash;<span>Second Line</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<span class="example-spacer"></span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<mat-icon class="example-icon">verified_user</mat-icon>&ndash;&gt;-->
-        <!--</mat-toolbar-row>-->
-
-        <!--<mat-toolbar-row>-->
-            <!--<app-footer></app-footer>-->
-            <!--&lt;!&ndash;<span>Third Line</span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<span class="example-spacer"></span>&ndash;&gt;-->
-            <!--&lt;!&ndash;<mat-icon class="example-icon">favorite</mat-icon>&ndash;&gt;-->
-            <!--&lt;!&ndash;<mat-icon class="example-icon">delete</mat-icon>&ndash;&gt;-->
-        <!--</mat-toolbar-row>-->
+              <!--<span class="d-none d-md-inline">-->
+          <!--<button mat-button class="nav-button"-->
+                  <!--*ngFor="let item of navigation"-->
+                  <!--[routerLink]="[item.link]"-->
+                  <!--routerLinkActive="active">-->
+            <!--{{item.label}}-->
+          <!--</button>-->
+        <!--</span>-->
     <!--</mat-toolbar>-->
-    <!--&lt;!&ndash;<mat-grid-list cols="1" rowHeight="2:1">&ndash;&gt;-->
-        <!--&lt;!&ndash;<mat-grid-tile >&ndash;&gt;-->
-            <!--&lt;!&ndash;<app-header></app-header>&ndash;&gt;-->
-        <!--&lt;!&ndash;</mat-grid-tile>&ndash;&gt;-->
-        <!--&lt;!&ndash;<mat-grid-tile>&ndash;&gt;-->
-            <!--&lt;!&ndash;<router-outlet></router-outlet>&ndash;&gt;-->
-        <!--&lt;!&ndash;</mat-grid-tile>&ndash;&gt;-->
-        <!--&lt;!&ndash;<mat-grid-tile>&ndash;&gt;-->
-            <!--&lt;!&ndash;<app-footer></app-footer>&ndash;&gt;-->
-        <!--&lt;!&ndash;</mat-grid-tile>&ndash;&gt;-->
-    <!--&lt;!&ndash;</mat-grid-list>&ndash;&gt;-->
 <!--</div>-->
 
+<!--<div class="wrapper">-->
+<!--<div class="content">-->
+<!--<router-outlet #o="outlet"></router-outlet>-->
+<!--</div>-->
+
+<!--<div class="footer">-->
+<!--<div class="row"> &#169; <span class="year">{{year}}</span> - Rostyslav Diakiv</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</mat-sidenav-container>-->
