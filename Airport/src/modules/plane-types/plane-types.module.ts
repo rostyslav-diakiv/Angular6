@@ -10,6 +10,7 @@ import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
+import { PlaneTypeDetailComponent } from './plane-type-detail/plane-type-detail.component';
 
 const planeTypesRoutes: Routes = [
     {
@@ -17,21 +18,11 @@ const planeTypesRoutes: Routes = [
         component: PlaneTypesComponent,
         data: { title: 'Plane Types List' }
     },
-    // {
-    //     path: 'details/:id',
-    //     component: TicketDetailComponent,
-    //     data: { title: 'Ticket Details' }
-    // },
-    // {
-    //     path: 'create',
-    //     component: TicketCreateComponent,
-    //     data: { title: 'Create Ticket' }
-    // },
-    // {
-    //     path: 'edit/:id',
-    //     component: TicketEditComponent,
-    //     data: { title: 'Edit Ticket' }
-    // },
+    {
+        path: 'details/:id',
+        component: PlaneTypeDetailComponent,
+        data: { title: 'Ticket Details' }
+    },
 ];
 
 @NgModule({
@@ -44,10 +35,13 @@ const planeTypesRoutes: Routes = [
         FormsModule,
         ReactiveFormsModule,
     ],
-    declarations: [PlaneTypesComponent,
+    declarations: [
+        PlaneTypesComponent,
+        PlaneTypeDetailComponent,
         AddDialogComponent,
         EditDialogComponent,
-        DeleteDialogComponent],
+        DeleteDialogComponent,
+        ],
     entryComponents: [
         AddDialogComponent,
         EditDialogComponent,
