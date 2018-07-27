@@ -2,28 +2,30 @@
 
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- ID Column -->
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="pilot">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Pilot</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.pilot.name}} {{row.pilot.familyName}}</mat-cell>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="stewardesses">
-            <mat-header-cell *matHeaderCellDef mat-sort-header># Of stewardesses</mat-header-cell>
+        <ng-container matColumnDef="creationDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Pilot</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.creationDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lifeTimeAge">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Life time</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.lifeTimeAge | ageForm : "medium"}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="planeType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Type</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <a *ngFor="let s of row.stewardesses; let i=index; let last=last"
-                    [routerLink]="['/stewardesses/details', s.id]">
-                    {{s.name}} {{s.familyName}}{{last ? '' : ', '}}
-                </a>
-            </mat-cell>
+                <a [routerLink]="['/planeTypes/details', row.planeType.id]"></a>{{row.planeType.planeModel}}</mat-cell>
         </ng-container>
 
         <!-- actions -->
@@ -49,20 +51,17 @@
             </mat-cell>
         </ng-container>
 
-        <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-        <!--<tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details', row.id]"></tr>-->
-        <!---->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 
-    <div class="no-results" [style.display]="crews.length == 0 ? '' : 'none'">
+    <div class="no-results" [style.display]="planes.length == 0 ? '' : 'none'">
         No results
     </div>
 
     <mat-paginator #paginator
-                   [length]="crews.length"
+                   [length]="planes.length"
                    [pageIndex]="0"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]">

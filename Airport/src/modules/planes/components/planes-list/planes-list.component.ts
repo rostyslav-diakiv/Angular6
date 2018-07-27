@@ -1,41 +1,41 @@
 import {Component, OnInit} from '@angular/core';
-import {CrewDto} from '../../../shared/models';
-import {AddCrewDialogComponent} from '../../dialogs/add-crew-dialog/add-crew-dialog.component';
+import {CrewDto, PlaneDto} from '../../../shared/models';
+import {AddPlaneDialogComponent} from '../../dialogs/add-plane-dialog/add-plane-dialog.component';
 import {DataSource} from '@angular/cdk/table';
 import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
-import {EditCrewDialogComponent} from '../../dialogs/edit-crew-dialog/edit-crew-dialog.component';
-import {DeleteCrewDialogComponent} from '../../dialogs/delete-crew-dialog/delete-crew-dialog.component';
-import {CrewsService} from '../../services/crews.service';
+import {EditPlaneDialogComponent} from '../../dialogs/edit-plane-dialog/edit-plane-dialog.component';
+import {DeletePlaneDialogComponent} from '../../dialogs/delete-plane-dialog/delete-plane-dialog.component';
+import {PlanesService} from '../../services/planes.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-types-list',
-  templateUrl: './crews-list.component.html',
-  styleUrls: ['./crews-list.component.scss']
+  selector: 'app-planes-list',
+  templateUrl: './planes-list.component.html',
+  styleUrls: ['./planes-list.component.scss']
 })
-export class CrewsListComponent implements OnInit {
-    crews: CrewDto[] = [];
-    displayedColumns = ['id', 'pilot', 'stewardesses', 'actions'];
+export class PlanesListComponent implements OnInit {
+    planes: PlaneDto[] = [];
+    displayedColumns = ['id', 'name', 'creationDate', 'lifeTimeAge', 'planeType', 'actions'];
     dataSource = new TypesDataSource(this.api);
 
     constructor(private router: Router,
-                private api: CrewsService,
+                private api: PlanesService,
                 public dialog: MatDialog) {
     }
 
     ngOnInit() {
-        this.api.getCrews()
+        this.api.getPlanes()
             .subscribe(res => {
                 console.log(res);
-                this.crews = res;
+                this.planes = res;
             }, err => {
                 console.log(err);
             });
     }
 
     openAddDialog(): void {
-        const dialogRef = this.dialog.open(AddCrewDialogComponent, { });
+        const dialogRef = this.dialog.open(AddPlaneDialogComponent, { });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -45,7 +45,7 @@ export class CrewsListComponent implements OnInit {
     }
 
     openEditDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(EditCrewDialogComponent, {
+        const dialogRef = this.dialog.open(EditPlaneDialogComponent, {
             data: dto
         });
 
@@ -57,7 +57,7 @@ export class CrewsListComponent implements OnInit {
     }
 
     openDeleteDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(DeleteCrewDialogComponent, {
+        const dialogRef = this.dialog.open(DeletePlaneDialogComponent, {
             data: dto
         });
 
@@ -69,17 +69,17 @@ export class CrewsListComponent implements OnInit {
     }
 
     redirectToDetails(id: number) {
-        this.router.navigate(['/crews/details', id]);
+        this.router.navigate(['/planes/details', id]);
     }
 }
 
 export class TypesDataSource extends DataSource<any> {
-    constructor(private api: CrewsService) {
+    constructor(private api: PlanesService) {
         super();
     }
 
-    connect(): Observable<CrewDto[]> {
-        return this.api.getCrews();
+    connect(): Observable<PlaneDto[]> {
+        return this.api.getPlanes();
     }
 
     disconnect() {
