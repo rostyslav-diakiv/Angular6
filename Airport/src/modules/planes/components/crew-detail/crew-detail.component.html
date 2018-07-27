@@ -5,17 +5,17 @@
 </div>
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title><h2>{{typeDto?.id}}</h2></mat-card-title>
-        <mat-card-subtitle>{{typeDto?.planeModel}}</mat-card-subtitle>
+        <mat-card-title><h2>{{crewDto?.id}}</h2></mat-card-title>
+        <mat-card-subtitle>{{crewDto?.pilot?.name}} {{crewDto?.pilot?.familyName}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <dl>
-            <dt>Plane model:</dt>
-            <dd>{{typeDto?.planeModel}}</dd>
-            <dt>Max # of places:</dt>
-            <dd>{{typeDto?.maximalNumberOfPlaces}}</dd>
-            <dt>Max carrying capacity:</dt>
-            <dd>{{typeDto?.maximalCarryingCapacityKg}} kg</dd>
+            <dt>Pilot:</dt>
+            <dd>{{crewDto?.pilot?.name}} {{crewDto?.pilot?.familyName}}</dd>
+            <dt>Pilot Experience:</dt>
+            <dd>{{crewDto?.pilot?.experienceAge | ageForm : 'medium'}}</dd>
+            <dt>Number of Stewardesses:</dt>
+            <dd>{{crewDto?.stewardesses?.length}}</dd>
         </dl>
     </mat-card-content>
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddPlaneTypeDialogComponent } from './add-plane-type-dialog.component';
+import { AddCrewDialogComponent } from './add-crew-dialog.component';
 
-describe('AddPlaneTypeDialogComponent', () => {
-  let component: AddPlaneTypeDialogComponent;
-  let fixture: ComponentFixture<AddPlaneTypeDialogComponent>;
+describe('AddCrewDialogComponent', () => {
+  let component: AddCrewDialogComponent;
+  let fixture: ComponentFixture<AddCrewDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddPlaneTypeDialogComponent ]
+      declarations: [ AddCrewDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddPlaneTypeDialogComponent);
+    fixture = TestBed.createComponent(AddCrewDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

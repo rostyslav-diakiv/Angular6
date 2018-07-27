@@ -1,16 +1,5 @@
 <div class="table-container  mat-elevation-z8">
 
-    <!-- like spacer between navbar & Table -->
-    <!--<div class="form">-->
-    <!--</div>-->
-
-
-    <!--<div class="form">-->
-    <!--<mat-form-field floatPlaceholder="never" color="accent">-->
-    <!--<input matInput #filter placeholder="Filter issues">-->
-    <!--</mat-form-field>-->
-    <!--</div>-->
-
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
         <!--- Note that these columns can be defined in any order.
@@ -22,27 +11,26 @@
             <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="planeModel">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Model</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.planeModel}}</mat-cell>
+        <ng-container matColumnDef="pilot">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Pilot</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.pilot.name}} {{row.pilot.familyName}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="maximalNumberOfPlaces">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Max # Of Places</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.maximalNumberOfPlaces}}</mat-cell>
+        <ng-container matColumnDef="stewardesses">
+            <mat-header-cell *matHeaderCellDef mat-sort-header># Of stewardesses</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <a *ngFor="let s of row.stewardesses; let i=index; let last=last"
+                    [routerLink]="['/stewardesses/details', s.id]">
+                    {{s.name}} {{s.familyName}}{{last ? '' : ', '}}
+                </a>
+            </mat-cell>
         </ng-container>
-
-        <ng-container matColumnDef="maximalCarryingCapacityKg">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Max Carrying Capacity Kg</mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.maximalCarryingCapacityKg}}</mat-cell>
-        </ng-container>
-
 
         <!-- actions -->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>
-                <button mat-icon-button color="accent" (click)="openAddDialog()">
-                    <mat-icon aria-label="Add">add</mat-icon>
+                <button mat-icon-button color="primary" (click)="openAddDialog()">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                 </button>
             </mat-header-cell>
 
@@ -61,17 +49,20 @@
             </mat-cell>
         </ng-container>
 
+        <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+        <!--<tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details', row.id]"></tr>-->
+        <!---->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
 
-    <div class="no-results" [style.display]="stewardesses.length == 0 ? '' : 'none'">
+    <div class="no-results" [style.display]="crews.length == 0 ? '' : 'none'">
         No results
     </div>
 
     <mat-paginator #paginator
-                   [length]="stewardesses.length"
+                   [length]="crews.length"
                    [pageIndex]="0"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]">
