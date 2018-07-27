@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {FlightsService} from '../../../shared/services/flights.service';
-import {FlightDto} from '../../../shared/models/flight-dto';
+import {FlightDto} from '../../../shared/models';
 
 @Component({
   selector: 'app-stewardess-detail',
   templateUrl: './flight-detail.component.html',
-  styleUrls: ['./flight-detail.component.css']
+  styleUrls: ['./flight-detail.component.scss']
 })
 export class FlightDetailComponent implements OnInit {
 

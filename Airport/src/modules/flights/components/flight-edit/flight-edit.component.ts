@@ -6,10 +6,9 @@ import {FlightsService} from '../../../shared/services/flights.service';
 @Component({
     selector: 'app-flight-edit',
     templateUrl: './flight-edit.component.html',
-    styleUrls: ['./flight-edit.component.css']
+    styleUrls: ['./flight-edit.component.scss']
 })
 export class FlightEditComponent implements OnInit {
-
     flightForm: FormGroup;
     number = '0';
 
@@ -47,7 +46,7 @@ export class FlightEditComponent implements OnInit {
         const flight = Object.assign({}, this.flightForm.value);
         this.api.updateFlightForm(this.number, flight)
             .subscribe(() => {
-                    this.router.navigate(['/flights/details', this.number]); //  -- go to details of just updated entity
+                    this.router.navigate(['/flights/details', this.number]);
                 }, (err) => {
                     console.log(err);
                 }
@@ -55,6 +54,6 @@ export class FlightEditComponent implements OnInit {
     }
 
     flightDetails() {
-        this.router.navigate(['/flights/details', this.number]); // -- go to details of entity
+        this.router.navigate(['/flights/details', this.number]);
     }
 }

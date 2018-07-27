@@ -7,11 +7,11 @@
 <h2 mat-dialog-title>{{description}}</h2>
 
 <form class="mat-dialog-content" [formGroup]="flightForm" (ngSubmit)="onFormSubmit()">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="form">
         <input matInput placeholder="NUMBER" formControlName="number"
                [errorStateMatcher]="matcher">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="form">
         <input matInput [matDatepicker]="depPicker" formControlName="departureTime" placeholder="Choose Departure Time">
         <mat-datepicker-toggle matSuffix [for]="depPicker"></mat-datepicker-toggle>
         <mat-datepicker #depPicker startView="year"></mat-datepicker>
@@ -21,7 +21,7 @@
             </span>
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="form">
         <input matInput placeholder="Point Of Departure" formControlName="pointOfDeparture"
                [errorStateMatcher]="matcher">
         <mat-error>
@@ -30,7 +30,7 @@
             </span>
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="form">
         <input matInput
                [matDatepicker]="picker"
                formControlName="destinationArrivalTime"
@@ -43,7 +43,7 @@
             </span>
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="form">
         <input matInput placeholder="Destination" formControlName="destination"
                [errorStateMatcher]="matcher">
         <mat-error>
@@ -52,8 +52,8 @@
       </span>
         </mat-error>
     </mat-form-field>
-    <div class="button-row">
-        <button type="submit" [disabled]="!flightForm.valid" mat-raised-button color="primary">
+    <div mat-dialog-actions>
+        <button mat-button type="submit" [disabled]="!flightForm.valid" mat-raised-button color="primary">
             <mat-icon>save</mat-icon>
         </button>
     </div>

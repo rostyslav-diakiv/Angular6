@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {FlightsService} from '../../../shared/services/flights.service';
-import {FlightDto} from '../../../shared/models/flight-dto';
+import {FlightDto} from '../../../shared/models';
 
 @Component({
     selector: 'app-flights',
     templateUrl: './flights.component.html',
-    styleUrls: ['./flights.component.css']
+    styleUrls: ['./flights.component.scss']
 })
 export class FlightsComponent implements OnInit {
     flights: FlightDto[] = [];
@@ -42,7 +42,5 @@ export class BookDataSource extends DataSource<any> {
         return this.api.getFlights();
     }
 
-    disconnect() {
-
-    }
+    disconnect() { }
 }

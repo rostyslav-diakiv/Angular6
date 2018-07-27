@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {TicketsService} from '../../services/tickets.service';
-import {TicketDto} from '../../../shared/models/ticket-dto';
+import {TicketDto} from '../../../shared/models';
 
 @Component({
   selector: 'app-ticket-detail',
