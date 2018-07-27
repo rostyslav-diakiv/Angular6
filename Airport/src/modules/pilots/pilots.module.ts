@@ -7,6 +7,7 @@ import {PilotDetailComponent} from './components/pilot-detail/pilot-detail.compo
 import {PilotResolver} from './services/pilot-resolver.service';
 import {PilotEditComponent} from './components/pilot-edit/pilot-edit.component';
 import {CommonModule} from '@angular/common';
+import {PilotCreateComponent} from './components/pilot-create/pilot-create.component';
 
 const pilotsRoutes = RouterModule.forChild([
     {
@@ -35,23 +36,6 @@ const pilotsRoutes = RouterModule.forChild([
     },
 ];
 
-// const userRouting: ModuleWithProviders = RouterModule.forChild([
-//     {
-//         path: '',
-//         component: PilotsListComponent
-//     },
-//     {
-//         path: ':id',
-//         component: PilotDetailComponent,
-//         resolve: {pilot: PilotResolver}
-//     },
-//     {
-//         path: ':id/edit',
-//         component: PilotEditComponent,
-//         resolve: {pilot: PilotResolver},
-//     },
-// ]);
-
 @NgModule({
     imports: [
         CommonModule,
@@ -60,6 +44,7 @@ const pilotsRoutes = RouterModule.forChild([
     ],
     declarations: [
         PilotsListComponent,
+        PilotCreateComponent,
         PilotDetailComponent,
         PilotEditComponent
     ],

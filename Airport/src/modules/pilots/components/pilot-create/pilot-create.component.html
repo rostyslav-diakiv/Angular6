@@ -1,5 +1,5 @@
 <div class="button-row">
-    <a mat-raised-button color="primary" [routerLink]="['/pilots']"><mat-icon>list</mat-icon></a>
+  <a mat-raised-button color="primary" [routerLink]="['/pilots']"><mat-icon>list</mat-icon></a>
 </div>
 <form [formGroup]="pilotForm" (ngSubmit)="onFormSubmit(pilotForm.value)">
     <mat-form-field class="example-full-width">
@@ -24,7 +24,7 @@
                [errorStateMatcher]="matcher">
         <mat-error>
       <span *ngIf="!pilotForm.get('experience').valid && pilotForm.get('experience').touched">
-          Please enter Experience
+          Please enter Life time
       </span>
         </mat-error>
     </mat-form-field>
@@ -38,7 +38,7 @@
       </span>
         </mat-error>
     </mat-form-field>
-    <div class="button-row">
-        <button type="submit" [disabled]="!pilotForm.valid" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>
-    </div>
+  <div class="button-row">
+    <button type="submit" [disabled]="!pilotForm.valid" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>
+  </div>
 </form>

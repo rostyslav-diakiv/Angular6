@@ -44,15 +44,14 @@ export class StewardessEditComponent implements OnInit {
     onFormSubmit(form: NgForm) {
         this.api.updateStewardessForm(this.id, form)
             .subscribe(() => {
-                    // const id = res['id'];
-                    this.router.navigate(['/stewardesses/details', this.id]); //  -- go to details of just updated entity
+                    this.router.navigate(['/stewardesses/details', this.id]);
                 }, (err) => {
                     console.log(err);
                 }
             );
     }
 
-    bookDetails() {
-        this.router.navigate(['/stewardesses/details', this.id]); // -- go to details of entity
+    stewardessDetails() {
+        this.router.navigate(['/stewardesses/details', this.id]);
     }
 }
