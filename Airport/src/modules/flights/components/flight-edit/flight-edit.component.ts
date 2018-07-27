@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightsService} from '../../../shared/services/flights.service';
 
 @Component({
@@ -44,7 +44,6 @@ export class FlightEditComponent implements OnInit {
     }
 
     onFormSubmit() {
-        debugger;
         const flight = Object.assign({}, this.flightForm.value);
         this.api.updateFlightForm(this.number, flight)
             .subscribe(() => {

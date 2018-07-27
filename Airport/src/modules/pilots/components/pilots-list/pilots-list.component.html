@@ -37,13 +37,13 @@
             <!-- age Column -->
             <ng-container matColumnDef="age">
                 <th mat-header-cell *matHeaderCellDef>Age</th>
-                <td mat-cell *matCellDef="let row">{{row.age.years}}</td>
+                <td mat-cell *matCellDef="let row">{{row.age | ageForm : 'medium'}}</td>
             </ng-container>
 
-            <!-- experience Column -->
-            <ng-container matColumnDef="experience">
+            <!-- experienceAge Column -->
+            <ng-container matColumnDef="experienceAge">
                 <th mat-header-cell *matHeaderCellDef>Experience</th>
-                <td mat-cell *matCellDef="let row">{{row.experience}}</td>
+                <td mat-cell *matCellDef="let row">{{row.experienceAge | ageForm : 'long'}}</td>
             </ng-container>
 
             <!-- Date Of Birth Column -->
@@ -95,7 +95,7 @@
 <!--<th style="width: 30%">id</th>-->
 <!--<th style="width: 30%">name</th>-->
 <!--<th style="width: 20%">Family name</th>-->
-<!--<th style="width: 15%">experience</th>-->
+<!--<th style="width: 15%">experienceAge</th>-->
 <!--<th style="width: 15%">Date of Birth</th>-->
 <!--<th style="width: 15%">age</th>-->
 <!--<th style="width: 10%">Edit</th>-->
@@ -122,9 +122,9 @@
 <!--{{pilot?.familyName}}-->
 <!--</a>-->
 <!--</td>-->
-<!--<td>{{ pilot?.experience}}</td>-->
+<!--<td>{{ pilot?.experienceAge}}</td>-->
 <!--<td>{{ pilot?.dateOfBirth}}</td>-->
-<!--<td>{{ pilot?.experience }}</td>-->
+<!--<td>{{ pilot?.experienceAge }}</td>-->
 <!--<td>-->
 <!--<a class="btn btn-primary"-->
 <!--[routerLink]="[pilot.id, 'edit']"-->

@@ -19,6 +19,9 @@ const routes: Routes = [
     { path: 'planeTypes',
         // data: { preload: true },
         loadChildren: 'src/modules/plane-types/plane-types.module#PlaneTypesModule'},
+    { path: 'crews',
+        // data: { preload: true },
+        loadChildren: 'src/modules/crews/crews.module#CrewsModule'},
     { path: '404', component: ErrorComponent },
     { path: '', redirectTo: 'pilots', pathMatch: 'full'},
     // otherwise redirect to 404 page

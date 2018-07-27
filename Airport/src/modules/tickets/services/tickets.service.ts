@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {FormGroup, NgForm} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ApiService} from '../../shared/services';
 import {TicketRequest} from '../models';
-import {TicketDto} from '../../shared/models/ticket-dto';
+import {TicketDto} from '../../shared/models';
 
 @Injectable({
   providedIn: 'root'

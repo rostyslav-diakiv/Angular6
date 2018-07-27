@@ -3,6 +3,7 @@ import {ApiService} from '../../shared/services';
 import {Observable, of} from 'rxjs';
 import {PilotDto} from '../../shared/models';
 import {PilotRequest} from '../models';
+import {TimeSpan} from '../../shared/models/time-span';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class PilotsService {
           name: pilot.name,
           familyName: pilot.familyName,
           dateOfBirth: pilot.dateOfBirth,
-          experience: pilot.experience
+          experience: pilot.experienceAge
         };
 
         if (pilot.id === 0) {
@@ -64,7 +65,7 @@ export class PilotsService {
             id: 0,
             name: null,
             familyName: null,
-            experience: '00:00:00',
+            experienceAge: null,
             dateOfBirth: new Date(),
             age: {
                 years: 1,

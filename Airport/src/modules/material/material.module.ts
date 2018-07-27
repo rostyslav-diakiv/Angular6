@@ -20,6 +20,7 @@ import {
     MatRippleModule,
     MatSelectModule,
     MatSliderModule,
+    MatSnackBar,
     MatSortModule,
     MatTableModule,
     MatToolbarModule
@@ -80,7 +81,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         MatProgressBarModule,
         MatRadioModule,
         MatRippleModule,
-        MatSliderModule,
+        MatSliderModule
     ]
 })
 export class MaterialModule { }

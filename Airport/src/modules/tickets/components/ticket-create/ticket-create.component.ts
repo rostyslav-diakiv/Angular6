@@ -37,7 +37,6 @@ export class TicketCreateComponent implements OnInit {
     }
 
     onFormSubmit() {
-        debugger;
         console.log(this.ticketForm);
         this.api.createTicketForm(this.ticketForm)
             .subscribe(res => {

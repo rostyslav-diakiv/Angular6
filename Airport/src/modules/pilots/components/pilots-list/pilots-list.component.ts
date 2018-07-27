@@ -10,6 +10,7 @@ import {PilotDto} from '../../../shared/models';
 import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
 import {MatPaginator, MatSort} from '@angular/material';
+import {TimeSpan, UNITS} from '../../../shared/models/time-span';
 
 @Component({
     selector: 'app-pilots-list',
@@ -17,7 +18,7 @@ import {MatPaginator, MatSort} from '@angular/material';
     styleUrls: ['./pilots-list.component.scss']
 })
 export class PilotsListComponent implements OnInit, OnDestroy {
-    displayedColumns: string[] = ['id', 'name', 'familyName', 'experience', 'age', 'dateOfBirth'];
+    displayedColumns: string[] = ['id', 'name', 'familyName', 'experienceAge', 'age', 'dateOfBirth'];
     data: PilotDto[] = [];
 
     resultsLength = 0;
@@ -36,6 +37,11 @@ export class PilotsListComponent implements OnInit, OnDestroy {
     constructor(private _pilotsService: PilotsService,
                 vcr: ViewContainerRef,
                 private route: ActivatedRoute) {
+        const timeSp = TimeSpan.fromIntervalWithUnit(400, UNITS.DAY);
+        console.log(timeSp);
+        console.log(timeSp.GetTimeSpanString());
+
+        console.log(JSON.stringify(timeSp));
     }
 
     ngOnInit() {
@@ -47,7 +53,7 @@ export class PilotsListComponent implements OnInit, OnDestroy {
             .pipe(
                 startWith({}),
                 switchMap(() => {
-                //    debugger;
+                    debugger;
                     this.isLoadingResults = true;
                     const pils = this._pilotsService.getPilots();
                     return pils;

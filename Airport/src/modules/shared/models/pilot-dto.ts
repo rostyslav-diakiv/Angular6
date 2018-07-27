@@ -5,6 +5,6 @@ export interface PilotDto {
     familyName: string;
     name: string;
     dateOfBirth: Date;
-    experience: string; // TimeSpan
+    experienceAge: Age; // TimeSpan
     age: Age;
 }

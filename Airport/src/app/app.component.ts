@@ -13,5 +13,6 @@ export class AppComponent {
         { link: 'flights', label: 'Flights', icon: 'dashboard' },
         { link: 'tickets', label: 'Tickets', icon: 'input' },
         { link: 'planeTypes', label: 'Plane Types', icon: 'home' },
+        { link: 'crews', label: 'Crews', icon: 'input' },
     ];
 }

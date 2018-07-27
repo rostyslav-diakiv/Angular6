@@ -11,7 +11,7 @@ import {StewardessDto} from '../../shared/models';
 export class StewardessComponent implements OnInit {
     stewardesses: StewardessDto[] = [];
     displayedColumns = ['name', 'familyName', 'dateOfBirth', 'age'];
-    dataSource = new BookDataSource(this.api);
+    dataSource = new StewDataSource(this.api);
 
     constructor(private api: StewardessesService) {
     }
@@ -27,7 +27,7 @@ export class StewardessComponent implements OnInit {
     }
 }
 
-export class BookDataSource extends DataSource<any> {
+export class StewDataSource extends DataSource<any> {
     constructor(private api: StewardessesService) {
         super();
     }

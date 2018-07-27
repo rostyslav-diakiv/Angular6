@@ -16,6 +16,7 @@ import {debounceTime, map} from 'rxjs/operators';
 import {GenericValidator} from '../../../shared/helpers/validators';
 import {PilotDto} from '../../../shared/models';
 import {PilotsService} from '../../services';
+import {TimeSpan} from '../../../shared/models/time-span';
 
 @Component({
     selector: 'app-pilot-edit',
@@ -38,7 +39,6 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
                 private route: ActivatedRoute,
                 private router: Router,
                 private _pilotsService: PilotsService) {
-
         // Defines all of the validation messages for the form.
         // These could instead be retrieved from a file or database.
         this.validationMessages = {
@@ -140,7 +140,7 @@ export class PilotEditComponent implements OnInit, AfterViewInit, OnDestroy { //
         this.pilotForm.patchValue({
             Name: this.pilot.name,
             FamilyName: this.pilot.familyName,
-            Experience: this.pilot.experience,
+            Experience: this.pilot.experienceAge,
             DateOfBirth: this.pilot.dateOfBirth
         });
     }

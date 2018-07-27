@@ -2,21 +2,28 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PlaneTypesComponent} from './plane-types/plane-types.component';
 import {DataService} from './services/data.service';
-import {DeleteDialogComponent} from './dialogs/delete/delete.dialog.component';
-import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
-import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../material/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import { PlaneTypeDetailComponent } from './plane-type-detail/plane-type-detail.component';
+import { AddPlaneTypeDialogComponent } from './dialogs/add-plane-type-dialog/add-plane-type-dialog.component';
+import { TypesListComponent } from './types-list/types-list.component';
+import {PlaneTypesService} from './services/plane-types.service';
+import { EditPlaneTypeDialogComponent } from './dialogs/edit-plane-type-dialog/edit-plane-type-dialog.component';
+import { DeletePlaneTypeDialogComponent } from './dialogs/delete-plane-type-dialog/delete-plane-type-dialog.component';
 
 const planeTypesRoutes: Routes = [
     {
         path: '',
-        component: PlaneTypesComponent,
+        component: TypesListComponent,
         data: { title: 'Plane Types List' }
+    },
+    {
+        path: 'example',
+        component: PlaneTypesComponent,
+        data: { title: 'Issues list' }
     },
     {
         path: 'details/:id',
@@ -38,17 +45,19 @@ const planeTypesRoutes: Routes = [
     declarations: [
         PlaneTypesComponent,
         PlaneTypeDetailComponent,
-        AddDialogComponent,
-        EditDialogComponent,
-        DeleteDialogComponent,
+        AddPlaneTypeDialogComponent,
+        TypesListComponent,
+        EditPlaneTypeDialogComponent,
+        DeletePlaneTypeDialogComponent,
         ],
     entryComponents: [
-        AddDialogComponent,
-        EditDialogComponent,
-        DeleteDialogComponent
+        AddPlaneTypeDialogComponent,
+        EditPlaneTypeDialogComponent,
+        DeletePlaneTypeDialogComponent,
     ],
     providers: [
-        DataService
+        DataService,
+        PlaneTypesService
     ],
 })
 export class PlaneTypesModule {

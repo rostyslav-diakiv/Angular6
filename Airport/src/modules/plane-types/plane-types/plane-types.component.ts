@@ -3,12 +3,12 @@ import {DataService} from '../services/data.service';
 import {HttpClient} from '@angular/common/http';
 import {MatDialog, MatPaginator, MatSort} from '@angular/material';
 import {Issue} from '../models/issue';
-import {AddDialogComponent} from '../dialogs/add/add.dialog.component';
-import {EditDialogComponent} from '../dialogs/edit/edit.dialog.component';
-import {DeleteDialogComponent} from '../dialogs/delete/delete.dialog.component';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import {DataSource} from '@angular/cdk/table';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {AddPlaneTypeDialogComponent} from '../dialogs/add-plane-type-dialog/add-plane-type-dialog.component';
+import {EditPlaneTypeDialogComponent} from '../dialogs/edit-plane-type-dialog/edit-plane-type-dialog.component';
+import {DeletePlaneTypeDialogComponent} from '../dialogs/delete-plane-type-dialog/delete-plane-type-dialog.component';
 
 @Component({
     selector: 'app-plane-types',
@@ -40,7 +40,7 @@ export class PlaneTypesComponent implements OnInit {
     }
 
     addNew(issue: Issue) {
-        const dialogRef = this.dialog.open(AddDialogComponent, {
+        const dialogRef = this.dialog.open(AddPlaneTypeDialogComponent, {
             data: {issue: issue}
         });
 
@@ -59,7 +59,7 @@ export class PlaneTypesComponent implements OnInit {
         // index row is used just for debugging proposes and can be removed
         this.index = i;
         console.log(this.index);
-        const dialogRef = this.dialog.open(EditDialogComponent, {
+        const dialogRef = this.dialog.open(EditPlaneTypeDialogComponent, {
             data: {id: id, title: title, state: state, url: url, created_at: created_at, updated_at: updated_at}
         });
 
@@ -78,7 +78,7 @@ export class PlaneTypesComponent implements OnInit {
     deleteItem(i: number, id: number, title: string, state: string, url: string) {
         this.index = i;
         this.id = id;
-        const dialogRef = this.dialog.open(DeleteDialogComponent, {
+        const dialogRef = this.dialog.open(DeletePlaneTypeDialogComponent, {
             data: {id: id, title: title, state: state, url: url}
         });
 
