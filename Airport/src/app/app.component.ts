@@ -15,5 +15,6 @@ export class AppComponent {
         { link: 'planeTypes', label: 'Plane Types', icon: 'home' },
         { link: 'crews', label: 'Crews', icon: 'input' },
         { link: 'planes', label: 'Planes', icon: 'dashboard' },
+        { link: 'departures', label: 'Departures', icon: 'home' },
     ];
 }

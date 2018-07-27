@@ -1,12 +1,11 @@
 <h2 mat-dialog-title>{{description}}</h2>
 
-<form class="mat-dialog-content" [formGroup]="planeForm" (ngSubmit)="onFormSubmit()">
+<form class="mat-dialog-content" [formGroup]="depForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="form">
-        <input matInput placeholder="Name"
-               formControlName="name"
+        <input matInput placeholder="Name" formControlName="name"
                [errorStateMatcher]="matcher">
         <mat-error>
-      <span *ngIf="!planeForm.get('name').valid && planeForm.get('name').touched">
+      <span *ngIf="!depForm.get('name').valid && depForm.get('name').touched">
           Please enter Name
       </span>
         </mat-error>
@@ -16,7 +15,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>
-      <span *ngIf="!planeForm.get('creationDate').valid && planeForm.get('creationDate').touched">
+      <span *ngIf="!depForm.get('creationDate').valid && depForm.get('creationDate').touched">
           Please enter creation date
       </span>
         </mat-error>
@@ -28,15 +27,15 @@
                formControlName="lifeTimeAge"
                [errorStateMatcher]="matcher">
         <mat-error>
-      <span *ngIf="!planeForm.get('lifeTimeAge').valid && planeForm.get('lifeTimeAge').touched">
+      <span *ngIf="!depForm.get('lifeTimeAge').valid && depForm.get('lifeTimeAge').touched">
           Please enter Life time
       </span>
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form">
         <mat-select
-            [(value)]="planeForm.get('type').value"
-            placeholder="Plane Type"
+            [(value)]="depForm.get('type').value"
+            placeholder="{{depForm.get('type').value?.planeModel}}"
             formControlName="type"
             required>
             <mat-option *ngFor="let t of types" [value]="t">
@@ -44,13 +43,13 @@
             </mat-option>
         </mat-select>
         <mat-error>
-            <span *ngIf="!planeForm.get('type').valid && planeForm.get('type').touched">
+            <span *ngIf="!depForm.get('type').valid && depForm.get('type').touched">
                 Please choose Type
             </span>
         </mat-error>
     </mat-form-field>
     <div mat-dialog-actions>
-        <button mat-button type="submit" [disabled]="!planeForm.valid" mat-raised-button color="primary">
+        <button mat-button type="submit" [disabled]="!depForm.valid" mat-raised-button color="primary">
             <mat-icon>save</mat-icon>
         </button>
         <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>

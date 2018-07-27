@@ -8,7 +8,6 @@ const routes: Routes = [
         // data: { preload: true },
         loadChildren: 'src/modules/pilots/pilots.module#PilotsModule'
     },
-    // Lazy loads the modules that accessible only for authorized users
     {
         path: 'stewardesses',
         loadChildren: 'src/modules/stewardesses/stewardesses.module#StewardessesModule'
@@ -23,7 +22,7 @@ const routes: Routes = [
     },
     {
         path: 'planeTypes',
-        loadChildren: 'src/modules/plane-types/plane-types.module#PlaneTypesModule'
+        loadChildren: 'src/modules/plane-planes/plane-planes.module#PlaneTypesModule'
     },
     {
         path: 'crews',
@@ -32,6 +31,10 @@ const routes: Routes = [
     {
         path: 'planes',
         loadChildren: 'src/modules/planes/planes.module#PlanesModule'
+    },
+    {
+        path: 'departures',
+        loadChildren: 'src/modules/departures/departures.module#DeparturesModule'
     },
     {path: '404', component: ErrorComponent},
     {path: '', redirectTo: 'pilots', pathMatch: 'full'},

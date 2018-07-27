@@ -1,16 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PlaneDto} from '../../../shared/models';
-import {PlanesService} from '../../services/planes.service';
+import {DeparturesService} from '../../services/departures.service';
 
 @Component({
-  selector: 'app-delete-plane-dialog',
-  templateUrl: './delete-plane-dialog.component.html',
-  styleUrls: ['./delete-plane-dialog.component.scss']
+  selector: 'app-delete-departure-dialog',
+  templateUrl: './delete-departure-dialog.component.html',
+  styleUrls: ['./delete-departure-dialog.component.scss']
 })
-export class DeletePlaneDialogComponent implements OnInit {
-    constructor(public dialogRef: MatDialogRef<DeletePlaneDialogComponent>,
-                private api: PlanesService,
+export class DeleteDepartureDialogComponent implements OnInit {
+    constructor(public dialogRef: MatDialogRef<DeleteDepartureDialogComponent>,
+                private api: DeparturesService,
                 @Inject(MAT_DIALOG_DATA) public data: PlaneDto) {
     }
 
@@ -18,7 +18,7 @@ export class DeletePlaneDialogComponent implements OnInit {
     }
 
     deleteType(): void {
-        this.api.deletePlane(this.data.id)
+        this.api.deleteDeparture(this.data.id)
             .subscribe(res => {
                 this.dialogRef.close(true);
             }, (err) => {

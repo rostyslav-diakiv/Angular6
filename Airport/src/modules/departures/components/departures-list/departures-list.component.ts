@@ -1,41 +1,41 @@
 import {Component, OnInit} from '@angular/core';
-import {CrewDto, PlaneDto} from '../../../shared/models';
-import {AddPlaneDialogComponent} from '../../dialogs/add-plane-dialog/add-plane-dialog.component';
+import {CrewDto, DepartureDto} from '../../../shared/models';
+import {AddDepartureDialogComponent} from '../../dialogs/add-departure-dialog/add-departure-dialog.component';
 import {DataSource} from '@angular/cdk/table';
 import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
-import {EditPlaneDialogComponent} from '../../dialogs/edit-plane-dialog/edit-plane-dialog.component';
-import {DeletePlaneDialogComponent} from '../../dialogs/delete-plane-dialog/delete-plane-dialog.component';
-import {PlanesService} from '../../services/planes.service';
+import {EditDepartureDialogComponent} from '../../dialogs/edit-departure-dialog/edit-departure-dialog.component';
+import {DeleteDepartureDialogComponent} from '../../dialogs/delete-departure-dialog/delete-departure-dialog.component';
+import {DeparturesService} from '../../services/departures.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-planes-list',
-  templateUrl: './planes-list.component.html',
-  styleUrls: ['./planes-list.component.scss']
+  selector: 'app-departures-list',
+  templateUrl: './departures-list.component.html',
+  styleUrls: ['./departures-list.component.scss']
 })
-export class PlanesListComponent implements OnInit {
-    planes: PlaneDto[] = [];
-    displayedColumns = ['id', 'name', 'creationDate', 'lifeTimeAge', 'planeType', 'actions'];
+export class DeparturesListComponent implements OnInit {
+    departure: DepartureDto[] = [];
+    displayedColumns = ['id', 'departureTime', 'flightNumber', 'crewId', 'planeName', 'actions'];
     dataSource = new TypesDataSource(this.api);
 
     constructor(private router: Router,
-                private api: PlanesService,
+                private api: DeparturesService,
                 public dialog: MatDialog) {
     }
 
     ngOnInit() {
-        this.api.getPlanes()
+        this.api.getDepartures()
             .subscribe(res => {
                 console.log(res);
-                this.planes = res;
+                this.departure = res;
             }, err => {
                 console.log(err);
             });
     }
 
     openAddDialog(): void {
-        const dialogRef = this.dialog.open(AddPlaneDialogComponent, { });
+        const dialogRef = this.dialog.open(AddDepartureDialogComponent, { });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -45,7 +45,7 @@ export class PlanesListComponent implements OnInit {
     }
 
     openEditDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(EditPlaneDialogComponent, {
+        const dialogRef = this.dialog.open(EditDepartureDialogComponent, {
             data: dto
         });
 
@@ -57,7 +57,7 @@ export class PlanesListComponent implements OnInit {
     }
 
     openDeleteDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(DeletePlaneDialogComponent, {
+        const dialogRef = this.dialog.open(DeleteDepartureDialogComponent, {
             data: dto
         });
 
@@ -69,17 +69,17 @@ export class PlanesListComponent implements OnInit {
     }
 
     redirectToDetails(id: number) {
-        this.router.navigate(['/planes/details', id]);
+        this.router.navigate(['/departures/details', id]);
     }
 }
 
 export class TypesDataSource extends DataSource<any> {
-    constructor(private api: PlanesService) {
+    constructor(private api: DeparturesService) {
         super();
     }
 
-    connect(): Observable<PlaneDto[]> {
-        return this.api.getPlanes();
+    connect(): Observable<DepartureDto[]> {
+        return this.api.getDepartures();
     }
 
     disconnect() {

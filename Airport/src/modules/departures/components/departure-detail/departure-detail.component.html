@@ -1,24 +1,24 @@
 <div class="button-row">
-    <a mat-raised-button color="primary" [routerLink]="['/planes']">
+    <a mat-raised-button color="primary" [routerLink]="['/departures']">
         <mat-icon>list</mat-icon>
     </a>
-    <h2>Plane {{plane?.name}} Details</h2>
+    <h2>Departure #{{departure?.id}} Details</h2>
 </div>
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title><h2>{{plane?.id}}</h2></mat-card-title>
-        <mat-card-subtitle>{{plane?.name}}</mat-card-subtitle>
+        <mat-card-title><h2>{{departure?.id}}</h2></mat-card-title>
+        <mat-card-subtitle>{{departure?.flight.number}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <dl>
             <dt>Plane name:</dt>
-            <dd>{{plane?.name}}</dd>
-            <dt>Plane type:</dt>
-            <dd>{{plane?.planeType.planeModel}}</dd>
-            <dt>Life time:</dt>
-            <dd>{{plane?.lifeTimeAge | ageForm : 'medium'}}</dd>
-            <dt>Creation date:</dt>
-            <dd>{{plane?.creationDate | date}}</dd>
+            <dd>{{departure?.plane.name}}</dd>
+            <dt>Flight Number:</dt>
+            <dd>{{departure?.flight.number}}</dd>
+            <dt>Crew Id:</dt>
+            <dd>{{departure?.crewId}}</dd>
+            <dt>Departure time:</dt>
+            <dd>{{departure?.departureTime | date}}</dd>
         </dl>
     </mat-card-content>
 

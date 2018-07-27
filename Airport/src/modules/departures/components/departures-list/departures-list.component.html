@@ -7,25 +7,25 @@
             <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+        <ng-container matColumnDef="departureTime">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Departure Time</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.departureTime | date}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="creationDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Creation Date</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.creationDate | date}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Flight Number</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.flightNumber}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="lifeTimeAge">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Life time</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.lifeTimeAge | ageForm : "medium"}}</mat-cell>
+        <ng-container matColumnDef="crewId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>CrewI d</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.crewId}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="planeType">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Type</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Name</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <a [routerLink]="['/planeTypes/details', row.planeType.id]"></a>{{row.planeType.planeModel}}</mat-cell>
+                <a [routerLink]="['/planes/details', row.plane.id]"></a>{{row.plane.name}}</mat-cell>
         </ng-container>
 
         <!-- actions -->
@@ -56,12 +56,12 @@
     </mat-table>
 
 
-    <div class="no-results" [style.display]="planes.length == 0 ? '' : 'none'">
+    <div class="no-results" [style.display]="departure.length == 0 ? '' : 'none'">
         No results
     </div>
 
     <mat-paginator #paginator
-                   [length]="planes.length"
+                   [length]="departure.length"
                    [pageIndex]="0"
                    [pageSize]="10"
                    [pageSizeOptions]="[5, 10, 25, 100]">

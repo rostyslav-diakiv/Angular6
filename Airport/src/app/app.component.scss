@@ -18,7 +18,6 @@ a {
 a:hover,
 a:active {
     color: lightgray;
-  //  background-color: #980000;
 }
 
 .navigation-items {
@@ -26,7 +25,7 @@ a:active {
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
     li:hover {
         border-radius: 25%;
     }
