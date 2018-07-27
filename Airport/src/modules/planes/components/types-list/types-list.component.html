@@ -1,0 +1,79 @@
+<div class="table-container  mat-elevation-z8">
+
+    <!-- like spacer between navbar & Table -->
+    <!--<div class="form">-->
+    <!--</div>-->
+
+
+    <!--<div class="form">-->
+    <!--<mat-form-field floatPlaceholder="never" color="accent">-->
+    <!--<input matInput #filter placeholder="Filter issues">-->
+    <!--</mat-form-field>-->
+    <!--</div>-->
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="planeModel">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Model</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.planeModel}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="maximalNumberOfPlaces">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Max # Of Places</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.maximalNumberOfPlaces}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="maximalCarryingCapacityKg">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Max Carrying Capacity Kg</mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.maximalCarryingCapacityKg}}</mat-cell>
+        </ng-container>
+
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button color="accent" (click)="openAddDialog()">
+                    <mat-icon aria-label="Add">add</mat-icon>
+                </button>
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent" (click)="redirectToDetails(row.id)">
+                    <mat-icon aria-label="Assignment">assignment</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" (click)="openEditDialog(row)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" (click)="openDeleteDialog(row)">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="stewardesses.length == 0 ? '' : 'none'">
+        No results
+    </div>
+
+    <mat-paginator #paginator
+                   [length]="stewardesses.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+</div>
