@@ -1,0 +1,69 @@
+<div class="table-container  mat-elevation-z8">
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Creation Date</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.creationDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="lifeTimeAge">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Life time</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.lifeTimeAge | ageForm : "medium"}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="planeType">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Type</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <a [routerLink]="['/planeTypes/details', row.planeType.id]"></a>{{row.planeType.planeModel}}</mat-cell>
+        </ng-container>
+
+        <!-- actions -->
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button color="primary" (click)="openAddDialog()">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+            </mat-header-cell>
+
+            <mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent" (click)="redirectToDetails(row.id)">
+                    <mat-icon aria-label="Assignment">assignment</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" (click)="openEditDialog(row)">
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" (click)="openDeleteDialog(row)">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <div class="no-results" [style.display]="planes.length == 0 ? '' : 'none'">
+        No results
+    </div>
+
+    <mat-paginator #paginator
+                   [length]="planes.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+</div>
