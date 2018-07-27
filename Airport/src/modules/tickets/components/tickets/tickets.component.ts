@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {TicketsService} from '../../services/tickets.service';
 import {TicketDto} from '../../../shared/models';
-
 @Component({
     selector: 'app-tickets',
     templateUrl: './tickets.component.html',
@@ -15,7 +14,7 @@ export class TicketsComponent implements OnInit {
         'price',
         'flight'
     ];
-    dataSource = new BookDataSource(this.api);
+    dataSource = new TicketDataSource(this.api);
 
     constructor(private api: TicketsService) {
     }
@@ -31,7 +30,7 @@ export class TicketsComponent implements OnInit {
     }
 }
 
-export class BookDataSource extends DataSource<any> {
+export class TicketDataSource extends DataSource<any> {
     constructor(private api: TicketsService) {
         super();
     }

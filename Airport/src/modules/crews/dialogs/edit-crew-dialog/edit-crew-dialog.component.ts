@@ -8,9 +8,9 @@ import {StewardessesService} from '../../../stewardesses/services/stewardesses.s
 import {PilotsService} from '../../../pilots/services';
 
 @Component({
-  selector: 'app-edit-crew-dialog',
-  templateUrl: './edit-crew-dialog.component.html',
-  styleUrls: ['./edit-crew-dialog.component.scss']
+    selector: 'app-edit-crew-dialog',
+    templateUrl: './edit-crew-dialog.component.html',
+    styleUrls: ['./edit-crew-dialog.component.scss']
 })
 export class EditCrewDialogComponent implements OnInit {
     description = 'Edit Crew #: ';
@@ -33,7 +33,7 @@ export class EditCrewDialogComponent implements OnInit {
         this.id = this.data.id;
         this.description += this.id;
         this.crewForm = this.formBuilder.group({
-            'pilot': [this.data.pilot, Validators.required],
+            'pilot': [null, Validators.required],
             'stews': [this.data.stewardesses, [Validators.required,
                 Validators.minLength(1)]],
         });
@@ -48,11 +48,19 @@ export class EditCrewDialogComponent implements OnInit {
 
         this.pilotsService.getPilots()
             .subscribe(value => {
+                    this.crewForm.patchValue({
+                        pilot: value.filter(p => p.id === this.data.pilot.id)[0]
+                    });
+
                     this.pilots = value;
                 },
                 error1 => {
                     console.log(error1);
                 });
+    }
+
+    compareFn(user1: StewardessDto, user2: StewardessDto) {
+        return user1 && user2 ? user1.id === user2.id : user1 === user2;
     }
 
     onFormSubmit() {
@@ -70,4 +78,28 @@ export class EditCrewDialogComponent implements OnInit {
     onNoClick(): void {
         this.dialogRef.close();
     }
+
+    getSimilar(extArray, newArray) {
+        return extArray.filter(el => this.isContain(el.id, newArray));
+    }
+
+    isContain(id, array) {
+        return array.filter(el => {
+            console.log('returnee', el.id === id);
+            return el.id === id;
+        }).length;
+    }
+}
+
+
+function intersect(a, b) {
+    let t;
+    if (b.length > a.length) {
+        t = b,
+            b = a,
+            a = t;
+    } // indexOf to loop over shorter
+    return a.filter(function (e) {
+        return b.indexOf(e) > -1;
+    });
 }

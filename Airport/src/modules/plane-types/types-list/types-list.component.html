@@ -41,12 +41,16 @@
         <!-- actions -->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef>
-                <button mat-icon-button color="primary" (click)="openAddDialog()">
-                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                <button mat-icon-button color="accent" (click)="openAddDialog()">
+                    <mat-icon aria-label="Add">add</mat-icon>
                 </button>
             </mat-header-cell>
 
             <mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent" (click)="redirectToDetails(row.id)">
+                    <mat-icon aria-label="Assignment">assignment</mat-icon>
+                </button>
+
                 <button mat-icon-button color="accent" (click)="openEditDialog(row)">
                     <mat-icon aria-label="Edit">edit</mat-icon>
                 </button>
@@ -58,7 +62,7 @@
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['details', row.id]"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
     </mat-table>
 
 

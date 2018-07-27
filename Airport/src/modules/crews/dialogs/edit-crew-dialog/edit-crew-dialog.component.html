@@ -2,8 +2,11 @@
 
 <form class="mat-dialog-content" [formGroup]="crewForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="form">
-        <mat-select placeholder="Pilot" formControlName="pilot" required>
-            <mat-option>--</mat-option>
+        <mat-select
+            [(value)]="crewForm.get('pilot').value"
+            placeholder="{{crewForm.get('pilot').value?.name}} {{crewForm.get('pilot').value?.familyName}}"
+            formControlName="pilot"
+            required>
             <mat-option *ngFor="let p of pilots" [value]="p">
                 {{p.name}} {{p.familyName}}
             </mat-option>
@@ -15,7 +18,12 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form">
-        <mat-select placeholder="Stewardesses" formControlName="stews" multiple>
+        <mat-select
+            [compareWith]="compareFn"
+            [(ngModel)]="crewForm.get('stews').value"
+            placeholder="Stewardesses"
+            formControlName="stews"
+            multiple>
             <mat-select-trigger>
                 {{crewForm.get('stews').value ? crewForm.get('stews').value[0]?.name : ''}}
                 <span *ngIf="crewForm.get('stews').value?.length > 1" class="additional-selection">
@@ -23,7 +31,10 @@
                     {{crewForm.get('stews').value?.length === 2 ? 'other' : 'others'}})
                 </span>
             </mat-select-trigger>
-            <mat-option *ngFor="let stew of stewardesses" [value]="stew">{{stew.name}} {{stew.familyName}}</mat-option>
+            <mat-option *ngFor="let stew of stewardesses"
+                        [value]="stew">
+                {{stew.name}} {{stew.familyName}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
     <div mat-dialog-actions>

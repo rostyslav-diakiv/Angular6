@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CreateCrewComponent} from './components/create-crew/create-crew.component';
 import {RouterModule, Routes} from '@angular/router';
 import {CrewsService} from './services/crews.service';
 import {CrewsListComponent} from './components/crews-list/crews-list.component';
@@ -30,7 +29,6 @@ const crewsRoutes: Routes = [
         RouterModule.forChild(crewsRoutes),
     ],
     declarations: [
-        CreateCrewComponent,
         CrewDetailComponent,
         CrewsListComponent,
         AddCrewDialogComponent,

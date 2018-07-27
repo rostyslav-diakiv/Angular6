@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
 import {EditPlaneTypeDialogComponent} from '../dialogs/edit-plane-type-dialog/edit-plane-type-dialog.component';
 import {DeletePlaneTypeDialogComponent} from '../dialogs/delete-plane-type-dialog/delete-plane-type-dialog.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-types-list',
@@ -18,7 +19,8 @@ export class TypesListComponent implements OnInit {
     displayedColumns = ['id', 'planeModel', 'maximalNumberOfPlaces', 'maximalCarryingCapacityKg', 'actions'];
     dataSource = new TypesDataSource(this.api);
 
-    constructor(private api: PlaneTypesService,
+    constructor(private router: Router,
+        private api: PlaneTypesService,
                 public dialog: MatDialog) {
     }
 
@@ -64,6 +66,10 @@ export class TypesListComponent implements OnInit {
                 this.dataSource = new TypesDataSource(this.api);
             }
         });
+    }
+
+    redirectToDetails(id: number) {
+        this.router.navigate(['/planeTypes/details', id]);
     }
 }
 

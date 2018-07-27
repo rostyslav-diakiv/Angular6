@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material';
 import {EditCrewDialogComponent} from '../../dialogs/edit-crew-dialog/edit-crew-dialog.component';
 import {DeleteCrewDialogComponent} from '../../dialogs/delete-crew-dialog/delete-crew-dialog.component';
 import {CrewsService} from '../../services/crews.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-types-list',
@@ -18,7 +19,8 @@ export class CrewsListComponent implements OnInit {
     displayedColumns = ['id', 'pilot', 'stewardesses', 'actions'];
     dataSource = new TypesDataSource(this.api);
 
-    constructor(private api: CrewsService,
+    constructor(private router: Router,
+                private api: CrewsService,
                 public dialog: MatDialog) {
     }
 
@@ -64,6 +66,10 @@ export class CrewsListComponent implements OnInit {
                 this.dataSource = new TypesDataSource(this.api);
             }
         });
+    }
+
+    redirectToDetails(id: number) {
+        this.router.navigate(['/crews/details', id]);
     }
 }
 

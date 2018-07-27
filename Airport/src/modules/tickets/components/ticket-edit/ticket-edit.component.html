@@ -20,8 +20,6 @@
                     placeholder="{{ticketForm.get('flightControl').value?.number}}"
                     formControlName="flightControl"
                     required>
-
-            <!--<mat-option [value]="selectedFlight">{{selectedFlight.number}}</mat-option>-->
             <mat-option *ngFor="let fl of flights" [value]="fl">
                 {{fl.number}}
             </mat-option>
