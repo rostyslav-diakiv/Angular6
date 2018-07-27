@@ -32,7 +32,7 @@ export class PilotsService {
           name: pilot.name,
           familyName: pilot.familyName,
           dateOfBirth: pilot.dateOfBirth,
-          experience: pilot.experienceAge
+          experience: `${pilot.experienceAge.days}:0:0`
         };
 
         if (pilot.id === 0) {

@@ -16,7 +16,6 @@ import {debounceTime, map} from 'rxjs/operators';
 import {GenericValidator} from '../../../shared/helpers/validators';
 import {PilotDto} from '../../../shared/models';
 import {PilotsService} from '../../services';
-import {TimeSpan} from '../../../shared/models/time-span';
 
 @Component({
     selector: 'app-pilot-edit',

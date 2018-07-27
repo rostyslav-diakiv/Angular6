@@ -1,10 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlaneTypeDto} from '../../shared/models';
 import {AddPlaneTypeDialogComponent} from '../dialogs/add-plane-type-dialog/add-plane-type-dialog.component';
 import {PlaneTypesService} from '../services/plane-types.service';
 import {DataSource} from '@angular/cdk/table';
 import {Observable} from 'rxjs';
-import {MatDialog, MatPaginator, MatSort} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {EditPlaneTypeDialogComponent} from '../dialogs/edit-plane-type-dialog/edit-plane-type-dialog.component';
 import {DeletePlaneTypeDialogComponent} from '../dialogs/delete-plane-type-dialog/delete-plane-type-dialog.component';
 
@@ -17,12 +17,6 @@ export class TypesListComponent implements OnInit {
     stewardesses: PlaneTypeDto[] = [];
     displayedColumns = ['id', 'planeModel', 'maximalNumberOfPlaces', 'maximalCarryingCapacityKg', 'actions'];
     dataSource = new TypesDataSource(this.api);
-    validError: any;
-
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
-    @ViewChild('filter') filter: ElementRef;
-
 
     constructor(private api: PlaneTypesService,
                 public dialog: MatDialog) {
@@ -55,7 +49,6 @@ export class TypesListComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.validError = result;
                 this.dataSource = new TypesDataSource(this.api);
             }
         });

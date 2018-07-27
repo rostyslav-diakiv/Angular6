@@ -1,3 +1,22 @@
-<p>
-  plane-type-detail works!
-</p>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title><h2>{{typeDto.id}}</h2></mat-card-title>
+        <mat-card-subtitle>{{typeDto.planeModel}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <dl>
+            <dt>Plane model:</dt>
+            <dd>{{typeDto.planeModel}}</dd>
+            <dt>Max # of places:</dt>
+            <dd>{{typeDto.maximalNumberOfPlaces}}</dd>
+            <dt>Max carrying capacity:</dt>
+            <dd>{{typeDto.maximalCarryingCapacityKg}} kg</dd>
+        </dl>
+    </mat-card-content>
+
+    <!-- actions -->
+    <mat-card-actions>
+        <a mat-raised-button color="primary" (click)="openEditDialog()"><mat-icon>edit</mat-icon></a>
+        <a mat-raised-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon></a>
+    </mat-card-actions>
+</mat-card>

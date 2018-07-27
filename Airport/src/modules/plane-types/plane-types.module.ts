@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PlaneTypesComponent} from './plane-types/plane-types.component';
 import {DataService} from './services/data.service';
 import {SharedModule} from '../shared/shared.module';
 import {MaterialModule} from '../material/material.module';
@@ -21,14 +20,9 @@ const planeTypesRoutes: Routes = [
         data: { title: 'Plane Types List' }
     },
     {
-        path: 'example',
-        component: PlaneTypesComponent,
-        data: { title: 'Issues list' }
-    },
-    {
         path: 'details/:id',
         component: PlaneTypeDetailComponent,
-        data: { title: 'Ticket Details' }
+        data: { title: 'Plane Type Details' }
     },
 ];
 
@@ -43,7 +37,6 @@ const planeTypesRoutes: Routes = [
         ReactiveFormsModule,
     ],
     declarations: [
-        PlaneTypesComponent,
         PlaneTypeDetailComponent,
         AddPlaneTypeDialogComponent,
         TypesListComponent,
