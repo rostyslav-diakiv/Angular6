@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title><h2>{{crewDto.id}}</h2></mat-card-title>
+        <mat-card-subtitle>{{crewDto.pilot.name}} {{crewDto.pilot.familyName}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <dl>
+            <dt>Pilot:</dt>
+            <dd>{{crewDto.pilot.name}} {{crewDto.pilot.familyName}}</dd>
+            <dt>Pilot Experience:</dt>
+            <dd>{{crewDto.pilot.experienceAge | ageForm : 'medium'}}</dd>
+            <dt>Number of Stewardesses:</dt>
+            <dd>{{crewDto.stewardesses.length}}</dd>
+        </dl>
+    </mat-card-content>
+
+    <!-- actions -->
+    <mat-card-actions>
+        <a mat-raised-button color="primary" (click)="openEditDialog()"><mat-icon>edit</mat-icon></a>
+        <a mat-raised-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon></a>
+    </mat-card-actions>
+</mat-card>

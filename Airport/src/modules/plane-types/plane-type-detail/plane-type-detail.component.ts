@@ -40,7 +40,6 @@ export class PlaneTypeDetailComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.getStewardessDetails(this.typeDto.id);
-                // this.dataSource = new TypesDataSource(this.api);
             }
         });
     }
@@ -53,18 +52,7 @@ export class PlaneTypeDetailComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.router.navigate(['/planeTypes']); // go to list
-                // this.dataSource = new TypesDataSource(this.api);
             }
         });
     }
-
-    // deleteStewardess(id) {
-    //     this.api.deleteStewardess(id)
-    //         .subscribe(res => {
-    //                 this.router.navigate(['/stewardesses']); // go to list
-    //             }, (err) => {
-    //                 console.log(err);
-    //             }
-    //         );
-    // }
 }

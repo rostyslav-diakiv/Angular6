@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {CrewsService} from '../services/crews.service';
-import {PilotDto, StewardessDto} from '../../shared/models';
+import {CrewsService} from '../../services/crews.service';
+import {PilotDto, StewardessDto} from '../../../shared/models/index';
 import {Router} from '@angular/router';
-import {StewardessesService} from '../../stewardesses/services/stewardesses.service';
-import {PilotsService} from '../../pilots/services';
+import {StewardessesService} from '../../../stewardesses/services/stewardesses.service';
+import {PilotsService} from '../../../pilots/services/index';
 
 @Component({
   selector: 'app-create-crew',

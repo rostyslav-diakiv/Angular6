@@ -1,17 +1,15 @@
 <div class="button-row">
     <a mat-raised-button color="primary" (click)="flightDetails()">
-        <mat-icon>home</mat-icon>
+        <mat-icon>backspace</mat-icon>
     </a>
 </div>
-<form [formGroup]="flightForm" (ngSubmit)="onFormSubmit()">
+
+<h2 mat-dialog-title>{{description}}</h2>
+
+<form class="mat-dialog-content" [formGroup]="flightForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="example-full-width">
         <input matInput placeholder="NUMBER" formControlName="number"
                [errorStateMatcher]="matcher">
-        <!--<mat-error>-->
-            <!--<span *ngIf="!flightForm.get('pointOfDeparture').valid && flightForm.get('pointOfDeparture').touched">-->
-                <!--Please enter Point Of Departure-->
-            <!--</span>-->
-        <!--</mat-error>-->
     </mat-form-field>
     <mat-form-field class="example-full-width">
         <input matInput [matDatepicker]="depPicker" formControlName="departureTime" placeholder="Choose Departure Time">

@@ -1,0 +1,47 @@
+.additional-selection {
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+.mat-dialog-title {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+}
+
+.container > * {
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    padding-top: 6px;
+}
+
+.mat-form-field {
+    justify-content: center;
+    font-size: 16px;
+    flex-grow: 1;
+}
+
+.mat-dialog-content {
+    height: 315px;
+    width: 360px;
+}
+.mat-form-field-wrapper {
+    width: 240px;
+    margin-bottom: 20px;
+}
+
+.mat-dialog-actions {
+    margin-top: 35px;
+    justify-content: center;
+}
+
+#cdk-overlay-2 > div {
+    min-width: calc(100% + 10px) !important;
+}

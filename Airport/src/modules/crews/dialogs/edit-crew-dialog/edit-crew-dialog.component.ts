@@ -1,23 +1,22 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
-import {PlaneTypesService} from '../../services/plane-types.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {PlaneTypeDto} from '../../../shared/models';
+import {CrewsService} from '../../services/crews.service';
 
 @Component({
-  selector: 'app-edit-plane-type-dialog',
-  templateUrl: './edit-plane-type-dialog.component.html',
-  styleUrls: ['./edit-plane-type-dialog.component.scss']
+  selector: 'app-edit-crew-dialog',
+  templateUrl: './edit-crew-dialog.component.html',
+  styleUrls: ['./edit-crew-dialog.component.scss']
 })
-export class EditPlaneTypeDialogComponent implements OnInit {
-    description = 'Edit Plane Type: ';
+export class EditCrewDialogComponent implements OnInit {
+    description = 'Edit Crew: ';
     typeForm: FormGroup;
     id = 0;
-    valError = null;
 
-    constructor(private api: PlaneTypesService,
+    constructor(private api: CrewsService,
                 private formBuilder: FormBuilder,
-                public dialogRef: MatDialogRef<EditPlaneTypeDialogComponent>,
+                public dialogRef: MatDialogRef<EditCrewDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: PlaneTypeDto) {
     }
 
@@ -32,21 +31,10 @@ export class EditPlaneTypeDialogComponent implements OnInit {
     }
 
     onFormSubmit(form: NgForm) {
-        this.api.updatePlaneTypeForm(this.id, form)
+        this.api.updateCrewForm(this.id, form)
             .subscribe(res => {
                 this.dialogRef.close(true);
             }, (err) => {
-                console.log(JSON.stringify(err));
-                console.log(err['maximalNumberOfPlaces']);
-                let roor = err['maximalNumberOfPlaces'];
-                let mess = roor[0];
-                let l = roor.lenght;
-                for (let i = 0; i < roor.lenght; i++) {
-                    console.log(roor[i]);
-                    // for (let j = 0; j < err.lenght; j++) {
-                    //     console.log(err[i][j]);
-                    // }
-                }
                 this.dialogRef.close();
             });
     }

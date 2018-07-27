@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {FormGroup} from '@angular/forms';
+import {FormGroup, NgForm} from '@angular/forms';
 import {ApiService} from '../../shared/services';
-import {CrewDto} from '../../shared/models/crew-dto';
+import {CrewDto} from '../../shared/models';
 import {CrewRequest} from '../models/crew-request';
 
 @Injectable({
@@ -34,7 +34,7 @@ export class CrewsService {
         return this._apiService.post(`/${this.ctrlUrl}`, request);
     }
 
-    updateCrewForm(id: number, form: CrewRequest): Observable<Response> {
+    updateCrewForm(id: number, form: NgForm): Observable<Response> {
         return this._apiService.put(`/${this.ctrlUrl}/${id}`, form);
     }
 }
