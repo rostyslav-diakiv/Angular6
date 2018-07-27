@@ -1,16 +1,13 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
 
 import {TableTestComponent} from './components/table-test/table-test.component';
 import {RouterModule, Routes} from '@angular/router';
-import {MaterialModule} from '../material/material.module';
 import {FlightsComponent} from './components/flights/flights.component';
 import {FlightDetailComponent} from './components/flight-detail/flight-detail.component';
 import {FlightCreateComponent} from './components/flight-create/flight-create.component';
 import {FlightEditComponent} from './components/flight-edit/flight-edit.component';
 import {SharedModule} from '../shared/shared.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 
 const flightsRoutes: Routes = [
@@ -48,10 +45,6 @@ const flightsRoutes: Routes = [
         CommonModule,
         SharedModule,
         RouterModule.forChild(flightsRoutes),
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
     ],
     declarations: [
         TableTestComponent,

@@ -7,10 +7,9 @@ import {formatDate} from '@angular/common';
 @Component({
     selector: 'app-stewardess-edit',
     templateUrl: './stewardess-edit.component.html',
-    styleUrls: ['./stewardess-edit.component.css']
+    styleUrls: ['./stewardess-edit.component.scss']
 })
 export class StewardessEditComponent implements OnInit {
-
     stewForm: FormGroup;
     id = 0;
 
@@ -21,7 +20,7 @@ export class StewardessEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getBook(this.route.snapshot.params['id']);
+        this.getStew(this.route.snapshot.params['id']);
         this.stewForm = this.formBuilder.group({
             'name': [null, Validators.required],
             'familyName': [null, Validators.required],
@@ -29,7 +28,7 @@ export class StewardessEditComponent implements OnInit {
         });
     }
 
-    getBook(id) {
+    getStew(id) {
         this.api.getStewardess(id).subscribe(data => {
             // let a = formatDate(data.dateOfBirth, 'dd/MM/yyyy', 'en-us');
            // this.dateOfBirth = data.dateOfBirth;

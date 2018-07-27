@@ -2,9 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CreateCrewComponent} from './components/create-crew/create-crew.component';
 import {RouterModule, Routes} from '@angular/router';
-import {MaterialModule} from '../material/material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 import {CrewsService} from './services/crews.service';
 import {CrewsListComponent} from './components/crews-list/crews-list.component';
 import {CrewDetailComponent} from './components/crew-detail/crew-detail.component';
@@ -22,19 +19,15 @@ const crewsRoutes: Routes = [
     {
         path: 'details/:id',
         component: CrewDetailComponent,
-        data: { title: 'Crew Details' }
+        data: {title: 'Crew Details'}
     }
 ];
 
 @NgModule({
     imports: [
         CommonModule,
+        SharedModule.forRoot(),
         RouterModule.forChild(crewsRoutes),
-        SharedModule,
-        MaterialModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
     ],
     declarations: [
         CreateCrewComponent,

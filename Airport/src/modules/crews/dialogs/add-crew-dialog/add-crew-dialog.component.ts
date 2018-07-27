@@ -60,7 +60,6 @@ export class AddCrewDialogComponent implements OnInit {
             .subscribe(res => {
                 const id = res['id'];
                 this.dialogRef.close(id);
-                // this.router.navigate(['/tickets/details', id]);
             }, (err) => {
                 this.snackBar.open(err[0], 'Ok', {
                                     duration: 2000,

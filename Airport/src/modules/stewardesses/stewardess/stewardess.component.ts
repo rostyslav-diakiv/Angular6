@@ -6,7 +6,7 @@ import {StewardessDto} from '../../shared/models';
 @Component({
     selector: 'app-stewardess',
     templateUrl: './stewardess.component.html',
-    styleUrls: ['./stewardess.component.css']
+    styleUrls: ['./stewardess.component.scss']
 })
 export class StewardessComponent implements OnInit {
     stewardesses: StewardessDto[] = [];

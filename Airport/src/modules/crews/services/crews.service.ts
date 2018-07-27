@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {FormGroup, NgForm} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {ApiService} from '../../shared/services';
 import {CrewDto} from '../../shared/models';
 import {CrewRequest} from '../models/crew-request';
@@ -34,7 +34,12 @@ export class CrewsService {
         return this._apiService.post(`/${this.ctrlUrl}`, request);
     }
 
-    updateCrewForm(id: number, form: NgForm): Observable<Response> {
-        return this._apiService.put(`/${this.ctrlUrl}/${id}`, form);
+    updateCrewForm(id: number, form: FormGroup): Observable<Response> {
+        const request: CrewRequest = {
+            pilotId: form.controls['pilot'].value.id,
+            stewardessesIds: form.get('stews').value.map(s => s.id)
+        };
+
+        return this._apiService.put(`/${this.ctrlUrl}/${id}`, request);
     }
 }

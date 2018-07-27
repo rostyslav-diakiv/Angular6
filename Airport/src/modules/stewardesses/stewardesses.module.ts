@@ -1,15 +1,12 @@
-import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
 import { RouterModule, Routes } from '@angular/router';
 import { StewardessComponent } from './stewardess/stewardess.component';
 import { StewardessDetailComponent } from './stewardess-detail/stewardess-detail.component';
 import { StewardessCreateComponent } from './stewardess-create/stewardess-create.component';
 import { StewardessEditComponent } from './stewardess-edit/stewardess-edit.component';
 
-import {MaterialModule} from '../material/material.module';
+import {SharedModule} from '../shared/shared.module';
+import {CommonModule} from '@angular/common';
 
 const stewardessesRoutes: Routes = [
     {
@@ -54,10 +51,7 @@ const stewardessesRoutes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(stewardessesRoutes),
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
+        SharedModule,
     ],
     providers: []
 })

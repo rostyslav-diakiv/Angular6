@@ -8,11 +8,10 @@ import {FlightsService} from '../../../shared/services/flights.service';
 @Component({
     selector: 'app-ticket-create',
     templateUrl: './ticket-create.component.html',
-    styleUrls: ['./ticket-create.component.css']
+    styleUrls: ['./ticket-create.component.scss']
 })
 export class TicketCreateComponent implements OnInit {
     ticketForm: FormGroup;
-    id = 0;
     flights: FlightDto[] = [];
 
     constructor(private router: Router,

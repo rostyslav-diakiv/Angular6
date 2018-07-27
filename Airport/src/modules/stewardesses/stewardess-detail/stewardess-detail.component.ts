@@ -6,7 +6,7 @@ import {StewardessDto} from '../../shared/models';
 @Component({
   selector: 'app-stewardess-detail',
   templateUrl: './stewardess-detail.component.html',
-  styleUrls: ['./stewardess-detail.component.css']
+  styleUrls: ['./stewardess-detail.component.scss']
 })
 export class StewardessDetailComponent implements OnInit {
 

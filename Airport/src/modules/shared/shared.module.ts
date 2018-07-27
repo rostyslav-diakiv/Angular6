@@ -1,21 +1,30 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {ApiService} from './services';
 import {FlightsService} from './services/flights.service';
 import {AgeFormPipe} from './pipes/age-form.pipe';
+import {MaterialModule} from '../material/material.module';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     imports: [
-        CommonModule,
         FormsModule,
-        RouterModule
+        ReactiveFormsModule,
+        MaterialModule,
+        HttpClientModule,
+        RouterModule,
     ],
     declarations: [
         AgeFormPipe
     ],
-    exports: [AgeFormPipe]
+    exports: [
+        FormsModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        HttpClientModule,
+        AgeFormPipe
+    ]
 })
 export class SharedModule {
     static forRoot() {

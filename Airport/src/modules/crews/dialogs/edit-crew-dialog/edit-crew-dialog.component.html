@@ -1,48 +1,33 @@
 <h2 mat-dialog-title>{{description}}</h2>
 
-<form class="mat-dialog-content" [formGroup]="typeForm" (ngSubmit)="onFormSubmit(typeForm.value)">
-    <div class="form">
-        <mat-form-field>
-            <input class="form-control"
-                   matInput placeholder="Plane Model"
-                   formControlName="planeModel"
-                   [errorStateMatcher]="matcher">
-            <mat-error>
-            <span *ngIf="!typeForm.get('planeModel').valid && typeForm.get('planeModel').touched">
-                Please enter Plane Model
+<form class="mat-dialog-content" [formGroup]="crewForm" (ngSubmit)="onFormSubmit()">
+    <mat-form-field class="form">
+        <mat-select placeholder="Pilot" formControlName="pilot" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let p of pilots" [value]="p">
+                {{p.name}} {{p.familyName}}
+            </mat-option>
+        </mat-select>
+        <mat-error>
+            <span *ngIf="!crewForm.get('pilot').valid && crewForm.get('pilot').touched">
+                Please choose Pilot
             </span>
-            </mat-error>
-        </mat-form-field>
-    </div>
-    <div class="form">
-        <mat-form-field class="example-full-width">
-            <input class="form-control"
-                   matInput placeholder="Max # Of Places"
-                   formControlName="maximalNumberOfPlaces"
-                   [errorStateMatcher]="matcher">
-            <mat-error>
-            <span *ngIf="!typeForm.get('maximalNumberOfPlaces').valid && typeForm.get('maximalNumberOfPlaces').touched">
-                Please enter Maximal Number Of Places
-            </span>
-            </mat-error>
-        </mat-form-field>
-    </div>
-    <div class="form">
-        <mat-form-field class="example-full-width">
-            <input class="form-control"
-                   matInput placeholder="Max Carrying Capacity in Kg"
-                   formControlName="maximalCarryingCapacityKg"
-                   [errorStateMatcher]="matcher">
-            <mat-error>
-            <span
-                *ngIf="!typeForm.get('maximalCarryingCapacityKg').valid && typeForm.get('maximalCarryingCapacityKg').touched">
-                Please enter Maximal Carrying Capacity in Kg
-            </span>
-            </mat-error>
-        </mat-form-field>
-    </div>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form">
+        <mat-select placeholder="Stewardesses" formControlName="stews" multiple>
+            <mat-select-trigger>
+                {{crewForm.get('stews').value ? crewForm.get('stews').value[0]?.name : ''}}
+                <span *ngIf="crewForm.get('stews').value?.length > 1" class="additional-selection">
+                    (+{{crewForm.get('stews').value.length - 1}}
+                    {{crewForm.get('stews').value?.length === 2 ? 'other' : 'others'}})
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let stew of stewardesses" [value]="stew">{{stew.name}} {{stew.familyName}}</mat-option>
+        </mat-select>
+    </mat-form-field>
     <div mat-dialog-actions>
-        <button mat-button type="submit" [disabled]="!typeForm.valid" mat-raised-button color="primary">
+        <button mat-button type="submit" [disabled]="!crewForm.valid" mat-raised-button color="primary">
             <mat-icon>save</mat-icon>
         </button>
         <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>

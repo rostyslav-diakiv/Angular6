@@ -6,7 +6,7 @@ import {StewardessesService} from '../services/stewardesses.service';
 @Component({
   selector: 'app-stewardess-create',
   templateUrl: './stewardess-create.component.html',
-  styleUrls: ['./stewardess-create.component.css']
+  styleUrls: ['./stewardess-create.component.scss']
 })
 export class StewardessCreateComponent implements OnInit {
   stewForm: FormGroup;

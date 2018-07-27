@@ -1,6 +1,4 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import { PilotsListComponent } from './components/pilots-list/pilots-list.component';
@@ -9,7 +7,7 @@ import { TableHttpExampleComponent } from './components/table-http-example/table
 import { PilotDetailComponent } from './components/pilot-detail/pilot-detail.component';
 import {PilotResolver} from './services/pilot-resolver.service';
 import { PilotEditComponent } from './components/pilot-edit/pilot-edit.component';
-import {MaterialModule} from '../material/material.module';
+import {CommonModule} from '@angular/common';
 
 const userRouting: ModuleWithProviders = RouterModule.forChild([
     { path: '',
@@ -26,21 +24,15 @@ const userRouting: ModuleWithProviders = RouterModule.forChild([
         component: PilotEditComponent,
         resolve: { pilot: PilotResolver }, // TODO
     },
-    //  resolve: { <entityName>: <entityNameResolver> }
 ]);
 
 @NgModule({
     imports: [
-        SharedModule,
         CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
+        SharedModule,
         userRouting,
-        MaterialModule
     ],
     declarations: [
-        // ProductEditComponent,
-        // ProductFilterPipe,
         PilotsListComponent,
         TableHttpExampleComponent,
         PilotDetailComponent,
@@ -49,8 +41,6 @@ const userRouting: ModuleWithProviders = RouterModule.forChild([
     exports: [],
     providers: [
         PilotsService,
-        // ProductDetailGuard,
-        // ProductEditGuard,
         PilotResolver
     ]
 })

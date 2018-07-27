@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {MaterialModule} from '../material/material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
 import {TicketsComponent} from './components/tickets/tickets.component';
 import {TicketDetailComponent} from './components/ticket-detail/ticket-detail.component';
 import {TicketCreateComponent} from './components/ticket-create/ticket-create.component';
+import {TicketEditComponent} from './components/ticket-edit/ticket-edit.component';
+import {CommonModule} from '@angular/common';
+import {SharedModule} from '../shared/shared.module';
+
 const ticketsRoutes: Routes = [
     {
         path: '',
         component: TicketsComponent,
-        data: { title: 'Ticket List' }
+        data: { title: 'Tickets List' }
     },
     {
         path: 'details/:id',
@@ -23,26 +23,24 @@ const ticketsRoutes: Routes = [
         component: TicketCreateComponent,
         data: { title: 'Create Ticket' }
     },
-    // {
-    //     path: 'edit/:id',
-    //     component: TicketEditComponent,
-    //     data: { title: 'Edit Ticket' }
-    // },
+    {
+        path: 'edit/:id',
+        component: TicketEditComponent,
+        data: { title: 'Edit Ticket' }
+    },
 ];
 
 @NgModule({
   imports: [
       CommonModule,
+      SharedModule,
       RouterModule.forChild(ticketsRoutes),
-      MaterialModule,
-      FormsModule,
-      ReactiveFormsModule,
-      HttpClientModule,
   ],
   declarations: [
       TicketsComponent,
       TicketDetailComponent,
-      TicketCreateComponent
+      TicketCreateComponent,
+      TicketEditComponent
   ]
 })
 export class TicketsModule { }

@@ -20,7 +20,6 @@ import {
     MatRippleModule,
     MatSelectModule,
     MatSliderModule,
-    MatSnackBar,
     MatSortModule,
     MatTableModule,
     MatToolbarModule

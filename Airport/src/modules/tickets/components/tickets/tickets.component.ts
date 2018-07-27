@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {TicketsService} from '../../services/tickets.service';
-import {TicketDto} from '../../../shared/models/ticket-dto';
+import {TicketDto} from '../../../shared/models';
 
 @Component({
     selector: 'app-tickets',
     templateUrl: './tickets.component.html',
-    styleUrls: ['./tickets.component.css']
+    styleUrls: ['./tickets.component.scss']
 })
 export class TicketsComponent implements OnInit {
     tickets: TicketDto[] = [];
