@@ -33,10 +33,6 @@ const stewardessesRoutes: Routes = [
         component: StewardessEditComponent,
         data: { title: 'Edit Book' }
     },
-    // { path: '',
-    //     redirectTo: '/flights',
-    //     pathMatch: 'full'
-    // }
 ];
 
 

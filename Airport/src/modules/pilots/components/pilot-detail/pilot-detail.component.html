@@ -1,46 +1,38 @@
-<div class="panel panel-primary" *ngIf="pilot">
-    <div class="panel-heading" style="font-size:large">
-        {{pageTitle + ": " + pilot?.name}}
-    </div>
-
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-3">Id:</div>
-                    <div class="col-md-6">{{pilot?.id}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">Name:</div>
-                    <div class="col-md-6">{{pilot?.name}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">Family Name:</div>
-                    <div class="col-md-6">{{pilot?.familyName}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">Experience:</div>
-                    <div class="col-md-6">{{ pilot?.experienceAge }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">Date of Birth:</div>
-                    <div class="col-md-6">{{pilot?.dateOfBirth}}</div>
-                </div>
-            </div>
-        </div>
-        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-    </div>
-
-    <div class="panel-footer">
-        <a class="btn btn-default"
-           [routerLink]="['/pilots']"
-           queryParamsHandling="preserve"
-           style="width:80px">
-            <i class="glyphicon glyphicon-chevron-left"></i> Back
-        </a>
-        <a class="btn btn-primary" style="width:80px;margin-left:10px"
-           [routerLink]="['edit']">
-            Edit
-        </a>
-    </div>
+<div class="button-row">
+    <a mat-raised-button color="primary" [routerLink]="['/pilots']"><mat-icon>list</mat-icon></a>
 </div>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title><h2>{{pilot?.name}}</h2></mat-card-title>
+        <mat-card-subtitle>{{pilot?.familyName}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <dl>
+            <dt>Name:</dt>
+            <dd>{{pilot?.name}}</dd>
+            <dt>Family Name:</dt>
+            <dd>{{pilot?.familyName}}</dd>
+            <dt>Age:</dt>
+            <dd>{{pilot?.age | ageForm : "long"}</dd>
+            <dt>Experience:</dt>
+            <dd>{{pilot?.experienceAge | ageForm : "long"}</dd>
+            <dt>Birth Date:</dt>
+            <dd>{{pilot?.dateOfBirth | date}}</dd>
+        </dl>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-raised-button color="primary"
+           *ngIf="pilot"
+           [routerLink]="['/pilots/edit', pilot?.id]">
+            <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-raised-button color="primary"
+           *ngIf="!pilot">
+            <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-raised-button color="warn"
+           (click)="deleteStewardess(pilot?.id)">
+            <mat-icon>delete</mat-icon>
+        </a>
+    </mat-card-actions>
+</mat-card>

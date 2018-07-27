@@ -1,44 +1,65 @@
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {RouterModule} from '@angular/router';
 import {PilotsListComponent} from './components/pilots-list/pilots-list.component';
 import {PilotsService} from './services';
-import {TableHttpExampleComponent} from './components/table-http-example/table-http-example.component';
 import {PilotDetailComponent} from './components/pilot-detail/pilot-detail.component';
 import {PilotResolver} from './services/pilot-resolver.service';
 import {PilotEditComponent} from './components/pilot-edit/pilot-edit.component';
 import {CommonModule} from '@angular/common';
 
-const userRouting: ModuleWithProviders = RouterModule.forChild([
+const pilotsRoutes = RouterModule.forChild([
     {
+        // stwardesses
         path: '',
-        component: PilotsListComponent
+        component: PilotsListComponent,
+        data: { title: 'Pilots List' }
     },
     {
-        path: 'exapmle',
-        component: TableHttpExampleComponent
-    },
-    {
-        path: ':id',
+        // stwardesses/details/2
+        path: 'details/:id',
         component: PilotDetailComponent,
-        resolve: {pilot: PilotResolver} // TODO
+        data: { title: 'Book Details' }
     },
     {
-        path: ':id/edit',
-        component: PilotEditComponent,
-        resolve: {pilot: PilotResolver}, // TODO
+        // stwardesses/create
+        path: 'create',
+        component: PilotCreateComponent,
+        data: { title: 'Create Book' }
     },
-]);
+    {
+        // stwardesses/edit/2
+        path: 'edit/:id',
+        component: PilotEditComponent,
+        data: { title: 'Edit Book' }
+    },
+];
+
+// const userRouting: ModuleWithProviders = RouterModule.forChild([
+//     {
+//         path: '',
+//         component: PilotsListComponent
+//     },
+//     {
+//         path: ':id',
+//         component: PilotDetailComponent,
+//         resolve: {pilot: PilotResolver}
+//     },
+//     {
+//         path: ':id/edit',
+//         component: PilotEditComponent,
+//         resolve: {pilot: PilotResolver},
+//     },
+// ]);
 
 @NgModule({
     imports: [
         CommonModule,
         SharedModule,
-        userRouting,
+        pilotsRoutes,
     ],
     declarations: [
         PilotsListComponent,
-        TableHttpExampleComponent,
         PilotDetailComponent,
         PilotEditComponent
     ],

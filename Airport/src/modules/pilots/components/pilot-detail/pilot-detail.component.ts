@@ -1,32 +1,40 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import {PilotsService} from '../../services';
 import {PilotDto} from '../../../shared/models';
+import {PilotsService} from '../../services';
 
 @Component({
   selector: 'app-pilot-detail',
   templateUrl: './pilot-detail.component.html',
   styleUrls: ['./pilot-detail.component.scss']
 })
-export class PilotDetailComponent implements OnInit, OnDestroy {
-    public pageTitle = 'Pilot Detail';
-    public pilot: PilotDto;
-    public errorMessage: string;
+export class PilotDetailComponent implements OnInit {
+    pilot: PilotDto;
 
     constructor(private route: ActivatedRoute,
-                private router: Router,
-                private _pilotsService: PilotsService) {
+                private api: PilotsService,
+                private router: Router) { }
+
+    ngOnInit() {
+        this.getStewardessDetails(this.route.snapshot.params['id']);
     }
 
-    ngOnInit(): void {
-        const pil = this.route.snapshot.data['pilot'];
-        this.pilot = pil;
+    getStewardessDetails(id) {
+        this.api.getPilot(id)
+            .subscribe(data => {
+                console.log(data);
+                this.pilot = data;
+            });
     }
 
-    ngOnDestroy() {
+    deleteStewardess(id) {
+        this.api.deletePilot(id)
+            .subscribe(res => {
+                    this.router.navigate(['/pilots']); // go to list
+                }, (err) => {
+                    console.log(err);
+                }
+            );
     }
 
-    onBack(): void {
-        this.router.navigate(['/pilots']);
-    }
 }

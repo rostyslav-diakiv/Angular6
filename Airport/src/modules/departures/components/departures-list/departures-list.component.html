@@ -12,20 +12,28 @@
             <mat-cell *matCellDef="let row">{{row.departureTime | date}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="creationDate">
+        <ng-container matColumnDef="flightNumber">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Flight Number</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.flightNumber}}</mat-cell>
+            <mat-cell *matCellDef="let row">
+                <a *ngIf="row.flight" [routerLink]="['/flights/details', row.flight.number]">{{row.flight.number}}</a>
+                <a *ngIf="!row.flight">{{row.flight?.number}}</a>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="crewId">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>CrewI d</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.crewId}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Crew Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <a *ngIf="row.crewId" [routerLink]="['/crews/details', row.crewId]">{{row.crewId}}</a>
+                <a *ngIf="!row.crewId">{{row.crewId}}</a>
+            </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="planeType">
+        <ng-container matColumnDef="planeName">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Name</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <a [routerLink]="['/planes/details', row.plane.id]"></a>{{row.plane.name}}</mat-cell>
+                <a *ngIf="row.plane" [routerLink]="['/planes/details', row.plane.id]">{{row.plane.name}}</a>
+                <a *ngIf="!row.plane">{{row.plane?.name}}</a>
+            </mat-cell>
         </ng-container>
 
         <!-- actions -->

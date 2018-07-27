@@ -22,7 +22,7 @@ const routes: Routes = [
     },
     {
         path: 'planeTypes',
-        loadChildren: 'src/modules/plane-planes/plane-planes.module#PlaneTypesModule'
+        loadChildren: 'src/modules/plane-types/plane-types.module#PlaneTypesModule'
     },
     {
         path: 'crews',

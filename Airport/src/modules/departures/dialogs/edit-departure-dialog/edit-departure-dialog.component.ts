@@ -44,9 +44,11 @@ export class EditDepartureDialogComponent implements OnInit {
 
         this.planesService.getPlanes()
             .subscribe(value => {
-                    this.depForm.patchValue({
-                        plane: value.filter(p => p.id === this.data.plane.id)[0]
-                    });
+                    if (this.data.plane) {
+                        this.depForm.patchValue({
+                            plane: value.filter(p => p.id === this.data.plane.id)[0]
+                        });
+                    }
 
                     this.planes = value;
                 },
@@ -68,9 +70,12 @@ export class EditDepartureDialogComponent implements OnInit {
 
         this.flightsService.getFlights()
             .subscribe(value => {
-                    this.depForm.patchValue({
-                        flight: value.filter(f => f.number === this.data.flight.number)[0]
-                    });
+                    if (this.data.flight) {
+                        this.depForm.patchValue({
+                            flight: value.filter(f => f.number === this.data.flight.number)[0]
+                        });
+
+                    }
 
                     this.flights = value;
                 },
