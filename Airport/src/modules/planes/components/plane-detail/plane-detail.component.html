@@ -2,6 +2,7 @@
     <a mat-raised-button color="primary" [routerLink]="['/planes']">
         <mat-icon>list</mat-icon>
     </a>
+    <h2>Plane {{plane?.name}} Details</h2>
 </div>
 <mat-card class="example-card">
     <mat-card-header>
@@ -23,7 +24,11 @@
 
     <!-- actions -->
     <mat-card-actions>
-        <a mat-raised-button color="primary" (click)="openEditDialog()"><mat-icon>edit</mat-icon></a>
-        <a mat-raised-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon></a>
+        <a mat-raised-button color="primary" (click)="openEditDialog()">
+            <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-raised-button color="warn" (click)="openDeleteDialog()">
+            <mat-icon>delete</mat-icon>
+        </a>
     </mat-card-actions>
 </mat-card>

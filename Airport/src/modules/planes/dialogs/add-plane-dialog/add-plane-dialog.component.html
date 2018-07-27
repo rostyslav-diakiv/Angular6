@@ -2,7 +2,8 @@
 
 <form class="mat-dialog-content" [formGroup]="planeForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="form">
-        <input matInput placeholder="Name" formControlName="name"
+        <input matInput placeholder="Name"
+               formControlName="name"
                [errorStateMatcher]="matcher">
         <mat-error>
       <span *ngIf="!planeForm.get('name').valid && planeForm.get('name').touched">
@@ -24,7 +25,7 @@
         <input matInput
                type="number"
                placeholder="Lifetime"
-               formControlName="name"
+               formControlName="lifeTimeAge"
                [errorStateMatcher]="matcher">
         <mat-error>
       <span *ngIf="!planeForm.get('lifeTimeAge').valid && planeForm.get('lifeTimeAge').touched">
@@ -35,8 +36,8 @@
     <mat-form-field class="form">
         <mat-select
             [(value)]="planeForm.get('type').value"
-            placeholder="{{planeForm.get('type').value?.planeModel}}"
-            formControlName="pilot"
+            placeholder="Plane Type"
+            formControlName="type"
             required>
             <mat-option *ngFor="let t of types" [value]="t">
                 {{t.planeModel}}

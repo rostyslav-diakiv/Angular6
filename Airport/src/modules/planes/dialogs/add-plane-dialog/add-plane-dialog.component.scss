@@ -29,8 +29,8 @@
 }
 
 .mat-dialog-content {
-    height: 315px;
-    width: 360px;
+    height: 370px;
+    width: 325px;
 }
 .mat-form-field-wrapper {
     width: 240px;
@@ -38,10 +38,6 @@
 }
 
 .mat-dialog-actions {
-    margin-top: 35px;
     justify-content: center;
-}
-
-#cdk-overlay-2 > div {
-    min-width: calc(100% + 10px) !important;
+    margin-top: 20px;
 }

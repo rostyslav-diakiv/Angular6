@@ -1,24 +1,21 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <mat-card-title><h2>{{data?.id}}</h2></mat-card-title>
-        <mat-card-subtitle>{{data?.name}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <dl>
-            <dt>Plane name:</dt>
-            <dd>{{data?.name}}</dd>
-            <dt>Plane type:</dt>
-            <dd>{{data?.planeType.planeModel}}</dd>
-            <dt>Life time:</dt>
-            <dd>{{data?.lifeTimeAge | ageForm : 'medium'}}</dd>
-            <dt>Creation date:</dt>
-            <dd>{{data?.creationDate | date}}</dd>
-        </dl>
-    </mat-card-content>
+<div class="container">
+    <h3 mat-dialog-title>Are you sure?</h3>
+    <div mat-dialog-content>
+        Id: {{data.id}}
+        <p></p>
+        Plane name: {{data.name}}
+        <p></p>
+        Plane type: {{data.planeType.planeModel}}
+        <p></p>
+        Life time: {{data?.lifeTimeAge | ageForm : 'medium'}}
+        <p></p>
+        <p></p>
+        Creation date: {{data?.creationDate | date}}
+        <p></p>
+    </div>
 
-    <!-- actions -->
-    <mat-card-actions>
+    <div mat-dialog-actions>
         <button mat-button (click)="deleteType()">Delete</button>
         <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
-    </mat-card-actions>
-</mat-card>
+    </div>
+</div>

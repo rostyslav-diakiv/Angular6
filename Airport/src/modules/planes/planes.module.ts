@@ -25,7 +25,7 @@ const planesRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        SharedModule.forRoot(),
+        SharedModule,
         RouterModule.forChild(planesRoutes),
     ],
     declarations: [

@@ -29,7 +29,7 @@ export class AddPlaneDialogComponent implements OnInit {
             'name': ['', Validators.required],
             'creationDate': [null, Validators.required],
             'lifeTimeAge': [0, Validators.required],
-            'planeType': [null, Validators.required],
+            'type': [null, Validators.required],
         });
 
         this.planeTypesService.getPlaneTypes()

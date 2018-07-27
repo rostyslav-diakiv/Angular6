@@ -28,8 +28,8 @@ export class PlanesService {
         const request: PlaneRequest = {
             name: form.controls['name'].value,
             creationDate: form.controls['creationDate'].value,
-            lifeTime: form.controls['lifeTime'].value,
-            planeTypeId: form.controls['planeType'].value.id,
+            lifeTime: `${form.controls['lifeTimeAge'].value}:00:00`,
+            planeTypeId: form.controls['type'].value.id,
         };
 
         return this._apiService.post(`/${this.ctrlUrl}`, request);
@@ -39,8 +39,8 @@ export class PlanesService {
         const request: PlaneRequest = {
             name: form.controls['name'].value,
             creationDate: form.controls['creationDate'].value,
-            lifeTime: form.controls['lifeTime'].value,
-            planeTypeId: form.controls['planeType'].value.id,
+            lifeTime: `${form.controls['lifeTimeAge'].value}:00:00`,
+            planeTypeId: form.controls['type'].value.id,
         };
 
         return this._apiService.put(`/${this.ctrlUrl}/${id}`, request);
