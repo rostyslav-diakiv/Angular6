@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketsService} from '../../services/tickets.service';
 import {FlightDto} from '../../../shared/models';
 import {FlightsService} from '../../../flights/services/flights.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-ticket-create',
@@ -17,7 +18,8 @@ export class TicketCreateComponent implements OnInit {
     constructor(private router: Router,
                 private api: TicketsService,
                 private flightsService: FlightsService,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder,
+                public snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -30,8 +32,11 @@ export class TicketCreateComponent implements OnInit {
             .subscribe(value => {
                     this.flights = value;
                 },
-                error1 => {
-                    console.log(error1);
+                err => {
+                    this.snackBar.open('Oops! Error happened', 'Ok', {
+                        duration: 2000,
+                    });
+                    console.log(err);
                 });
     }
 
@@ -42,6 +47,9 @@ export class TicketCreateComponent implements OnInit {
                 const id = res['id'];
                 this.router.navigate(['/tickets/details', id]);
             }, (err) => {
+                this.snackBar.open('Model is invalid', 'Ok', {
+                    duration: 2000,
+                });
                 console.log(err);
             });
     }

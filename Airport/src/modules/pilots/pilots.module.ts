@@ -29,7 +29,7 @@ const pilotsRoutes = RouterModule.forChild([
         component: PilotEditComponent,
         data: { title: 'Edit Pilot' }
     },
-];
+]);
 
 @NgModule({
     imports: [

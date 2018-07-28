@@ -47,7 +47,7 @@ export class AddPlaneDialogComponent implements OnInit {
                 const id = res['id'];
                 this.dialogRef.close(id);
             }, (err) => {
-                this.snackBar.open(err[0], 'Ok', {
+                this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);

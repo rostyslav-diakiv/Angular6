@@ -3,7 +3,10 @@
 <form class="mat-dialog-content" [formGroup]="depForm" (ngSubmit)="onFormSubmit()">
 
     <mat-form-field class="form">
-        <input matInput [matDatepicker]="picker" formControlName="departureTime" placeholder="Choose Departure time">
+        <input matInput
+               [matDatepicker]="picker" formControlName="departureTime"
+               placeholder="Choose Departure time"
+               [min]="minDate" [max]="maxDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>

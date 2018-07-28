@@ -35,7 +35,8 @@ export class EditCrewDialogComponent implements OnInit {
         this.crewForm = this.formBuilder.group({
             'pilot': [null, Validators.required],
             'stews': [this.data.stewardesses, [Validators.required,
-                Validators.minLength(1)]],
+                Validators.minLength(1),
+                Validators.maxLength(5)]],
         });
 
         this.stewService.getStewardesses()
@@ -68,7 +69,7 @@ export class EditCrewDialogComponent implements OnInit {
             .subscribe(() => {
                 this.dialogRef.close(true);
             }, (err) => {
-                this.snackBar.open(err[0], 'Ok', {
+                this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightsService} from '../../services/flights.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-flight-edit',
@@ -16,6 +17,7 @@ export class FlightEditComponent implements OnInit {
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private api: FlightsService,
+                public snackBar: MatSnackBar,
                 private formBuilder: FormBuilder) {
     }
 
@@ -32,7 +34,7 @@ export class FlightEditComponent implements OnInit {
 
     getBook(id) {
         this.api.getFlight(id).subscribe(data => {
-            this.description +=  data.number;
+            this.description += data.number;
             this.number = data.number;
             this.flightForm.setValue({
                 number: data.number,
@@ -50,6 +52,9 @@ export class FlightEditComponent implements OnInit {
             .subscribe(() => {
                     this.router.navigate(['/flights/details', this.number]);
                 }, (err) => {
+                    this.snackBar.open('Model is invalid', 'Ok', {
+                        duration: 2000,
+                    });
                     console.log(err);
                 }
             );

@@ -6,7 +6,6 @@ import { StewardessCreateComponent } from './stewardess-create/stewardess-create
 import { StewardessEditComponent } from './stewardess-edit/stewardess-edit.component';
 
 import {SharedModule} from '../shared/shared.module';
-import {CommonModule} from '@angular/common';
 
 const stewardessesRoutes: Routes = [
     {
@@ -38,16 +37,15 @@ const stewardessesRoutes: Routes = [
 
 
 @NgModule({
+    imports: [
+        RouterModule.forChild(stewardessesRoutes),
+        SharedModule,
+    ],
     declarations: [
         StewardessComponent,
         StewardessDetailComponent,
         StewardessCreateComponent,
         StewardessEditComponent
-    ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(stewardessesRoutes),
-        SharedModule,
     ],
     providers: []
 })

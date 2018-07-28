@@ -1,6 +1,9 @@
 <div class="button-row">
     <a mat-raised-button color="primary" [routerLink]="['/pilots']"><mat-icon>list</mat-icon></a>
 </div>
+
+<h2 mat-dialog-title>{{description}}</h2>
+
 <form [formGroup]="pilotForm" (ngSubmit)="onFormSubmit(pilotForm.value)">
     <mat-form-field class="example-full-width">
         <input matInput placeholder="Name" formControlName="name"

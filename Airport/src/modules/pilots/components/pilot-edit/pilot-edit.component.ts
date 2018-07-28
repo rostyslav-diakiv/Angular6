@@ -5,6 +5,7 @@ import {
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PilotsService} from '../../services';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-pilot-edit',
@@ -12,13 +13,15 @@ import {PilotsService} from '../../services';
     styleUrls: ['./pilot-edit.component.scss']
 })
 export class PilotEditComponent implements OnInit {
+    description = 'Edit Pilot #: ';
     pilotForm: FormGroup;
     id = 0;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private api: PilotsService,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder,
+                public snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -26,31 +29,34 @@ export class PilotEditComponent implements OnInit {
         this.pilotForm = this.formBuilder.group({
             'name': ['', Validators.required],
             'familyName': ['', Validators.required],
-            'experience': [0, Validators.required],
+            'experience': [null, Validators.required],
             'dateOfBirth': [null, Validators.required]
         });
     }
 
     getPilot(id) {
         this.api.getPilot(id).subscribe(data => {
+            this.description += data.id;
             this.id = data.id;
-            this.pilotForm.setValue({
+            const expInDays = (data.experienceAge.years * 365) + (data.experienceAge.months * 30) + data.experienceAge.days;
+            this.pilotForm.patchValue({
                 name: data.name,
                 familyName: data.familyName,
-                experience: [(data.experienceAge.years * 365)
-                            + (data.experienceAge.months * 30)
-                            + data.experienceAge.days, Validators.required],
+                experience: expInDays,
                 dateOfBirth: data.dateOfBirth
             });
         });
     }
 
     onFormSubmit() {
+        debugger;
         this.api.updatePilot(this.id, this.pilotForm)
-            .subscribe(res => {
-                const id = res['id'];
-                this.router.navigate(['/pilots/details', id]);  // /flights/details/id go to details of just created flights
+            .subscribe(() => {
+                this.router.navigate(['/pilots/details', this.id]);
             }, (err) => {
+                this.snackBar.open('Model is invalid', 'Ok', {
+                    duration: 2000,
+                });
                 console.log(err);
             });
     }

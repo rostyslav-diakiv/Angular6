@@ -3,7 +3,6 @@
 <form class="mat-dialog-content" [formGroup]="crewForm" (ngSubmit)="onFormSubmit()">
     <mat-form-field class="form">
         <mat-select placeholder="Pilot" formControlName="pilot" required>
-            <mat-option>--</mat-option>
             <mat-option *ngFor="let p of pilots" [value]="p">
                 {{p.name}} {{p.familyName}}
             </mat-option>

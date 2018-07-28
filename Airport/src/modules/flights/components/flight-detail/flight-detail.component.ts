@@ -29,7 +29,7 @@ export class FlightDetailComponent implements OnInit {
   deleteStewardess(id) {
     this.api.deleteFlight(id)
       .subscribe(res => {
-          this.router.navigate(['/flights']); // go to list
+          this.router.navigate(['/flights']);
         }, (err) => {
           console.log(err);
         }

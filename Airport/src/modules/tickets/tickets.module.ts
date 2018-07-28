@@ -4,7 +4,6 @@ import {TicketsComponent} from './components/tickets/tickets.component';
 import {TicketDetailComponent} from './components/ticket-detail/ticket-detail.component';
 import {TicketCreateComponent} from './components/ticket-create/ticket-create.component';
 import {TicketEditComponent} from './components/ticket-edit/ticket-edit.component';
-import {CommonModule} from '@angular/common';
 import {SharedModule} from '../shared/shared.module';
 
 const ticketsRoutes: Routes = [
@@ -32,7 +31,6 @@ const ticketsRoutes: Routes = [
 
 @NgModule({
   imports: [
-      CommonModule,
       SharedModule,
       RouterModule.forChild(ticketsRoutes),
   ],

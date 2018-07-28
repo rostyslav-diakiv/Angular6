@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import {StewardessesService} from '../services/stewardesses.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-stewardess-create',
@@ -10,9 +11,11 @@ import {StewardessesService} from '../services/stewardesses.service';
 })
 export class StewardessCreateComponent implements OnInit {
   stewForm: FormGroup;
-  id = 0;
 
-  constructor(private router: Router, private api: StewardessesService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private api: StewardessesService,
+              private formBuilder: FormBuilder,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.stewForm = this.formBuilder.group({
@@ -26,8 +29,11 @@ export class StewardessCreateComponent implements OnInit {
     this.api.createStewardessForm(form)
       .subscribe(res => {
           const id = res['id'];
-          this.router.navigate(['/types/details', id]);  // /flights/details/id go to details of just created flights
+          this.router.navigate(['/stewardesses/details', id]);
         }, (err) => {
+          this.snackBar.open('Model is invalid', 'Ok', {
+              duration: 2000,
+          });
           console.log(err);
         });
   }

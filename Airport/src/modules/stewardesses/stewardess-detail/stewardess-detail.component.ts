@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {StewardessesService} from '../services/stewardesses.service';
 import {StewardessDto} from '../../shared/models';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-stewardess-detail',
@@ -9,10 +10,12 @@ import {StewardessDto} from '../../shared/models';
   styleUrls: ['./stewardess-detail.component.scss']
 })
 export class StewardessDetailComponent implements OnInit {
-
   stewardess: StewardessDto;
 
-  constructor(private route: ActivatedRoute, private api: StewardessesService, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private api: StewardessesService,
+              private router: Router,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getStewardessDetails(this.route.snapshot.params['id']);
@@ -29,11 +32,13 @@ export class StewardessDetailComponent implements OnInit {
   deleteStewardess(id) {
     this.api.deleteStewardess(id)
       .subscribe(res => {
-          this.router.navigate(['/types']); // go to list
+          this.router.navigate(['/stewardesses']);
         }, (err) => {
+          this.snackBar.open('Unexpected Error happened', 'Ok', {
+              duration: 2000,
+          });
           console.log(err);
         }
       );
   }
-
 }

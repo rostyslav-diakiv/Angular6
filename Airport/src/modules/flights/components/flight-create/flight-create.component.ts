@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightsService} from '../../services/flights.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-flight-create',
@@ -9,46 +10,35 @@ import {FlightsService} from '../../services/flights.service';
     styleUrls: ['./flight-create.component.scss']
 })
 export class FlightCreateComponent implements OnInit {
+    description = 'Create Flight';
     flightForm: FormGroup;
-    number = '0';
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private api: FlightsService,
+                public snackBar: MatSnackBar,
                 private formBuilder: FormBuilder) {
     }
 
     ngOnInit() {
-        this.getBook(this.route.snapshot.params['id']);
         this.flightForm = this.formBuilder.group({
             'number': ['', Validators.required],
-            'departureTime': [Validators.required],
+            'departureTime': [null, Validators.required],
             'pointOfDeparture': [null, Validators.required],
-            'destinationArrivalTime': [Validators.required],
+            'destinationArrivalTime': [null, Validators.required],
             'destination': [null, Validators.required]
         });
     }
 
-    getBook(id) {
-        this.api.getFlight(id).subscribe(data => {
-            this.number = data.number;
-            this.flightForm.setValue({
-                number: data.number,
-                departureTime: data.departureTime,
-                pointOfDeparture: data.pointOfDeparture,
-                destinationArrivalTime: data.destinationArrivalTime,
-                destination: data.destination
-            });
-        });
-    }
-
     onFormSubmit() {
-       // const flight = Object.assign({}, this.flightForm.value);
         this.api.createFlightForm(this.flightForm.value)
             .subscribe((res) => {
-                const id = res['id'];
-                this.router.navigate(['/flights/details', id]);
+                const number = res['number'];
+                this.router.navigate(['/flights/details', number]);
                 }, (err) => {
+                this.snackBar.open('Model is invalid', 'Ok', {
+                    duration: 2000,
+                });
                     console.log(err);
                 }
             );

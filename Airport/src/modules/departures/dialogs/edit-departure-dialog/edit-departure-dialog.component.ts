@@ -89,7 +89,7 @@ export class EditDepartureDialogComponent implements OnInit {
             .subscribe(() => {
                 this.dialogRef.close(true);
             }, (err) => {
-                this.snackBar.open(err[0], 'Ok', {
+                this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);

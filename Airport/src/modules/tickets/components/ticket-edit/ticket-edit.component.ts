@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketsService} from '../../services/tickets.service';
-import {FlightDto, TicketDto} from '../../../shared/models';
+import {FlightDto} from '../../../shared/models';
 import {FlightsService} from '../../../flights/services/flights.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
     selector: 'app-ticket-edit',
@@ -18,13 +19,14 @@ export class TicketEditComponent implements OnInit {
                 private route: ActivatedRoute,
                 private api: TicketsService,
                 private flightsService: FlightsService,
-                private formBuilder: FormBuilder) {
+                private formBuilder: FormBuilder,
+                public snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
         this.getTicketDetails(this.route.snapshot.params['id']);
         this.ticketForm = this.formBuilder.group({
-            'price': [0, Validators.required],
+            'price': [0, [Validators.required, Validators.min(5), Validators.max(100000)]],
             'flightControl': [null, Validators.required],
         });
     }
@@ -40,11 +42,13 @@ export class TicketEditComponent implements OnInit {
                             this.ticketForm.patchValue({
                                 flightControl: value.filter(f => f.number === data.flight.number)[0]
                             });
-                            // filter and except that are already picked)
-                            this.flights = value; // .filter(value1 => value1.number !== this.selectedFlight.number);
+                            this.flights = value;
                         },
-                        error1 => {
-                            console.log(error1);
+                        err => {
+                            this.snackBar.open('Oops! Error happened', 'Ok', {
+                                duration: 2000,
+                            });
+                            console.log(err);
                         });
             });
     }
@@ -56,6 +60,9 @@ export class TicketEditComponent implements OnInit {
                 const id = res['id'];
                 this.router.navigate(['/tickets/details', id]);
             }, (err) => {
+                this.snackBar.open('Model is invalid', 'Ok', {
+                    duration: 2000,
+                });
                 console.log(err);
             });
     }

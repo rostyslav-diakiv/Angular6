@@ -14,6 +14,8 @@ import {FlightsService} from '../../../flights/services/flights.service';
     styleUrls: ['./add-departure-dialog.component.scss']
 })
 export class AddDepartureDialogComponent implements OnInit {
+    minDate = Date.now();
+    maxDate = Date.now() + +(new Date(1, 12, 0));
     description = 'Add Departure: ';
     depForm: FormGroup;
     planes: PlaneDto[] = [];
@@ -64,12 +66,13 @@ export class AddDepartureDialogComponent implements OnInit {
     }
 
     onFormSubmit() {
+        debugger;
         this.departuresService.createDepartureForm(this.depForm)
             .subscribe((res) => {
                 const id = res['id'];
                 this.dialogRef.close(id);
             }, (err) => {
-                this.snackBar.open(err[0], 'Ok', {
+                this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);

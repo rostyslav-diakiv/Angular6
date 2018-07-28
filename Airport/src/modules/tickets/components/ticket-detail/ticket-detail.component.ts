@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {TicketsService} from '../../services/tickets.service';
 import {TicketDto} from '../../../shared/models';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -14,7 +15,8 @@ export class TicketDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private api: TicketsService,
-              private router: Router) { }
+              private router: Router,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.getStewardessDetails(this.route.snapshot.params['id']);
@@ -31,8 +33,11 @@ export class TicketDetailComponent implements OnInit {
   deleteStewardess(id) {
     this.api.deleteTicket(id)
       .subscribe(res => {
-          this.router.navigate(['/tickets']); // go to list
+          this.router.navigate(['/tickets']);
         }, (err) => {
+          this.snackBar.open('Model is invalid', 'Ok', {
+              duration: 2000,
+          });
           console.log(err);
         }
       );
