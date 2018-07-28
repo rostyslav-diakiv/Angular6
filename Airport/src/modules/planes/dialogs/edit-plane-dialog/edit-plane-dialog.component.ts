@@ -37,17 +37,19 @@ export class EditPlaneDialogComponent implements OnInit {
                 [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
             'creationDate': [this.data.creationDate, Validators.required],
             'lifeTimeAge': [(this.data.lifeTimeAge.years * 365)
-                          + (this.data.lifeTimeAge.months * 30)
-                          + this.data.lifeTimeAge.days,
+            + (this.data.lifeTimeAge.months * 30)
+            + this.data.lifeTimeAge.days,
                 [Validators.required, Validators.min(environment.minExperienceDays), Validators.max(environment.maxExperienceDays)]],
             'type': [null, Validators.required],
         });
 
         this.planeTypesService.getPlaneTypes()
             .subscribe(value => {
-                    this.planeForm.patchValue({
-                        type: value.filter(p => p.id === this.data.planeType.id)[0]
-                    });
+                    if (this.data.planeType) {
+                        this.planeForm.patchValue({
+                            type: value.filter(p => p.id === this.data.planeType.id)[0]
+                        });
+                    }
 
                     this.types = value;
                 },

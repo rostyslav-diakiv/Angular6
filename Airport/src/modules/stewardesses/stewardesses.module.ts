@@ -6,6 +6,7 @@ import { StewardessCreateComponent } from './stewardess-create/stewardess-create
 import { StewardessEditComponent } from './stewardess-edit/stewardess-edit.component';
 
 import {SharedModule} from '../shared/shared.module';
+import {StewardessesService} from './services/stewardesses.service';
 
 const stewardessesRoutes: Routes = [
     {
@@ -47,6 +48,8 @@ const stewardessesRoutes: Routes = [
         StewardessCreateComponent,
         StewardessEditComponent
     ],
-    providers: []
+    providers: [
+        StewardessesService
+    ]
 })
 export class StewardessesModule { }

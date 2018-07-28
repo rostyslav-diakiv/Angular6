@@ -61,9 +61,11 @@ export class EditDepartureDialogComponent implements OnInit {
 
         this.crewsService.getCrews()
             .subscribe(value => {
+                if (this.data.crewId) {
                     this.depForm.patchValue({
                         crew: value.filter(c => c.id === this.data.crewId)[0]
                     });
+                }
 
                     this.crews = value;
                 },
@@ -77,7 +79,6 @@ export class EditDepartureDialogComponent implements OnInit {
                         this.depForm.patchValue({
                             flight: value.filter(f => f.number === this.data.flight.number)[0]
                         });
-
                     }
 
                     this.flights = value;

@@ -5,6 +5,7 @@ import {AgeFormPipe} from './pipes/age-form.pipe';
 import {MaterialModule} from '../material/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
+import {ApiService} from './services';
 
 @NgModule({
     imports: [
@@ -24,6 +25,9 @@ import {CommonModule} from '@angular/common';
         MaterialModule,
         HttpClientModule,
         AgeFormPipe
+    ],
+    providers: [
+        ApiService
     ]
 })
 export class SharedModule {

@@ -42,7 +42,6 @@ const pilotsRoutes = RouterModule.forChild([
         PilotDetailComponent,
         PilotEditComponent
     ],
-    exports: [],
     providers: [
         PilotsService,
         PilotResolver

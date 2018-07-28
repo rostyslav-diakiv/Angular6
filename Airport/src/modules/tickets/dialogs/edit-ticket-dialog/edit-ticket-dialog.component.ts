@@ -36,9 +36,11 @@ export class EditTicketDialogComponent implements OnInit {
 
         this.flightsService.getFlights()
             .subscribe(value => {
-                    this.ticketForm.patchValue({
-                        flight: value.filter(p => p.number === this.data.flight.number)[0]
-                    });
+                    if (this.data.flight) {
+                        this.ticketForm.patchValue({
+                            flight: value.filter(p => p.number === this.data.flight.number)[0]
+                        });
+                    }
 
                     this.flights = value;
                 },
