@@ -6,39 +6,33 @@ import {PilotsService} from './services';
 import {PilotDetailComponent} from './components/pilot-detail/pilot-detail.component';
 import {PilotResolver} from './services/pilot-resolver.service';
 import {PilotEditComponent} from './components/pilot-edit/pilot-edit.component';
-import {CommonModule} from '@angular/common';
 import {PilotCreateComponent} from './components/pilot-create/pilot-create.component';
 
 const pilotsRoutes = RouterModule.forChild([
     {
-        // stwardesses
         path: '',
         component: PilotsListComponent,
         data: { title: 'Pilots List' }
     },
     {
-        // stwardesses/details/2
         path: 'details/:id',
         component: PilotDetailComponent,
-        data: { title: 'Book Details' }
+        data: { title: 'Pilot Details' }
     },
     {
-        // stwardesses/create
         path: 'create',
         component: PilotCreateComponent,
-        data: { title: 'Create Book' }
+        data: { title: 'Create Pilot' }
     },
     {
-        // stwardesses/edit/2
         path: 'edit/:id',
         component: PilotEditComponent,
-        data: { title: 'Edit Book' }
+        data: { title: 'Edit Pilot' }
     },
 ];
 
 @NgModule({
     imports: [
-        CommonModule,
         SharedModule,
         pilotsRoutes,
     ],

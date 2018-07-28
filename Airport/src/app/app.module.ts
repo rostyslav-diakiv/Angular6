@@ -25,7 +25,7 @@ const APP_MODULES: any[] = [
     BrowserAnimationsModule,
     AppRoutingModule,
 
-    SharedModule.forRoot(),
+    SharedModule, //.forRoot(),
     FormsModule,
 
     MaterialModule,

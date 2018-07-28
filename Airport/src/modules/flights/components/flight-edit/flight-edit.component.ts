@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../services/flights.service';
 
 @Component({
     selector: 'app-flight-edit',
@@ -9,6 +9,7 @@ import {FlightsService} from '../../../shared/services/flights.service';
     styleUrls: ['./flight-edit.component.scss']
 })
 export class FlightEditComponent implements OnInit {
+    description: 'Edit flight #: ';
     flightForm: FormGroup;
     number = '0';
 
@@ -31,6 +32,7 @@ export class FlightEditComponent implements OnInit {
 
     getBook(id) {
         this.api.getFlight(id).subscribe(data => {
+            this.description +=  data.number;
             this.number = data.number;
             this.flightForm.setValue({
                 number: data.number,

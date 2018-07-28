@@ -25,7 +25,8 @@
         <ng-container matColumnDef="planeType">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Plane Type</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <a [routerLink]="['/planeTypes/details', row.planeType.id]"></a>{{row.planeType.planeModel}}</mat-cell>
+                <a [routerLink]="['/planeTypes/details', row.planeType.id]">{{row.planeType.planeModel}}</a>
+            </mat-cell>
         </ng-container>
 
         <!-- actions -->

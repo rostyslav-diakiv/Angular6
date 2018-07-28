@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
-import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {PlanesService} from './services/planes.service';
 import {PlanesListComponent} from './components/planes-list/planes-list.component';
@@ -24,7 +23,6 @@ const planesRoutes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
         SharedModule,
         RouterModule.forChild(planesRoutes),
     ],

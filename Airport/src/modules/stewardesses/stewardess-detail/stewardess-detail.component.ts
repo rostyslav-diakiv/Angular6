@@ -29,7 +29,7 @@ export class StewardessDetailComponent implements OnInit {
   deleteStewardess(id) {
     this.api.deleteStewardess(id)
       .subscribe(res => {
-          this.router.navigate(['/stewardesses']); // go to list
+          this.router.navigate(['/types']); // go to list
         }, (err) => {
           console.log(err);
         }

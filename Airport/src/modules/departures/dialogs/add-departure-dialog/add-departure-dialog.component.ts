@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {CrewDto, FlightDto, PlaneDto} from '../../../shared/models';
 import {PlanesService} from '../../../planes/services/planes.service';
 import {CrewsService} from '../../../crews/services/crews.service';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../../flights/services/flights.service';
 
 @Component({
     selector: 'app-add-departure-dialog',

@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {ApiService} from './services';
-import {FlightsService} from './services/flights.service';
 import {AgeFormPipe} from './pipes/age-form.pipe';
 import {MaterialModule} from '../material/material.module';
 import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     imports: [
@@ -19,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
         AgeFormPipe
     ],
     exports: [
+        CommonModule,
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,
@@ -27,14 +27,4 @@ import {HttpClientModule} from '@angular/common/http';
     ]
 })
 export class SharedModule {
-    static forRoot() {
-        return {
-            ngModule: SharedModule,
-            providers: [
-                ApiService,
-                FlightsService,
-                AgeFormPipe
-            ]
-        };
-    }
 }

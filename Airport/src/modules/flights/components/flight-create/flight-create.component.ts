@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../services/flights.service';
 
 @Component({
     selector: 'app-flight-create',

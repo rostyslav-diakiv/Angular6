@@ -3,15 +3,14 @@
 </div>
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title><h2>{{pilot?.name}}</h2></mat-card-title>
-        <mat-card-subtitle>{{pilot?.familyName}}</mat-card-subtitle>
+        <mat-card-title>
+            <h2>
+                Pilot: {{pilot?.name}} {{pilot?.familyName}}
+            </h2>
+        </mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <dl>
-            <dt>Name:</dt>
-            <dd>{{pilot?.name}}</dd>
-            <dt>Family Name:</dt>
-            <dd>{{pilot?.familyName}}</dd>
             <dt>Age:</dt>
             <dd>{{pilot?.age | ageForm : "long"}}</dd>
             <dt>Experience:</dt>

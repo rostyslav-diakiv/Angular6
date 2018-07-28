@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./types-list.component.scss']
 })
 export class TypesListComponent implements OnInit {
-    stewardesses: PlaneTypeDto[] = [];
+    types: PlaneTypeDto[] = [];
     displayedColumns = ['id', 'planeModel', 'maximalNumberOfPlaces', 'maximalCarryingCapacityKg', 'actions'];
     dataSource = new TypesDataSource(this.api);
 
@@ -28,7 +28,7 @@ export class TypesListComponent implements OnInit {
         this.api.getPlaneTypes()
             .subscribe(res => {
                 console.log(res);
-                this.stewardesses = res;
+                this.types = res;
             }, err => {
                 console.log(err);
             });

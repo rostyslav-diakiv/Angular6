@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TicketsService} from '../../services/tickets.service';
 import {FlightDto} from '../../../shared/models';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../../flights/services/flights.service';
 
 @Component({
     selector: 'app-ticket-create',

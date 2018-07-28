@@ -26,7 +26,7 @@ export class StewardessCreateComponent implements OnInit {
     this.api.createStewardessForm(form)
       .subscribe(res => {
           const id = res['id'];
-          this.router.navigate(['/stewardesses/details', id]);  // /flights/details/id go to details of just created flights
+          this.router.navigate(['/types/details', id]);  // /flights/details/id go to details of just created flights
         }, (err) => {
           console.log(err);
         });

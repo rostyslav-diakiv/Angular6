@@ -2,12 +2,19 @@
     <a mat-raised-button color="primary" [routerLink]="['/departures']">
         <mat-icon>list</mat-icon>
     </a>
-    <h2>Departure #{{departure?.id}} Details</h2>
 </div>
 <mat-card class="example-card">
     <mat-card-header>
-        <mat-card-title><h2>{{departure?.id}}</h2></mat-card-title>
-        <mat-card-subtitle>{{departure?.flight?.number}}</mat-card-subtitle>
+        <mat-card-title>
+            <h2>
+                Departure # {{departure?.id}}
+            </h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <h3>
+                {{departure?.flight?.number}}
+            </h3>
+        </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <dl>

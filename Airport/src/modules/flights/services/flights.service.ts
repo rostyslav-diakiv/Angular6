@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
-import {FlightDto} from '../models';
-import {ApiService} from './index';
-import {FlightRequest} from '../../flights/models';
+import {FlightDto} from '../../shared/models';
+import {ApiService} from '../../shared/services';
+import {FlightRequest} from '../models';
 
 @Injectable({
   providedIn: 'root'

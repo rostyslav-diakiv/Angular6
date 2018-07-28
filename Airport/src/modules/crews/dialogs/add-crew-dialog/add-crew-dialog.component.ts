@@ -15,7 +15,6 @@ import {PilotsService} from '../../../pilots/services';
 export class AddCrewDialogComponent implements OnInit {
     description = 'Create Crew';
     crewForm: FormGroup;
-    id = 0;
     stewardesses: StewardessDto[] = [];
     pilots: PilotDto[] = [];
 
@@ -34,7 +33,8 @@ export class AddCrewDialogComponent implements OnInit {
             'price': [0, Validators.required],
             'pilot': [null, Validators.required],
             'stews': [[], [Validators.required,
-                Validators.minLength(1)]],
+                Validators.minLength(1),
+                Validators.maxLength(5)]],
         });
 
         this.stewService.getStewardesses()

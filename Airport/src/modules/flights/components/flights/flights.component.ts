@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../services/flights.service';
 import {FlightDto} from '../../../shared/models';
 
 @Component({

@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {CrewsService} from './services/crews.service';
 import {CrewsListComponent} from './components/crews-list/crews-list.component';
@@ -24,7 +23,6 @@ const crewsRoutes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
         SharedModule,
         RouterModule.forChild(crewsRoutes),
     ],

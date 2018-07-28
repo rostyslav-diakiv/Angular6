@@ -12,7 +12,7 @@ import {PlaneTypesService} from '../../../plane-types/services/plane-types.servi
     styleUrls: ['./add-plane-dialog.component.scss']
 })
 export class AddPlaneDialogComponent implements OnInit {
-    description = 'Add Plane: ';
+    description = 'Add Plane';
     planeForm: FormGroup;
     types: PlaneTypeDto[] = [];
 

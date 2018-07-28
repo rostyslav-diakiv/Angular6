@@ -6,7 +6,7 @@ import {DeparturesService} from '../../services/departures.service';
 import {Router} from '@angular/router';
 import {PlanesService} from '../../../planes/services/planes.service';
 import {CrewsService} from '../../../crews/services/crews.service';
-import {FlightsService} from '../../../shared/services/flights.service';
+import {FlightsService} from '../../../flights/services/flights.service';
 
 @Component({
     selector: 'app-edit-departure-dialog',
