@@ -23,18 +23,23 @@
             <dd>{{ticket?.flight?.destination}}</dd>
         </dl>
     </mat-card-content>
+    <!-- actions -->
     <mat-card-actions>
-        <a mat-raised-button color="primary"
-           *ngIf="ticket"
-           [routerLink]="['/tickets/edit', ticket?.id]">
-            <mat-icon>edit</mat-icon>
-        </a>
-        <a mat-raised-button color="primary"
-           *ngIf="!ticket">
-            <mat-icon>edit</mat-icon>
-        </a>
-        <a mat-raised-button color="warn" (click)="deleteStewardess(ticket?.id)">
-            <mat-icon>delete</mat-icon>
-        </a>
+        <a mat-raised-button color="primary" (click)="openEditDialog()"><mat-icon>edit</mat-icon></a>
+        <a mat-raised-button color="warn" (click)="openDeleteDialog()"><mat-icon>delete</mat-icon></a>
     </mat-card-actions>
+    <!--<mat-card-actions>-->
+        <!--<a mat-raised-button color="primary"-->
+           <!--*ngIf="ticket"-->
+           <!--[routerLink]="['/tickets/edit', ticket?.id]">-->
+            <!--<mat-icon>edit</mat-icon>-->
+        <!--</a>-->
+        <!--<a mat-raised-button color="primary"-->
+           <!--*ngIf="!ticket">-->
+            <!--<mat-icon>edit</mat-icon>-->
+        <!--</a>-->
+        <!--<a mat-raised-button color="warn" (click)="deleteStewardess(ticket?.id)">-->
+            <!--<mat-icon>delete</mat-icon>-->
+        <!--</a>-->
+    <!--</mat-card-actions>-->
 </mat-card>

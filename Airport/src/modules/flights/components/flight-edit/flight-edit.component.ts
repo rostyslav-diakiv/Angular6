@@ -10,9 +10,9 @@ import {MatSnackBar} from '@angular/material';
     styleUrls: ['./flight-edit.component.scss']
 })
 export class FlightEditComponent implements OnInit {
-    description: 'Edit flight #: ';
-    flightForm: FormGroup;
+    description = 'Edit flight #: ';
     number = '0';
+    flightForm: FormGroup;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,

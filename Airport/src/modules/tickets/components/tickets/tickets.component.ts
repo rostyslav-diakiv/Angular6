@@ -4,9 +4,9 @@ import {TicketsService} from '../../services/tickets.service';
 import {CrewDto, TicketDto} from '../../../shared/models';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
-import {AddPlaneDialogComponent} from '../../../planes/dialogs/add-plane-dialog/add-plane-dialog.component';
-import {EditPlaneDialogComponent} from '../../../planes/dialogs/edit-plane-dialog/edit-plane-dialog.component';
-import {DeletePlaneDialogComponent} from '../../../planes/dialogs/delete-plane-dialog/delete-plane-dialog.component';
+import {AddTicketDialogComponent} from '../../dialogs/add-ticket-dialog/add-ticket-dialog.component';
+import {EditTicketDialogComponent} from '../../dialogs/edit-ticket-dialog/edit-ticket-dialog.component';
+import {DeleteTicketDialogComponent} from '../../dialogs/delete-ticket-dialog/delete-ticket-dialog.component';
 
 @Component({
     selector: 'app-tickets',
@@ -15,7 +15,7 @@ import {DeletePlaneDialogComponent} from '../../../planes/dialogs/delete-plane-d
 })
 export class TicketsComponent implements OnInit {
     tickets: TicketDto[] = [];
-    displayedColumns = ['id', 'price', 'flight'];
+    displayedColumns = ['id', 'price', 'flight', 'actions'];
     dataSource = new TicketDataSource(this.api);
 
     constructor(private router: Router,
@@ -34,7 +34,7 @@ export class TicketsComponent implements OnInit {
     }
 
     openAddDialog(): void {
-        const dialogRef = this.dialog.open(AddPlaneDialogComponent, { });
+        const dialogRef = this.dialog.open(AddTicketDialogComponent, { });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
@@ -44,7 +44,7 @@ export class TicketsComponent implements OnInit {
     }
 
     openEditDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(EditPlaneDialogComponent, {
+        const dialogRef = this.dialog.open(EditTicketDialogComponent, {
             data: dto
         });
 
@@ -56,7 +56,7 @@ export class TicketsComponent implements OnInit {
     }
 
     openDeleteDialog(dto: CrewDto) {
-        const dialogRef = this.dialog.open(DeletePlaneDialogComponent, {
+        const dialogRef = this.dialog.open(DeleteTicketDialogComponent, {
             data: dto
         });
 
@@ -68,7 +68,7 @@ export class TicketsComponent implements OnInit {
     }
 
     redirectToDetails(id: number) {
-        this.router.navigate(['/planes/details', id]);
+        this.router.navigate(['/tickets/details', id]);
     }
 }
 

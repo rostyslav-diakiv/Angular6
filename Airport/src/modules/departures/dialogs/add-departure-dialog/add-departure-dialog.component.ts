@@ -66,7 +66,6 @@ export class AddDepartureDialogComponent implements OnInit {
     }
 
     onFormSubmit() {
-        debugger;
         this.departuresService.createDepartureForm(this.depForm)
             .subscribe((res) => {
                 const id = res['id'];

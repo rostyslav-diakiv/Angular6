@@ -8,13 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
     year = new Date().getFullYear();
     navigation = [
+        { link: 'planeTypes', label: 'Plane Types', icon: 'home' },
+        { link: 'crews', label: 'Crews', icon: 'input' },
+        { link: 'tickets', label: 'Tickets', icon: 'input' },
+        { link: 'departures', label: 'Departures', icon: 'home' },
+        { link: 'planes', label: 'Planes', icon: 'dashboard' },
         { link: 'pilots', label: 'Pilots', icon: 'dashboard' },
         { link: 'stewardesses', label: 'Stewardesses', icon: 'home' },
         { link: 'flights', label: 'Flights', icon: 'dashboard' },
-        { link: 'tickets', label: 'Tickets', icon: 'input' },
-        { link: 'planeTypes', label: 'Plane Types', icon: 'home' },
-        { link: 'crews', label: 'Crews', icon: 'input' },
-        { link: 'planes', label: 'Planes', icon: 'dashboard' },
-        { link: 'departures', label: 'Departures', icon: 'home' },
     ];
 }

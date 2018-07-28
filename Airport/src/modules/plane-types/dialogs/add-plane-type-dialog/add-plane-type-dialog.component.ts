@@ -21,9 +21,12 @@ export class AddPlaneTypeDialogComponent implements OnInit {
 
     ngOnInit() {
         this.typeForm = this.formBuilder.group({
-            'planeModel': ['', Validators.required],
-            'maximalNumberOfPlaces': [0, Validators.required],
-            'maximalCarryingCapacityKg': [0, Validators.required]
+            'planeModel': ['',
+                [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+            'maximalNumberOfPlaces': [0,
+                [Validators.required, Validators.min(3), Validators.max(999)]],
+            'maximalCarryingCapacityKg': [0,
+                [Validators.required, Validators.min(1001), Validators.max(100000)]]
         });
     }
 
@@ -33,7 +36,7 @@ export class AddPlaneTypeDialogComponent implements OnInit {
                 const id = res['id'];
                 this.dialogRef.close(id);
             }, (err) => {
-                this.snackBar.open(err[0], 'Ok', {
+                this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);

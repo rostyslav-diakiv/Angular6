@@ -1,46 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {TicketsService} from '../../services/tickets.service';
 import {TicketDto} from '../../../shared/models';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {EditTicketDialogComponent} from '../../dialogs/edit-ticket-dialog/edit-ticket-dialog.component';
+import {DeleteTicketDialogComponent} from '../../dialogs/delete-ticket-dialog/delete-ticket-dialog.component';
 
 @Component({
-  selector: 'app-ticket-detail',
-  templateUrl: './ticket-detail.component.html',
-  styleUrls: ['./ticket-detail.component.scss']
+    selector: 'app-ticket-detail',
+    templateUrl: './ticket-detail.component.html',
+    styleUrls: ['./ticket-detail.component.scss']
 })
 export class TicketDetailComponent implements OnInit {
 
-  ticket: TicketDto;
+    ticket: TicketDto;
 
-  constructor(private route: ActivatedRoute,
-              private api: TicketsService,
-              private router: Router,
-              public snackBar: MatSnackBar) { }
+    constructor(private route: ActivatedRoute,
+                private api: TicketsService,
+                private router: Router,
+                public snackBar: MatSnackBar,
+                public dialog: MatDialog) {
+    }
 
-  ngOnInit() {
-    this.getStewardessDetails(this.route.snapshot.params['id']);
-  }
+    ngOnInit() {
+        this.getTicketDetails(this.route.snapshot.params['id']);
+    }
 
-  getStewardessDetails(id) {
-    this.api.getTicket(id)
-      .subscribe(data => {
-        console.log(data);
-        this.ticket = data;
-      });
-  }
+    getTicketDetails(id) {
+        this.api.getTicket(id)
+            .subscribe(data => {
+                console.log(data);
+                this.ticket = data;
+            });
+    }
 
-  deleteStewardess(id) {
-    this.api.deleteTicket(id)
-      .subscribe(res => {
-          this.router.navigate(['/tickets']);
-        }, (err) => {
-          this.snackBar.open('Model is invalid', 'Ok', {
-              duration: 2000,
-          });
-          console.log(err);
-        }
-      );
-  }
+    openEditDialog() {
+        const dialogRef = this.dialog.open(EditTicketDialogComponent, {
+            data: this.ticket
+        });
 
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.getTicketDetails(this.ticket.id);
+            }
+        });
+    }
+
+    openDeleteDialog() {
+        const dialogRef = this.dialog.open(DeleteTicketDialogComponent, {
+            data: this.ticket
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.router.navigate(['/tickets']);
+            }
+        });
+    }
 }

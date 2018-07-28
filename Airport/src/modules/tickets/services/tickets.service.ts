@@ -26,13 +26,18 @@ export class TicketsService {
 
     createTicketForm(form: FormGroup): Observable<TicketDto> {
         const request: TicketRequest = {
-            flightNumber: form.controls['flightControl'].value.number,
+            flightNumber: form.controls['flight'].value.number,
             price: form.controls['price'].value
         };
         return this._apiService.post(`/${this.ctrlUrl}`, request);
     }
 
-    updateTicketForm(id: number, form: TicketRequest): Observable<Response> {
-        return this._apiService.put(`/${this.ctrlUrl}/${id}`, form);
+    updateTicketForm(id: number, form: FormGroup): Observable<Response> {
+        const request: TicketRequest = {
+            flightNumber: form.controls['flight'].value.number,
+            price: form.controls['price'].value
+        };
+
+        return this._apiService.put(`/${this.ctrlUrl}/${id}`, request);
     }
 }

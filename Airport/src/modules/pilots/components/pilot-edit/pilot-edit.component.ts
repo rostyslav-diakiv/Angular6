@@ -49,7 +49,6 @@ export class PilotEditComponent implements OnInit {
     }
 
     onFormSubmit() {
-        debugger;
         this.api.updatePilot(this.id, this.pilotForm)
             .subscribe(() => {
                 this.router.navigate(['/pilots/details', this.id]);

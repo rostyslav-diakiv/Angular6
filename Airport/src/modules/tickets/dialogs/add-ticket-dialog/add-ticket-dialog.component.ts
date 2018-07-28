@@ -1,31 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {FlightDto, TicketDto} from '../../../shared/models';
 import {TicketsService} from '../../services/tickets.service';
-import {FlightDto} from '../../../shared/models';
 import {FlightsService} from '../../../flights/services/flights.service';
-import {MatSnackBar} from '@angular/material';
 
 @Component({
-    selector: 'app-ticket-create',
-    templateUrl: './ticket-create.component.html',
-    styleUrls: ['./ticket-create.component.scss']
+    selector: 'app-add-ticket-dialog',
+    templateUrl: './add-ticket-dialog.component.html',
+    styleUrls: ['./add-ticket-dialog.component.scss']
 })
-export class TicketCreateComponent implements OnInit {
+export class AddTicketDialogComponent implements OnInit {
+    description = 'Create Ticket';
     ticketForm: FormGroup;
     flights: FlightDto[] = [];
 
     constructor(private router: Router,
-                private api: TicketsService,
+                private ticketsService: TicketsService,
                 private flightsService: FlightsService,
                 private formBuilder: FormBuilder,
-                public snackBar: MatSnackBar) {
+                public snackBar: MatSnackBar,
+                public dialogRef: MatDialogRef<AddTicketDialogComponent>,
+                @Inject(MAT_DIALOG_DATA) public data: TicketDto) {
     }
 
     ngOnInit() {
         this.ticketForm = this.formBuilder.group({
-            'price': [0, Validators.required],
-            'flightControl': [null, Validators.required]
+            'price': [0, [Validators.required, Validators.min(6), Validators.max(99999)]],
+            'flight': [null, Validators.required],
         });
 
         this.flightsService.getFlights()
@@ -41,16 +44,18 @@ export class TicketCreateComponent implements OnInit {
     }
 
     onFormSubmit() {
-        console.log(this.ticketForm);
-        this.api.createTicketForm(this.ticketForm)
-            .subscribe(res => {
-                const id = res['id'];
-                this.router.navigate(['/tickets/details', id]);
+        this.ticketsService.createTicketForm(this.ticketForm)
+            .subscribe(() => {
+                this.dialogRef.close(true);
             }, (err) => {
                 this.snackBar.open('Model is invalid', 'Ok', {
                     duration: 2000,
                 });
                 console.log(err);
             });
+    }
+
+    onNoClick(): void {
+        this.dialogRef.close();
     }
 }

@@ -13,7 +13,7 @@
 
         <ng-container matColumnDef="pilot">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Pilot</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.pilot.name}} {{row.pilot.familyName}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.pilot?.name}} {{row.pilot?.familyName}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="stewardesses">
