@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {PlanesService} from '../../../planes/services/planes.service';
 import {CrewsService} from '../../../crews/services/crews.service';
 import {FlightsService} from '../../../flights/services/flights.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-edit-departure-dialog',
@@ -15,6 +16,8 @@ import {FlightsService} from '../../../flights/services/flights.service';
 })
 export class EditDepartureDialogComponent implements OnInit {
     description = 'Edit Departure #: ';
+    minDate = environment.minFlightDate;
+    maxDate = environment.maxFlightDate;
     depForm: FormGroup;
     id = 0;
     planes: PlaneDto[] = [];

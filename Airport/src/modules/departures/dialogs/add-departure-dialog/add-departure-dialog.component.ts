@@ -7,6 +7,7 @@ import {CrewDto, FlightDto, PlaneDto} from '../../../shared/models';
 import {PlanesService} from '../../../planes/services/planes.service';
 import {CrewsService} from '../../../crews/services/crews.service';
 import {FlightsService} from '../../../flights/services/flights.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-add-departure-dialog',
@@ -14,8 +15,8 @@ import {FlightsService} from '../../../flights/services/flights.service';
     styleUrls: ['./add-departure-dialog.component.scss']
 })
 export class AddDepartureDialogComponent implements OnInit {
-    minDate = Date.now();
-    maxDate = Date.now() + +(new Date(1, 12, 0));
+    minDate = environment.minFlightDate;
+    maxDate = environment.maxFlightDate;
     description = 'Add Departure: ';
     depForm: FormGroup;
     planes: PlaneDto[] = [];

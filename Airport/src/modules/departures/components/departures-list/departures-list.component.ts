@@ -44,7 +44,7 @@ export class DeparturesListComponent implements OnInit {
         });
     }
 
-    openEditDialog(dto: CrewDto) {
+    openEditDialog(dto: DepartureDto) {
         const dialogRef = this.dialog.open(EditDepartureDialogComponent, {
             data: dto
         });
@@ -56,7 +56,7 @@ export class DeparturesListComponent implements OnInit {
         });
     }
 
-    openDeleteDialog(dto: CrewDto) {
+    openDeleteDialog(dto: DepartureDto) {
         const dialogRef = this.dialog.open(DeleteDepartureDialogComponent, {
             data: dto
         });

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {StewardessesService} from '../services/stewardesses.service';
 import {MatSnackBar} from '@angular/material';
+import {environment} from '../../../environments/environment';
 
 @Component({
     selector: 'app-stewardess-create',
@@ -12,8 +13,8 @@ import {MatSnackBar} from '@angular/material';
 export class StewardessCreateComponent implements OnInit {
     stewForm: FormGroup;
 
-    maxDate = new Date(1999, 0, 0);
-    minDate = new Date(1900, 0, 0);
+    maxDate = environment.maxBirthDate;
+    minDate = environment.minBirthDate;
 
     constructor(private router: Router,
                 private api: StewardessesService,

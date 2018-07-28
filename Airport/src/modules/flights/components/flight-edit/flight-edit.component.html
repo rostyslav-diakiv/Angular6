@@ -12,7 +12,10 @@
                [errorStateMatcher]="matcher">
     </mat-form-field>
     <mat-form-field class="form">
-        <input matInput [matDatepicker]="depPicker" formControlName="departureTime" placeholder="Choose Departure Time">
+        <input matInput [max]="maxDate" [min]="minDate"
+               [matDatepicker]="depPicker"
+               formControlName="departureTime"
+               placeholder="Choose Departure Time">
         <mat-datepicker-toggle matSuffix [for]="depPicker"></mat-datepicker-toggle>
         <mat-datepicker #depPicker startView="year"></mat-datepicker>
         <mat-error>
@@ -31,7 +34,7 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form">
-        <input matInput
+        <input matInput [max]="maxDate" [min]="minDate"
                [matDatepicker]="picker"
                formControlName="destinationArrivalTime"
                placeholder="Choose Destination Arrival Time">

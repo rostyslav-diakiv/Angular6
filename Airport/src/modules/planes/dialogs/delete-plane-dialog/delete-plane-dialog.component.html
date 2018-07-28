@@ -1,11 +1,11 @@
 <div class="container">
     <h3 mat-dialog-title>Are you sure?</h3>
     <div mat-dialog-content>
-        #: {{data.id}}
+        #: {{data?.id}}
         <p></p>
-        Plane Name: {{data.name}}
+        Plane Name: {{data?.name}}
         <p></p>
-        Plane type: {{data.planeType.planeModel}}
+        Plane type: {{data?.planeType?.planeModel}}
         <p></p>
         Life time: {{data?.lifeTimeAge | ageForm : 'medium'}}
         <p></p>

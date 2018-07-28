@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PilotsService} from '../../services';
 import {MatSnackBar} from '@angular/material';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-pilot-edit',
@@ -16,6 +17,8 @@ export class PilotEditComponent implements OnInit {
     description = 'Edit Pilot #: ';
     pilotForm: FormGroup;
     id = 0;
+    maxDate = environment.maxBirthDate;
+    minDate = environment.minBirthDate;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -27,10 +30,13 @@ export class PilotEditComponent implements OnInit {
     ngOnInit() {
         this.getPilot(this.route.snapshot.params['id']);
         this.pilotForm = this.formBuilder.group({
-            'name': ['', Validators.required],
-            'familyName': ['', Validators.required],
-            'experience': [null, Validators.required],
-            'dateOfBirth': [null, Validators.required]
+            'name': ['',
+                [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+            'familyName': ['',
+                [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+            'dateOfBirth': [null, Validators.required],
+            'experience': [0,
+                [Validators.required, Validators.min(environment.minExperienceDays), Validators.max(environment.maxExperienceDays)]],
         });
     }
 

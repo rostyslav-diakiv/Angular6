@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightsService} from '../../services/flights.service';
 import {MatSnackBar} from '@angular/material';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-flight-create',
@@ -13,6 +14,9 @@ export class FlightCreateComponent implements OnInit {
     description = 'Create Flight';
     flightForm: FormGroup;
 
+    maxDate = environment.maxFlightDate;
+    minDate = environment.minFlightDate;
+
     constructor(private router: Router,
                 private route: ActivatedRoute,
                 private api: FlightsService,
@@ -22,11 +26,14 @@ export class FlightCreateComponent implements OnInit {
 
     ngOnInit() {
         this.flightForm = this.formBuilder.group({
-            'number': ['', Validators.required],
+            'number': ['',
+                [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
             'departureTime': [null, Validators.required],
-            'pointOfDeparture': [null, Validators.required],
+            'pointOfDeparture': ['',
+                [Validators.required, Validators.minLength(3), Validators.maxLength(49)]],
             'destinationArrivalTime': [null, Validators.required],
-            'destination': [null, Validators.required]
+            'destination': ['',
+                [Validators.required, Validators.minLength(3), Validators.maxLength(49)]],
         });
     }
 

@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FlightsService} from '../../services/flights.service';
 import {MatSnackBar} from '@angular/material';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-flight-edit',
@@ -13,6 +14,8 @@ export class FlightEditComponent implements OnInit {
     description = 'Edit flight #: ';
     number = '0';
     flightForm: FormGroup;
+    maxDate = environment.maxFlightDate;
+    minDate = environment.minFlightDate;
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -25,10 +28,12 @@ export class FlightEditComponent implements OnInit {
         this.getBook(this.route.snapshot.params['id']);
         this.flightForm = this.formBuilder.group({
             'number': [{value: '', disabled: true}, Validators.required],
-            'departureTime': [Validators.required],
-            'pointOfDeparture': [null, Validators.required],
-            'destinationArrivalTime': [Validators.required],
-            'destination': [null, Validators.required]
+            'departureTime': [null, Validators.required],
+            'pointOfDeparture': [null,
+                [Validators.required, Validators.minLength(3), Validators.maxLength(49)]],
+            'destinationArrivalTime': [null, Validators.required],
+            'destination': [null,
+                [Validators.required, Validators.minLength(3), Validators.maxLength(49)]],
         });
     }
 

@@ -4,7 +4,15 @@
 
 export const environment = {
     production: false,
-    api_url: 'https://localhost:5001/api'
+    api_url: 'https://localhost:5001/api',
+    maxBirthDate: new Date(1999, 1, 1),
+    minBirthDate: new Date(1910, 1, 1),
+    maxFlightDate: new Date(2020, 1, 1),
+    minFlightDate: new Date(2018, 7, 30),
+    maxCreationDate: new Date(2018, 1, 1),
+    minCreationDate: new Date(1978, 1, 1),
+    maxExperienceDays: 35000,
+    minExperienceDays: 30,
 };
 
 /*

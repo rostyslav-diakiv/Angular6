@@ -3,10 +3,9 @@
 <form class="mat-dialog-content" [formGroup]="depForm" (ngSubmit)="onFormSubmit()">
 
     <mat-form-field class="form">
-        <input matInput
+        <input matInput [max]="maxDate" [min]="minDate"
                [matDatepicker]="picker" formControlName="departureTime"
-               placeholder="Choose Departure time"
-               [min]="minDate" [max]="maxDate">
+               placeholder="Choose Departure time">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>
@@ -71,6 +70,6 @@
         <button mat-button type="submit" [disabled]="!depForm.valid" mat-raised-button color="primary">
             <mat-icon>save</mat-icon>
         </button>
-        <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+        <button mat-button type="reset"  (click)="onNoClick()" tabindex="-1">Cancel</button>
     </div>
 </form>

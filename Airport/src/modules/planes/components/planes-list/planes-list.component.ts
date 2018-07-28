@@ -44,7 +44,7 @@ export class PlanesListComponent implements OnInit {
         });
     }
 
-    openEditDialog(dto: CrewDto) {
+    openEditDialog(dto: PlaneDto) {
         const dialogRef = this.dialog.open(EditPlaneDialogComponent, {
             data: dto
         });
@@ -56,7 +56,7 @@ export class PlanesListComponent implements OnInit {
         });
     }
 
-    openDeleteDialog(dto: CrewDto) {
+    openDeleteDialog(dto: PlaneDto) {
         const dialogRef = this.dialog.open(DeletePlaneDialogComponent, {
             data: dto
         });

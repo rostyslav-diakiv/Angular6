@@ -49,9 +49,11 @@ export class EditCrewDialogComponent implements OnInit {
 
         this.pilotsService.getPilots()
             .subscribe(value => {
-                    this.crewForm.patchValue({
-                        pilot: value.filter(p => p.id === this.data.pilot.id)[0]
-                    });
+                    if (this.data.pilot) {
+                        this.crewForm.patchValue({
+                            pilot: value.filter(p => p.id === this.data.pilot.id)[0]
+                        });
+                    }
 
                     this.pilots = value;
                 },

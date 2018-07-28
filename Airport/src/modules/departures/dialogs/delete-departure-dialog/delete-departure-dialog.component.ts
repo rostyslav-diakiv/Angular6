@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {PlaneDto} from '../../../shared/models';
+import {DepartureDto} from '../../../shared/models';
 import {DeparturesService} from '../../services/departures.service';
 
 @Component({
@@ -11,7 +11,7 @@ import {DeparturesService} from '../../services/departures.service';
 export class DeleteDepartureDialogComponent implements OnInit {
     constructor(public dialogRef: MatDialogRef<DeleteDepartureDialogComponent>,
                 private api: DeparturesService,
-                @Inject(MAT_DIALOG_DATA) public data: PlaneDto) {
+                @Inject(MAT_DIALOG_DATA) public data: DepartureDto) {
     }
 
     ngOnInit(): void {

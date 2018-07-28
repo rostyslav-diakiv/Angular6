@@ -5,6 +5,7 @@ import {PlaneDto, PlaneTypeDto} from '../../../shared/models';
 import {PlanesService} from '../../services/planes.service';
 import {Router} from '@angular/router';
 import {PlaneTypesService} from '../../../plane-types/services/plane-types.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
     selector: 'app-edit-plane-dialog',
@@ -16,6 +17,8 @@ export class EditPlaneDialogComponent implements OnInit {
     planeForm: FormGroup;
     id = 0;
     types: PlaneTypeDto[] = [];
+    maxDate = environment.maxCreationDate;
+    minDate = environment.minCreationDate;
 
     constructor(private router: Router,
                 private planesService: PlanesService,
@@ -30,11 +33,13 @@ export class EditPlaneDialogComponent implements OnInit {
         this.id = this.data.id;
         this.description += this.id;
         this.planeForm = this.formBuilder.group({
-            'name': [this.data.name, Validators.required],
+            'name': [this.data.name,
+                [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
             'creationDate': [this.data.creationDate, Validators.required],
             'lifeTimeAge': [(this.data.lifeTimeAge.years * 365)
                           + (this.data.lifeTimeAge.months * 30)
-                          + this.data.lifeTimeAge.days, Validators.required],
+                          + this.data.lifeTimeAge.days,
+                [Validators.required, Validators.min(environment.minExperienceDays), Validators.max(environment.maxExperienceDays)]],
             'type': [null, Validators.required],
         });
 

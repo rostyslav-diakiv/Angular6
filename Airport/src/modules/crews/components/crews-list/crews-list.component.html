@@ -13,7 +13,14 @@
 
         <ng-container matColumnDef="pilot">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Pilot</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.pilot?.name}} {{row.pilot?.familyName}}</mat-cell>
+            <mat-cell *matCellDef="let row">
+                <a *ngIf="!row.pilot" href="#">
+                    {{row.pilot?.name}} {{row.pilot?.familyName}}
+                </a>
+                <a *ngIf="row.pilot" [routerLink]="['/pilots/details', row.pilot.id]">
+                    {{row.pilot?.name}} {{row.pilot?.familyName}}
+                </a>
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="stewardesses">

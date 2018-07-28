@@ -11,7 +11,10 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form">
-        <input matInput [matDatepicker]="picker" formControlName="creationDate" placeholder="Choose creation date">
+        <input matInput [max]="maxDate" [min]="minDate"
+               [matDatepicker]="picker"
+               formControlName="creationDate"
+               placeholder="Choose creation date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
         <mat-error>
